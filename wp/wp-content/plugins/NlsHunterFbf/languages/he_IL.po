@@ -1,0 +1,187 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: NlsHunterFbf\n"
+"POT-Creation-Date: 2021-08-06 18:51+0300\n"
+"PO-Revision-Date: 2021-10-26 16:39+0300\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.3\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? 2 : 3);\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: NlsHunterFbf.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Last-Translator: \n"
+"Language: he_IL\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+
+#: admin/class-NlsHunterFbf-admin.php:143
+msgid "You do not have sufficient permissions to access this page."
+msgstr "אין לך הרשאות מספיקות כדי לגשת לעמוד זה."
+
+#: includes/Hunter/NlsHelper.php:102
+msgid "Select"
+msgstr "בחר"
+
+#: includes/class-NlsHunterFbf-model.php:29
+msgid "Could not create Model."
+msgstr "אין אפשרות ליצור מודל."
+
+#: includes/class-NlsHunterFbf-model.php:30
+#, fuzzy
+msgid "Error: NlsHunterFbf_model: "
+msgstr "שגיאה: NlsHunterFbf_model: "
+
+#: includes/class-NlsHunterFbf-model.php:122
+msgid "Could not init Card Services."
+msgstr "אין אפשרות להתחבר לשירותי Card"
+
+#: includes/class-NlsHunterFbf-model.php:123
+msgid "Error: Card Services: "
+msgstr "שגיאה: שירותי כרטיס"
+
+#: includes/class-NlsHunterFbf-model.php:142
+msgid "Could not init Directory Services."
+msgstr "אין אפשרות להתחבר לשירותי Directory"
+
+#: includes/class-NlsHunterFbf-model.php:143
+msgid "Error: Directory Services: "
+msgstr "שגיאה: שירותי מדריך"
+
+#: includes/class-NlsHunterFbf-model.php:162
+msgid "Could not init Search Services."
+msgstr "אין אפשרות להתחבר לשירותי Search"
+
+#: includes/class-NlsHunterFbf-model.php:163
+msgid "Error: Search Services: "
+msgstr "שגיאה: שירותי חיפוש"
+
+#: includes/class-NlsHunterFbf-model.php:181
+msgid "Could not connect to Hunter Directory Services"
+msgstr "אין אפשרות להתחבר לשירותי האנטר"
+
+#: includes/class-NlsHunterFbf-model.php:182
+msgid "Authentication Error"
+msgstr "התרחשה שגיאת הזדהות"
+
+#: public/class-NlsHunterFbf-public.php:150
+msgid "Supplier Id"
+msgstr "מזהה ספק"
+
+#: public/class-NlsHunterFbf-public.php:152
+#: public/class-NlsHunterFbf-public.php:157 templates/applyForJobs.php:15
+#: templates/applyForJobs.php:66
+msgid "Full Name"
+msgstr "שם החבר:"
+
+#: public/class-NlsHunterFbf-public.php:153 templates/applyForJobs.php:22
+msgid "Cell"
+msgstr "טלפון:"
+
+#: public/class-NlsHunterFbf-public.php:154 templates/applyForJobs.php:29
+msgid "Area"
+msgstr "אזור"
+
+#: public/class-NlsHunterFbf-public.php:155
+msgid "Job Code"
+msgstr "קוד משרה"
+
+#: public/class-NlsHunterFbf-public.php:158 templates/applyForJobs.php:73
+msgid "Employee ID"
+msgstr "ת.ז:"
+
+#: public/class-NlsHunterFbf-public.php:159 templates/applyForJobs.php:80
+msgid "Company email"
+msgstr "מייל חברה"
+
+#: public/class-NlsHunterFbf-public.php:286
+msgid "Applicant form data: "
+msgstr "פרטי החבר/ה שלי:"
+
+#: public/class-NlsHunterFbf-public.php:318
+msgid "CV Applied from Fenix Jobs Site"
+msgstr "קורות חיים הוגשו מאתר המשרות"
+
+#: templates/applyForJobs.php:8
+msgid "My friend details:"
+msgstr "פרטי החבר:"
+
+#: templates/applyForJobs.php:36
+msgid "What job?"
+msgstr "התפקיד שתפור עליו:"
+
+#: templates/applyForJobs.php:49
+msgid "Append CV File"
+msgstr "צירוף קורות חיים"
+
+#: templates/applyForJobs.php:56
+msgid "Add another friend"
+msgstr "הוספת חבר נוסף"
+
+#: templates/applyForJobs.php:61
+msgid "My details:"
+msgstr "הפרטים שלי:"
+
+#: templates/applyForJobs.php:86
+msgid "Submit CV"
+msgstr "הגשת מועמדות"
+
+#: templates/mailApply.php:82
+msgid "Applied CV from Jobs Site"
+msgstr "קורות חיים שהוגשו דרך אתר משרות"
+
+#: templates/mailError.php:2
+msgid "Some error occured"
+msgstr "התרחשה שגיאה"
+
+#: templates/mailError.php:3
+msgid "No CV was not submited"
+msgstr "לא נשלחו קורות חיים"
+
+#: templates/mailSuccess.php:4
+msgid "Thenk you!"
+msgstr "תודה!"
+
+#: templates/mailSuccess.php:5
+msgid "The details recieved successfully"
+msgstr "הפרטים נקלטו הבצלחה"
+
+#. Plugin Name of the plugin/theme
+msgid "NlsHunterFbf"
+msgstr "‫NlsHunterFbf"
+
+#. Description of the plugin/theme
+msgid "API fot Niloosoft HunterHRMS System."
+msgstr ".‫API fot Niloosoft HunterHRMS System"
+
+#. Author of the plugin/theme
+msgid "Meni Nurie"
+msgstr "מני נוריאל"
+
+msgid "Error on uploading the file"
+msgstr "התרחשה שגיאה בהעלאת הקובץ"
+
+msgid "Name"
+msgstr "שמי:"
+
+msgid "Email"
+msgstr "אימייל פרטי:"
+
+msgid "City"
+msgstr "עיר"
+
+msgid "CV without a Job"
+msgstr "קורות חיים ללא משרה"
+
+msgid "Thenk you very much for applying!"
+msgstr "תודה רבה על פנייתך!"
+
+msgid "If a job match will be found, we will contact you soon."
+msgstr "במידה ותימצא התאמה, ניצור קשר בקרוב."
+
+msgid "Good luck!"
+msgstr "בהצלחה!"

@@ -1,0 +1,78 @@
+/* 
+    Created on : May 10, 2018, 12:02:57 AM
+    Author     : nurielmeni
+*/
+:root {
+  --nls-text-primary: #002952;
+  --nls-bg-primary: #002952;
+  --nls-placeholder: #7f94a8;
+}
+
+/** Sumo Select */
+.nls-hunter-search-wrapper .SumoSelect {
+  width: 198px;
+}
+
+.job-apply-form-wrapper .SumoSelect {
+  width: 11rem;
+}
+
+.SumoSelect.open>.CaptionCont, 
+.SumoSelect:focus>.CaptionCont, 
+.SumoSelect:focus-visible>.CaptionCont, 
+.SumoSelect:hover>.CaptionCont {
+  box-shadow: none !important;
+    border-color: -webkit-focus-ring-color !important;
+    outline: -webkit-focus-ring-color auto 1px;
+    outline-color: -webkit-focus-ring-color;
+    outline-style: auto;
+    outline-width: 1px;
+}
+
+.SumoSelect li {
+  list-style: none !important;
+}
+
+.SumoSelect p {
+  margin: 0 !important;
+}
+
+.nls-hunter-search-wrapper .SumoSelect.open .search-txt {
+  border-radius: inherit !important;
+  padding: 8px !important;
+}
+
+.nls-hunter-search-wrapper .SumoSelect.open > .optWrapper {
+  top: 46px !important;
+}
+.job-apply-form-wrapper  .SumoSelect.open > .optWrapper {
+  top: 41px !important;
+}
+
+.SumoSelect > .CaptionCont > span.placeholder {
+  color: var(--nls-placeholder) !important;
+}
+
+@media (max-width: 1279.9px) {
+  .nls-hunter-search-wrapper .SumoSelect {
+    width: 229px;
+  }
+}
+
+@media (max-width: 767.9px) {
+ .nls-field.select {
+    width: calc(50% - 0.5rem);
+  }
+  .SumoSelect {
+    width: 100%;
+  }
+}
+
+@media (max-width: 540px) {
+  .nls-field.select {
+    width: 100%;
+  }
+  .SumoSelect {
+    width: 100%;
+  }
+}

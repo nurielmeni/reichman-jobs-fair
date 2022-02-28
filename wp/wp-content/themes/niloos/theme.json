@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "settings": {
+    "layout": {
+      "wideSize": "1280px"
+    },
+    "color": {
+      "palette": [
+        {
+          "name": "Primary",
+          "slug": "primary",
+          "color": "#002952"
+        },
+        {
+          "name": "Secondary",
+          "slug": "secondary",
+          "color": "#66bb6a"
+        },
+        {
+          "name": "Dark",
+          "slug": "dark",
+          "color": "#1F2937"
+        },
+        {
+          "name": "Light",
+          "slug": "light",
+          "color": "#e4e4e4"
+        },
+        {
+          "name": "Input",
+          "slug": "input-field",
+          "color": "#ebebeb"
+        },
+        {
+          "name": "MainBg",
+          "slug": "mainbg",
+          "color": "#f7f7f7"
+        },
+        {
+          "name": "Description",
+          "slug": "description",
+          "color": "#707070"
+        },
+        {
+          "name": "Dark Gray",
+          "slug": "dark-gray",
+          "color": "#808080"
+        },
+        {
+          "name": "SliderBg",
+          "slug": "sliderbg",
+          "color": "#f1f2f2"
+        },
+        {
+          "name": "Placeholder",
+          "slug": "placeholder",
+          "color": "#7f94a8"
+        },
+        {
+          "name": "Chip",
+          "slug": "chip",
+          "color": "#eae8e8"
+        }
+      ]
+    },
+    "typography": {
+      "fontSizes": [
+        {
+          "name": "Small",
+          "slug": "small",
+          "size": "0.875rem"
+        },
+        {
+          "slug": "regular",
+          "name": "Regular",
+          "size": "1.5rem"
+        },
+        {
+          "slug": "large",
+          "name": "Large",
+          "size": "1.125rem"
+        },
+        {
+          "slug": "xl",
+          "name": "XL",
+          "size": "1.25rem"
+        },
+        {
+          "slug": "xxl",
+          "name": "2XL",
+          "size": "1.5rem"
+        },
+        {
+          "slug": "xxxl",
+          "name": "3XL",
+          "size": "1.875rem"
+        }
+      ]
+    }
+  }
+}

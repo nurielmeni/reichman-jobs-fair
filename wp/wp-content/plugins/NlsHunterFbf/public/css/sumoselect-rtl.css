@@ -1,0 +1,103 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 10, 2018, 4:48:10 PM
+    Author     : nurielmeni
+*/
+
+/*
+.ui-multiselect {
+    padding: 2px 0 2px 4px;
+}
+*/
+
+.SumoSelect.open > .optWrapper > * {
+  background: #ffffff;
+}
+
+.SumoSelect > .optWrapper.multiple > .options li.opt {
+  padding-right: 35px;
+  padding-left: 0;
+  margin: 0;
+}
+
+.SumoSelect > .optWrapper.multiple > .options li.opt span,
+.SumoSelect .select-all > span {
+  margin-right: -35px;
+  margin-left: 0;
+}
+
+.SumoSelect .select-all > label,
+.SumoSelect > .CaptionCont,
+.SumoSelect > .CaptionCont > label,
+.SumoSelect > .optWrapper > .options li.opt label,
+.nls-field label {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.SumoSelect > .CaptionCont > label {
+  right: auto;
+  left: 5px;
+  margin-bottom: 0;
+}
+
+.SumoSelect > .CaptionCont > span {
+  padding-right: 0;
+  padding-left: 30px;
+}
+
+.SumoSelect.open > .CaptionCont,
+.SumoSelect:focus > .CaptionCont,
+.SumoSelect:hover > .CaptionCont {
+  box-shadow: none;
+}
+
+.SumoSelect .select-all > label,
+.SumoSelect .select-all > span i {
+  line-height: 2.25rem;
+}
+body
+  #content
+  .SumoSelect
+  > .optWrapper.multiple.okCancelInMulti
+  > .MultiControls
+  > p {
+  margin-bottom: 0;
+}
+
+#content .SumoSelect > .optWrapper.multiple > ul.options {
+  margin-bottom: 0;
+}
+
+.SumoSelect .select-all.selected > span i,
+.SumoSelect > .optWrapper.multiple > .options li.opt.selected span i {
+  background-color: #1672ba;
+}
+
+.SumoSelect > .optWrapper.multiple > .MultiControls > p.btnOk {
+  border-right: none;
+  border-left: 1px solid #dbdbdb;
+}
+
+.SumoSelect.open > .optWrapper.isFloating {
+  max-width: 500px;
+  top: 0;
+}
+
+.SumoSelect > .optWrapper > .options li label {
+  text-overflow: initial;
+  white-space: normal;
+}
+
+.SumoSelect > .optWrapper > .options li.opt {
+  margin-right: 0;
+  padding-right: 1rem;
+}
+
+.SumoSelect > .optWrapper.multiple.isFloating {
+  padding-bottom: 5rem;
+}
