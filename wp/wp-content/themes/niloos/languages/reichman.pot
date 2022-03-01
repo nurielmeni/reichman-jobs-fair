@@ -1,0 +1,176 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Reichman\n"
+"POT-Creation-Date: 2022-01-20 15:17+0200\n"
+"PO-Revision-Date: 2022-01-20 15:17+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.3\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: style.css\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: node_modules\n"
+
+#: 404.php:16
+msgid "Sorry, the page you are looking for could not be found."
+msgstr ""
+
+#: 404.php:18
+msgid "Go Home"
+msgstr ""
+
+#: comments.php:18
+#, php-format
+msgctxt "comments title"
+msgid "One comment"
+msgid_plural "%1$s comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:43
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:47
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: comments.php:53
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: comments.php:62
+msgid "Comments are closed."
+msgstr ""
+
+#: footer.php:58
+msgid "All rights reserved to Reichman University."
+msgstr ""
+
+#: functions.php:15
+msgid "Primary Menu"
+msgstr ""
+
+#: functions.php:16
+msgid "Language Switcher"
+msgstr ""
+
+#: functions.php:17
+msgid "Header Social"
+msgstr ""
+
+#: functions.php:18
+msgid "Footer Menu 1"
+msgstr ""
+
+#: functions.php:19
+msgid "Footer Menu 2"
+msgstr ""
+
+#: functions.php:20
+msgid "Footer Social"
+msgstr ""
+
+#: includes/customizerAdjustments.php:18
+msgid "Theme Options"
+msgstr ""
+
+#: includes/customizerAdjustments.php:19
+msgid "Theme Modifications for Reichman site"
+msgstr ""
+
+#: includes/headerLogo.php:16
+msgid "Header ML logo"
+msgstr ""
+
+#: includes/headerLogo.php:17
+msgid "Settings for header multilanguage logo"
+msgstr ""
+
+#: includes/headerLogo.php:31
+msgid "Header ML Logo"
+msgstr ""
+
+#: includes/nlsFbfFlow.php:16
+msgid "Flow Element - "
+msgstr ""
+
+#: includes/nlsFbfFlow.php:17 includes/nlsFbfFlow.php:67
+msgid "Settings for the flow elements"
+msgstr ""
+
+#: includes/nlsFbfFlow.php:34
+msgid "Title"
+msgstr ""
+
+#: includes/nlsFbfFlow.php:53
+msgid "Content"
+msgstr ""
+
+#: includes/nlsFbfFlow.php:66
+msgid "Niloos FBF Flow - General"
+msgstr ""
+
+#: includes/nlsFbfFlow.php:84
+msgid "Separator Image"
+msgstr ""
+
+#: includes/nlsFbfFlow.php:100
+msgid "Separetor image width (px)"
+msgstr ""
+
+#: includes/nlsFooterLogo.php:13
+msgid "Niloos FBF footer logo"
+msgstr ""
+
+#: includes/nlsFooterLogo.php:14
+msgid "Settings for footer logo"
+msgstr ""
+
+#: includes/nlsFooterLogo.php:28
+msgid "Footer Logo"
+msgstr ""
+
+#: template-parts/content-single.php:14 template-parts/content.php:28
+msgid "Pages:"
+msgstr ""
+
+#: template-parts/content-single.php:18 template-parts/content.php:32
+msgid "Page"
+msgstr ""
+
+#: template-parts/content.php:21
+#, php-format
+msgid "Continue reading %s"
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Reichman"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "https://github.com/nurielmeni/reichman-theme"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Reichman is a simple boilerplate WordPress theme with Tailwind CSS."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Jeffrey van Rossum"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://vanrossum.dev"
+msgstr ""

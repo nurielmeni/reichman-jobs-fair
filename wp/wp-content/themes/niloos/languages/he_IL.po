@@ -1,0 +1,187 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Reichman\n"
+"POT-Creation-Date: 2022-03-01 21:38+0200\n"
+"PO-Revision-Date: 2022-03-01 21:44+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: he_IL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
+"2 : 3);\n"
+"X-Generator: Poedit 2.4.3\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: style.css\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: node_modules\n"
+
+#: 404.php:16
+msgid "Sorry, the page you are looking for could not be found."
+msgstr "מצטערים, הדף שאתה מחפש לא נמצא."
+
+#: 404.php:18
+msgid "Go Home"
+msgstr "חזור להתחלה"
+
+#: comments.php:18
+#, fuzzy, php-format
+msgctxt "comments title"
+msgid "One comment"
+msgid_plural "%1$s comments"
+msgstr[0] "תגובה אחת"
+msgstr[1] "שתי תגובות"
+msgstr[2] ""
+msgstr[3] "תגובות"
+
+#: comments.php:43
+msgid "Comment navigation"
+msgstr "ניווט תגובות"
+
+#: comments.php:47
+msgid "&larr; Older Comments"
+msgstr "&larr; תגובות ישנות יותר"
+
+#: comments.php:53
+msgid "Newer Comments &rarr;"
+msgstr "תגובות חדשות יותר &rarr;"
+
+#: comments.php:62
+msgid "Comments are closed."
+msgstr "תגובות סגורות."
+
+#: footer.php:59
+msgid "All rights reserved to Reichman University."
+msgstr "כל הזכויות שמורות לאוניברסיטת רייכמן."
+
+#: functions.php:15
+msgid "Primary Menu"
+msgstr "תפריט ראשי"
+
+#: functions.php:16
+msgid "Language Switcher"
+msgstr "Switcher שפות"
+
+#: functions.php:17
+msgid "Header Social"
+msgstr "כותרת עליונה חברתית"
+
+#: functions.php:18
+msgid "Footer Menu 1"
+msgstr "תפריט תחתון 1"
+
+#: functions.php:19
+msgid "Footer Menu 2"
+msgstr "תפריט תחתון 2"
+
+#: functions.php:20
+msgid "Footer Social"
+msgstr "כותרת תחתונה חברתית"
+
+#: includes/customizerAdjustments.php:18
+msgid "Theme Options"
+msgstr "אפשרויות תבנית - נילוסופט"
+
+#: includes/customizerAdjustments.php:19
+msgid "Theme Modifications for Reichman site"
+msgstr "שינויים בערכת נושא עבור אתר רייכמן"
+
+#: includes/headerLogo.php:16
+msgid "Header ML logo"
+msgstr "סמל ML כותרת עליונה"
+
+#: includes/headerLogo.php:17
+msgid "Settings for header multilanguage logo"
+msgstr "הגדרות עבור סמל ריבוי לשוניות כותרת"
+
+#: includes/headerLogo.php:31
+msgid "Header ML Logo"
+msgstr "סמל ML כותרת עליונה"
+
+#: includes/nlsFbfFlow.php:16
+msgid "Flow Element - "
+msgstr "אלמנט זרימה - "
+
+#: includes/nlsFbfFlow.php:17 includes/nlsFbfFlow.php:67
+msgid "Settings for the flow elements"
+msgstr "הגדרות לאלמנטים של זרימה"
+
+#: includes/nlsFbfFlow.php:34
+msgid "Title"
+msgstr "כותרת"
+
+#: includes/nlsFbfFlow.php:53
+msgid "Content"
+msgstr "תוכן"
+
+#: includes/nlsFbfFlow.php:66
+msgid "Niloos FBF Flow - General"
+msgstr "נילוס חבר מביא חבר - כללי"
+
+#: includes/nlsFbfFlow.php:84
+msgid "Separator Image"
+msgstr "תמונה למפריד"
+
+#: includes/nlsFbfFlow.php:100
+msgid "Separetor image width (px)"
+msgstr "גודל תמונה למפריד (px)"
+
+#: includes/nlsFooterLogo.php:13
+msgid "Niloos FBF footer logo"
+msgstr "סמל הכותרת התחתונה של נילוס FBF"
+
+#: includes/nlsFooterLogo.php:14
+msgid "Settings for footer logo"
+msgstr "הגדרות עבור סמל כותרת תחתונה"
+
+#: includes/nlsFooterLogo.php:28
+msgid "Footer Logo"
+msgstr "לוגו כותרת תחתונה"
+
+#: template-parts/content-single.php:9 template-parts/content.php:25
+msgid "Pages:"
+msgstr "עמודים:"
+
+#: template-parts/content-single.php:13 template-parts/content.php:29
+msgid "Page"
+msgstr "עמוד"
+
+#: template-parts/content.php:18
+#, php-format
+msgid "Continue reading %s"
+msgstr "המשך קריאת  %s"
+
+#. Theme Name of the plugin/theme
+msgid "Reichman Jobs Fair"
+msgstr "יריד משרות רייכמן"
+
+#. Theme URI of the plugin/theme
+#, fuzzy
+msgid "https://github.com/jeffreyvr/example_theme"
+msgstr "https://github.com/nurielmeni/reichman-theme"
+
+#. Description of the plugin/theme
+msgid "A WordPress theme made with TailPress."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Jeffrey van Rossum"
+msgstr "ג'פרי ואן רוסום"
+
+#. Author URI of the plugin/theme
+#, fuzzy
+msgid "https://vanrossum.dev"
+msgstr "https://vanrossum.dev"
+
+#~ msgid "Contact us"
+#~ msgstr "צרו איתנו קשר"
+
+#~ msgid "Reichman is a simple boilerplate WordPress theme with Tailwind CSS."
+#~ msgstr "רייכמן הוא ערכת נושא פשוטה של וורדפרס עם CSS של Tailwind."

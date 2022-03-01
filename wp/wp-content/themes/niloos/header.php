@@ -29,7 +29,7 @@
 							</div>
 
 							<h2 class="text-lg sm:text-xl lg:text-2xl font-bold mx-2">
-								<?php echo get_bloginfo('description'); ?>
+								<?= _e(get_bloginfo('description'), 'reichman'); ?>
 							</h2>
 
 

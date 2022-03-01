@@ -1,37 +1,82 @@
-.entry-content, .block-editor-block-list__layout {
-    h1 {
-        @apply text-2xl;
-    }
+.two-chars {
+  text-overflow: clip;
+  width: calc(2ch - 3px);
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: row-reverse;
+}
 
-    h2 {
-        @apply text-xl;
-    }
+.transparent-text {
+  color: transparent;
+  font-size: 0;
+}
 
-    h3 {
-        @apply text-lg;
-    }
+li.social {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 10px;
+}
 
-    p, ul, ol {
-        a {
-            @apply text-blue-500 underline;
+li.social > a {
+  padding-inline-start: 0.5rem;
+}
 
-            &:hover {
-                @apply no-underline;
-            }
-        }
+li.social > span.social-icon {
+  min-width: 32px;
+  height: 32px;
+  background-size: 32px 32px;
+}
 
-        @apply mb-8;
-    }
+li.social > span.social-icon > a {
+  font-size: 1px;
+  padding: 16px;
+}
 
-    ul:not(.block-editor-block-variation-picker__variations) {
-        li {
-            @apply list-disc list-inside;
-        }
-    }
+li.social.he {
+  flex-direction: row-reverse;
+}
 
-    ol {
-        li {
-            @apply list-decimal list-inside;
-        }
-    }
+li.transparent-text {
+  background-position-x: center;
+  padding-inline-start: 0;
+}
+
+.fb-circle-blue span.social-icon {
+  background: url("../images/fb_circle_blue.svg") no-repeat;
+}
+
+.fb-circle-white span.social-icon {
+  background: url("../images/fb_circle_white.svg") no-repeat;
+}
+.in-circle-blue span.social-icon {
+  background: url("../images/in_circle_blue.svg") no-repeat;
+}
+
+.in-circle-white span.social-icon {
+  background: url("../images/in_circle_white.svg") no-repeat;
+}
+.mail-circle-blue span.social-icon {
+  background: url("../images/mail_circle_blue.svg") no-repeat;
+}
+
+.mail-circle-white span.social-icon {
+  background: url("../images/mail_circle_white.svg") no-repeat;
+}
+
+/* Responsive design */
+@media (max-width: 1023.9px) {
+  ul li.social > a {
+    font-size: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__media {
+    grid-row: 2;
+  }
+  .wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__content {
+    grid-row: 1;
+  }
 }

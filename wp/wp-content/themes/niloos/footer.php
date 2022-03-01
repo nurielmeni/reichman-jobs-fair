@@ -14,11 +14,7 @@ include_once 'includes/SocialWalker.php';
 <footer id="colophon" class="site-footer bg-primary p-4" role="contentinfo">
 	<?php do_action('reichman_footer'); ?>
 
-	<div class="container mx-auto flex justify-start text-white text-lg pb-4">
-		<?= _e('Contact us', 'reichman') ?>
-	</div>
-
-	<div class="container mx-auto flex flex-col justify-center lg:flex-row lg:justify-between items-top primary text-white">
+	<div class="container mx-auto flex flex-col justify-center items-center primary text-white">
 		<?php
 		wp_nav_menu(
 			array(
@@ -49,7 +45,7 @@ include_once 'includes/SocialWalker.php';
 			array(
 				'container_id'    => 'footer-social',
 				'container_class' => 'mt-1 mb-2',
-				'menu_class'      => 'flex justify-start lg:flex-col',
+				'menu_class'      => 'flex justify-center',
 				'theme_location'  => 'footer-social',
 				'li_class'        => 'px-2 mt-2',
 				'walker' => new social_walker,
@@ -59,7 +55,7 @@ include_once 'includes/SocialWalker.php';
 		?>
 	</div>
 
-	<div class="container mx-auto flex flex-col justify-start text-white mt-8">
+	<div class="container mx-auto flex flex-col justify-center items-center text-white">
 		&copy; <?php echo date_i18n('Y'); ?> - <?= _e('All rights reserved to Reichman University.', 'reichman') ?>
 		<div class="text-sm">
 			POWERED BY <a href="https://niloosoft.com/he/">NILOOSOFT HUNTER EDGE</a> </div>
