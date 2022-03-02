@@ -13,6 +13,7 @@ require_once 'Hunter/NlsFilter.php';
 class NlsHunter_model
 {
     const STATUS_OPEN = 1;
+    const CACHE_EXPIRATION = 20;
 
 
     private $nlsSecutity;
@@ -290,17 +291,24 @@ class NlsHunter_model
             : [];
     }
 
-    public function getEmployers() 
+    public function getEmployers($flash = false)
     {
-        $cache_key = 'nls_hunter_employers';
-        $employers = wp_cache_get( $cache_key );
-        if ( false === $employers ) {
+        $cache_key = 'nls_hunter_employers_' . get_bloginfo('language');
+        if ($flash) wp_cache_delete($cache_key);
 
-            $jobs = $this->getJobHunterExecuteNewQuery2();
+        $employers = wp_cache_get($cache_key);
+        if (false === $employers) {
 
-            wp_cache_set( $cache_key, $employers );
+            $res = $this->getJobHunterExecuteNewQuery2([], null, 0, 10000);
+            foreach ($res->Results->JobInfo as $job) {
+                if (property_exists($job, 'EmployerId') && $job->EmployerId !== null) {
+                    $employers[$job->EmployerId][] = $job;
+                }
+            }
+
+            wp_cache_set($cache_key, $employers, '', self::CACHE_EXPIRATION);
         }
-      
+
         return $employers;
     }
 
