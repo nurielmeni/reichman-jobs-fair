@@ -290,7 +290,21 @@ class NlsHunter_model
             : [];
     }
 
-    public function getJobHunterExecuteNewQuery2($searchParams, $hunterId = null, $resultRowOffset = 0, $resultRowLimit = null)
+    public function getEmployers() 
+    {
+        $cache_key = 'nls_hunter_employers';
+        $employers = wp_cache_get( $cache_key );
+        if ( false === $employers ) {
+
+            $jobs = $this->getJobHunterExecuteNewQuery2();
+
+            wp_cache_set( $cache_key, $employers );
+        }
+      
+        return $employers;
+    }
+
+    public function getJobHunterExecuteNewQuery2($searchParams = [], $hunterId = null, $resultRowOffset = 0, $resultRowLimit = null)
     {
         $this->initSearchService();
         $resultRowLimit = $resultRowLimit ? $resultRowLimit : $this->nlsGetCountPerPage();

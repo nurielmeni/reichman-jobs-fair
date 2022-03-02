@@ -61,6 +61,8 @@ class NlsHunter_modules
 
     public function nlsHunterEmployers_render()
     {
+        $employers = $this->model->getEmployres();
+        
         // Look for published Job Fair
         $jobFairsPosts = get_posts([
             'category_name' => 'reichman-job-fair',
