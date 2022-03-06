@@ -84,11 +84,13 @@ class NlsHunter_model
         add_filter('the_content', 'front_display_message');
     }
 
-    public function front_display_message($content)
+    public function front_display_message($msg)
     {
-
-        $content = "<div class='your-message'>You did it!</div>\n\n" . $content;
-        return $content;
+        add_filter('the_content', function ($content) use ($msg) {
+            $message = '<div class="absolute top-0 z-20 p-4 bg-danger">' . $msg . '</div>';
+            $content = "$message\n\n" . $content;
+            return $content;
+        });
     }
 
     public function nlsPublicNotice($title, $notice)
@@ -293,20 +295,22 @@ class NlsHunter_model
 
     public function getEmployers($flash = false)
     {
-        $cache_key = 'nls_hunter_employers_' . get_bloginfo('language');
+        $cache_key = 'nls_hunter_employers_6' . get_bloginfo('language');
         if ($flash) wp_cache_delete($cache_key);
 
         $employers = wp_cache_get($cache_key);
         if (false === $employers) {
 
             $res = $this->getJobHunterExecuteNewQuery2([], null, 0, 10000);
-            foreach ($res->Results->JobInfo as $job) {
-                if (property_exists($job, 'EmployerId') && $job->EmployerId !== null) {
-                    $employers[$job->EmployerId][] = $job;
+            if ($res && property_exists($res, 'Results') && property_exists($res->Results, 'JobInfo')) {
+                foreach ($res->Results->JobInfo as $job) {
+                    if (property_exists($job, 'EmployerId') && $job->EmployerId !== null) {
+                        $employers[$job->EmployerId][] = $job;
+                    }
                 }
-            }
 
-            wp_cache_set($cache_key, $employers, '', self::CACHE_EXPIRATION);
+                wp_cache_set($cache_key, $employers, '', self::CACHE_EXPIRATION);
+            }
         }
 
         return $employers;
@@ -321,13 +325,17 @@ class NlsHunter_model
         $filter = new NlsFilter();
 
         $filter->addSuplierIdFilter($this->nlsGetSupplierId());
-
-        $jobs = $this->nlsSearch->JobHunterExecuteNewQuery2(
-            $hunterId,
-            $resultRowOffset,
-            $resultRowLimit,
-            $filter
-        );
+        try {
+            $jobs = $this->nlsSearch->JobHunterExecuteNewQuery2(
+                $hunterId,
+                $resultRowOffset,
+                $resultRowLimit,
+                $filter
+            );
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+            return null;
+        }
 
         return $jobs;
     }

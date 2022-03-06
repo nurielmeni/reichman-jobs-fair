@@ -3,3 +3,8 @@
 @import "tailwindcss/utilities";
 
 @import "custom.css";
+
+.entry-content .alignwide {
+  margin-left: 0;
+  margin-right: 0;
+}

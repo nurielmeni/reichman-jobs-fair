@@ -26,6 +26,10 @@
   margin: 2rem
 }
 
+.m-0 {
+  margin: 0px
+}
+
 .my-3 {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem
@@ -73,6 +77,14 @@
 
 .mb-12 {
   margin-bottom: 3rem
+}
+
+.mb-0 {
+  margin-bottom: 0px
+}
+
+.mt-8 {
+  margin-top: 2rem
 }
 
 .inline-block {
@@ -186,6 +198,10 @@
   padding: 1rem
 }
 
+.p-0 {
+  padding: 0px
+}
+
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem
@@ -213,6 +229,18 @@
 
 .pl-5 {
   padding-left: 1.25rem
+}
+
+.text-left {
+  text-align: left
+}
+
+.text-center {
+  text-align: center
+}
+
+.text-right {
+  text-align: right
 }
 
 .text-5xl {
@@ -350,11 +378,11 @@ body {
   max-width: 1280px
 }
 
-.wp-block[data-align=wide] {
+.wp-block[data-align="wide"] {
   max-width: 1280px
 }
 
-.wp-block[data-align=full] {
+.wp-block[data-align="full"] {
   max-width: 100%
 }
 
@@ -387,6 +415,14 @@ body {
 
   .md\:w-1\/2 {
     width: 50%
+  }
+
+  .md\:text-left {
+    text-align: left
+  }
+
+  .md\:text-right {
+    text-align: right
   }
 
   .md\:text-3xl {

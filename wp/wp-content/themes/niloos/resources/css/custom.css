@@ -7,9 +7,21 @@
   flex-direction: row-reverse;
 }
 
+.banner-image {
+  margin-top: 4rem;
+  margin-bottom: 0;
+}
+
 .transparent-text {
   color: transparent;
   font-size: 0;
+}
+
+h2.has-background.job-fair-banner-title {
+  position: relative;
+  margin-bottom: -1.25em !important;
+  padding: 0.5em 2em;
+  z-index: 100;
 }
 
 li.social {
@@ -66,17 +78,18 @@ li.transparent-text {
 }
 
 /* Responsive design */
-@media (max-width: 1023.9px) {
-  ul li.social > a {
-    font-size: 0;
+@media (min-width: 768px) {
+  .rtl h2.has-background.job-fair-banner-title {
+    margin-right: -1em !important;
+  }
+
+  h2.has-background.job-fair-banner-title {
+    margin-left: -1em !important;
   }
 }
 
-@media (max-width: 600px) {
-  .wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__media {
-    grid-row: 2;
-  }
-  .wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__content {
-    grid-row: 1;
+@media (max-width: 767.9px) {
+  h2.has-background.job-fair-banner-title {
+    font-size: 1.25rem !important;
   }
 }

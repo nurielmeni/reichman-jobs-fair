@@ -146,16 +146,6 @@ var JobSearch =
 
             $('.nls-hunter-search-wrapper select.sumo').each(function () { initSumoSelect(this); });
 
-            $('.nls-hunter-search-wrapper input[name="last-update"]').datepicker({
-                dateFormat: 'M d, yy'
-            });
-            // if (lang === 'he-IL') {
-            //     $('.nls-hunter-search-wrapper input[name="last-update"]').datepicker(
-            //         $.datepicker.regional["he"]
-            //     );
-            // } else {
-            // }
-
             registerEventListeners()
         }
 

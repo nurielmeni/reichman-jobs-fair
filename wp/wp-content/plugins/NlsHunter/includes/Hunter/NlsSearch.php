@@ -43,17 +43,9 @@ class NlsSearch extends NlsService
 
             return $res;
         } catch (SoapFault $ex) {
-            var_dump($ex);
-            echo "Request " . $this->client->__getLastRequest();
-            echo "Response " . $this->client->__getLastResponse();
-            die;
+            //var_dump($ex);
+            throw new Exception('Error: SOAP Error: Check the log for more details.');
         } catch (Exception $ex) {
-            /**
-             * var_dump($ex);
-             * echo "Request " . $this->client->__getLastRequest();
-             * echo "Response " . $this->client->__getLastResponse();
-             * die;
-             **/
             $ex->transactionCode = $transactionCode;
             throw new Exception('Error: Niloos services are not availiable, try later.');
         }
@@ -80,25 +72,12 @@ class NlsSearch extends NlsService
             );
 
             $res = $this->client->JobHunterCreateOrUpdate($params);
-            //            echo "Request " . $this->client->__getLastRequest();
-            //            echo "Response " . $this->client->__getLastResponse();
-            //            die;
+
             return $hunter_id;
         } catch (SoapFault $ex) {
-            /**
-             * var_dump($ex);
-             * echo "Request " . $this->client->__getLastRequest();
-             * echo "Response " . $this->client->__getLastResponse();
-             * die;
-             **/
-            throw new Exception('Error: Niloos services are not availiable, try later.');
+            //var_dump($ex);
+            throw new Exception('Error: SOAP Error: Check the log for more details.');
         } catch (Exception $ex) {
-            /**
-             * var_dump($ex);
-             * echo "Request " . $this->client->__getLastRequest();
-             * echo "Response " . $this->client->__getLastResponse();
-             * die;
-             **/
             throw new Exception('Error: Niloos services are not availiable, try later.');
         }
     }
@@ -120,20 +99,9 @@ class NlsSearch extends NlsService
             $res = $this->client->JobHunterExecuteByHunterId2($params);
             return $res;
         } catch (SoapFault $ex) {
-            /**
-             * var_dump($ex);
-             * echo "Request " . $this->client->__getLastRequest();
-             * echo "Response " . $this->client->__getLastResponse();
-             * die;
-             **/
-            throw new Exception('Error: Niloos services are not availiable, try later.');
+            //var_dump($ex);
+            throw new Exception('Error: SOAP Error: Check the log for more details.');
         } catch (Exception $ex) {
-            /**
-             * var_dump($ex);
-             * echo "Request " . $this->client->__getLastRequest();
-             * echo "Response " . $this->client->__getLastResponse();
-             * die;
-             **/
             throw new Exception('Error: Niloos services are not availiable, try later.');
         }
     }
@@ -153,17 +121,9 @@ class NlsSearch extends NlsService
             $res = $this->client->ApplicantHunterExecuteNewQuery2($params)->JobHunterExecuteNewQuery2Result; //->Results;
             return $res;
         } catch (SoapFault $ex) {
-            var_dump($ex);
-            echo "Request " . $this->client->__getLastRequest();
-            echo "Response " . $this->client->__getLastResponse();
-            die;
+            //var_dump($ex);
+            throw new Exception('Error: SOAP Error: Check the log for more details.');
         } catch (Exception $ex) {
-            /**
-             * var_dump($ex);
-             * echo "Request " . $this->client->__getLastRequest();
-             * echo "Response " . $this->client->__getLastResponse();
-             * die;
-             **/
             throw new Exception('Error: Niloos services are not availiable, try later.');
         }
     }
@@ -181,17 +141,9 @@ class NlsSearch extends NlsService
             $res = $this->client->JobHunterExecuteNewQuery2($params)->JobHunterExecuteNewQuery2Result; //->Results;
             return $res;
         } catch (SoapFault $ex) {
-            var_dump($ex);
-            echo "Request " . $this->client->__getLastRequest();
-            echo "Response " . $this->client->__getLastResponse();
-            die;
+            //var_dump($ex);
+            throw new Exception('Error: SOAP Error: Check the log for more details.');
         } catch (Exception $ex) {
-            /**
-             * var_dump($ex);
-             * echo "Request " . $this->client->__getLastRequest();
-             * echo "Response " . $this->client->__getLastResponse();
-             * die;
-             **/
             throw new Exception('Error: Niloos services are not availiable, try later.');
         }
     }
@@ -206,20 +158,9 @@ class NlsSearch extends NlsService
             );
             $this->client->AutomaticHunterConfirmReset($params);
         } catch (SoapFault $ex) {
-            /**
-             * var_dump($ex);
-             * echo "Request " . $this->client->__getLastRequest();
-             * echo "Response " . $this->client->__getLastResponse();
-             * die;
-             **/
-            throw new Exception('Error: Niloos services are not availiable, try later.');
+            //var_dump($ex);
+            throw new Exception('Error: SOAP Error: Check the log for more details.');
         } catch (Exception $ex) {
-            /**
-             * var_dump($ex);
-             * echo "Request " . $this->client->__getLastRequest();
-             * echo "Response " . $this->client->__getLastResponse();
-             * die;
-             **/
             throw new Exception('Error: Niloos services are not availiable, try later.');
         }
     }

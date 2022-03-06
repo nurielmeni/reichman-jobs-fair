@@ -496,6 +496,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin: 2rem;
 }
 
+.m-0 {
+  margin: 0px;
+}
+
 .my-3 {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
@@ -656,6 +660,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding: 1rem;
 }
 
+.p-0 {
+  padding: 0px;
+}
+
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -683,6 +691,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .pl-5 {
   padding-left: 1.25rem;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .text-5xl {
@@ -821,9 +833,21 @@ Ensure the default browser behavior of the `hidden` attribute.
   flex-direction: row-reverse;
 }
 
+.banner-image {
+  margin-top: 4rem;
+  margin-bottom: 0;
+}
+
 .transparent-text {
   color: transparent;
   font-size: 0;
+}
+
+h2.has-background.job-fair-banner-title {
+  position: relative;
+  margin-bottom: -1.25em !important;
+  padding: 0.5em 2em;
+  z-index: 100;
 }
 
 li.social {
@@ -885,20 +909,25 @@ li.transparent-text {
 
 /* Responsive design */
 
-@media (max-width: 1023.9px) {
-  ul li.social > a {
-    font-size: 0;
+@media (min-width: 768px) {
+  .rtl h2.has-background.job-fair-banner-title {
+    margin-right: -1em !important;
+  }
+
+  h2.has-background.job-fair-banner-title {
+    margin-left: -1em !important;
   }
 }
 
-@media (max-width: 600px) {
-  .wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__media {
-    grid-row: 2;
+@media (max-width: 767.9px) {
+  h2.has-background.job-fair-banner-title {
+    font-size: 1.25rem !important;
   }
+}
 
-  .wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__content {
-    grid-row: 1;
-  }
+.entry-content .alignwide {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .marker\:text-green-400 *::marker {
@@ -930,6 +959,14 @@ li.transparent-text {
 
   .md\:w-1\/2 {
     width: 50%;
+  }
+
+  .md\:text-left {
+    text-align: left;
+  }
+
+  .md\:text-right {
+    text-align: right;
   }
 
   .md\:text-3xl {

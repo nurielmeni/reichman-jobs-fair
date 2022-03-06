@@ -61,10 +61,11 @@ class NlsHunter_modules
 
     public function nlsHunterEmployers_render()
     {
-        $employers = $this->model->getEmployers();
+
+        ob_start();
 
         // Look for published Job Fair
-        $jobFairsPosts = get_posts([
+        $jobFair = get_posts([
             'category_name' => 'reichman-job-fair',
             'post_status' => 'publish',
             'orderby' => 'post_date',
@@ -72,22 +73,33 @@ class NlsHunter_modules
             'numberposts' => 1,
         ]);
 
-        $jobFairs = array_map(function ($n) {
-            $tn = get_the_post_thumbnail($n->ID);
-            $order = strtotime($n->post_date);
-            return [
-                'order' => $order,
-                'imageTag' => $tn,
-                'title' => $n->post_title,
-                'categoryId' => $n->post_excerpt
-            ];
-        }, $jobFairsPosts);
+        if ($jobFair && count($jobFair) > 0) {
+            echo render('jobFairBanner', [
+                'title' => $jobFair[0]->post_title,
+                'blocks' => parse_blocks($jobFair[0]->post_content)
+            ]);
+            $employers = $this->model->getEmployers();
+        } else {
+            echo $this->noFair_render();
+        }
 
-        ob_start();
-
-        echo '<p>Employers Short Code</p>';
+        $this->model->front_display_message('Meni Nuriel');
 
         return ob_get_clean();
+    }
+
+    private function noFair_render()
+    {
+        $locale = get_locale();
+        $the_slug = 'no-fair-' . $locale;
+        $args = array(
+            'name'        => $the_slug,
+            'post_type'   => 'post',
+            'post_status' => 'publish',
+            'numberposts' => 1
+        );
+        $noFair = get_posts($args);
+        return $noFair[0]->post_content;
     }
 
     public function nlsHunterEmployerDetails_render()
