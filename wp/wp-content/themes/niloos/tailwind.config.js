@@ -8,9 +8,9 @@ module.exports = {
   content: [
     "./*/*.php",
     "./**/*.php",
-    "../../plugins/NlsHunterFbf/*/*.php",
-    "../../plugins/NlsHunterFbf/**/*.php",
-    "../../plugins/NlsHunterFbf/public/js/jobSearch.js",
+    "../../plugins/NlsHunter/*/*.php",
+    "../../plugins/NlsHunter/**/*.php",
+    "../../plugins/NlsHunter/public/js/jobSearch.js",
     "./resources/css/*.css",
     "./resources/js/*.js",
     "./safelist.txt",

@@ -79,6 +79,9 @@ class NlsHunter_modules
                 'blocks' => parse_blocks($jobFair[0]->post_content)
             ]);
             $employers = $this->model->getEmployers();
+            echo render('employersGrid', [
+                'employers' => $employers,
+            ]);
         } else {
             echo $this->noFair_render();
         }
