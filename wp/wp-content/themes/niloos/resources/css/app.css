@@ -8,3 +8,16 @@
   margin-left: 0;
   margin-right: 0;
 }
+
+.md\:text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}

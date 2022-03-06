@@ -32,7 +32,7 @@
           "color": "#ebebeb"
         },
         {
-          "name": "MainBg",
+          "name": "Main Bg",
           "slug": "mainbg",
           "color": "#f7f7f7"
         },
@@ -47,7 +47,7 @@
           "color": "#808080"
         },
         {
-          "name": "SliderBg",
+          "name": "Slider Bg",
           "slug": "sliderbg",
           "color": "#f1f2f2"
         },
@@ -60,6 +60,11 @@
           "name": "Chip",
           "slug": "chip",
           "color": "#eae8e8"
+        },
+        {
+          "name": "Banner Bg",
+          "slug": "bannerbg",
+          "color": "#00a19a"
         }
       ]
     },

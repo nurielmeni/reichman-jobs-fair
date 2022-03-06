@@ -1,18 +1,10 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-body {
-  @apply font-sans;
-}
+@import "custom.css";
+@import "block-editor.css";
 
-.wp-block {
-  @apply max-w-screen-xl;
-}
-
-.wp-block[data-align="wide"] {
-  @apply max-w-screen-xl;
-}
-
-.wp-block[data-align="full"] {
-  @apply max-w-full;
+.md\:text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }

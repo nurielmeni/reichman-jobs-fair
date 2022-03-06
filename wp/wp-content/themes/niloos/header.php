@@ -21,25 +21,25 @@
 		<header>
 			<div class="header-wrapper flex justify-center items-center bg-primary">
 				<div class="mx-full container">
-					<div class="lg:flex lg:justify-between lg:items-center py-6">
+					<div class="md:flex md:justify-between md:items-center py-6 px-4 md:px-0">
 						<div class="flex justify-between items-center text-white">
 
 							<div>
 								<?= get_header_ml_logo(); ?>
 							</div>
 
-							<h2 class="text-lg sm:text-xl lg:text-2xl font-bold mx-2">
+							<h2 class="text-lg sm:text-xl md:text-2xl font-bold mx-2">
 								<?= _e(get_bloginfo('description'), 'reichman'); ?>
 							</h2>
 
 
 
-							<div class="flex lg:hidden">
+							<div class="flex md:hidden">
 								<?php
 								wp_nav_menu(
 									array(
 										'container_id'    => 'header-language-switcher',
-										'container_class' => 'flex  lg:hidden',
+										'container_class' => 'flex  md:hidden',
 										'menu_class'      => 'flex text-white',
 										'theme_location'  => 'language-switcher',
 										'li_class'        => 'mx-4 text-white two-chars',
@@ -73,10 +73,10 @@
 						wp_nav_menu(
 							array(
 								'container_id'    => 'header-language-switcher',
-								'container_class' => 'hidden lg:flex',
-								'menu_class'      => 'lg:flex lg:-mx-4 text-white',
+								'container_class' => 'hidden md:flex',
+								'menu_class'      => 'md:flex md:-mx-4 text-white',
 								'theme_location'  => 'language-switcher',
-								'li_class'        => 'lg:mx-4 text-white',
+								'li_class'        => 'md:mx-4 text-white',
 								'fallback_cb'     => false,
 							)
 						);
