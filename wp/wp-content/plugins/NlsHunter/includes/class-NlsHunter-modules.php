@@ -61,7 +61,6 @@ class NlsHunter_modules
 
     public function nlsHunterEmployers_render()
     {
-
         ob_start();
 
         // Look for published Job Fair
@@ -78,7 +77,9 @@ class NlsHunter_modules
                 'title' => $jobFair[0]->post_title,
                 'blocks' => parse_blocks($jobFair[0]->post_content)
             ]);
+
             $employers = $this->model->getEmployers();
+            
             echo render('employersGrid', [
                 'employers' => $employers,
             ]);
