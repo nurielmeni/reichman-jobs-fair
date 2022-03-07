@@ -108,11 +108,27 @@ var JobSearch =
 
             // Call this function so the wp will inform the change to the post
             $(document.body).trigger("post-load");
-
         }
 
         function renderMoreResults(htmMoreResults) {
             console.log('more', htmMoreResults);
+        }
+
+        function scrollHandler(event) {
+            var el = event.target;
+
+            // End of the document reached?
+            if ($(document).height() - $(el).height() == $(el).scrollTop()) {
+                $.ajax({
+                    url: frontend_ajax.url,
+                    data: { page: currentPage },
+                    success: renderMoreResults,
+                    dataType: 'html',
+                    error: function (req, status, error) {
+                        console.error("Error: could not get more results. try again");
+                    }
+                });
+            }
         }
 
         function registerEventListeners() {
@@ -134,8 +150,9 @@ var JobSearch =
             // Show apply form
             $(document).on('click', moreResultsBtn, moreResults);
 
-            // Load more serach results
-            $(document).on('click',)
+            // Scroll Handler
+            // (Load more serach results)
+            $(document).on('scroll', scrollHandler);
         }
 
         function init() {

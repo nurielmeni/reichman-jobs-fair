@@ -34,6 +34,10 @@ module.exports = {
       width: {
         '1/31': '31%',
       },
+      maxWidth: {
+        '120': '120px',
+        '160': '160px'
+      },
       rotate: {
         '270': '270deg',
       },
@@ -82,6 +86,10 @@ module.exports = {
             opacity: '1'
           }
         }
+      },
+      gridTemplateColumns: {
+        'autofit-160': 'repeat( auto-fit, minmax(160px, 1fr) )',
+        'autofit-120': 'repeat( auto-fit, minmax(120px, 1fr) )'
       }
     },
     screens: {
