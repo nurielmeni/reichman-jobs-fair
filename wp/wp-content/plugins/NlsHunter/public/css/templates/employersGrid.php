@@ -7,3 +7,4 @@
     ]) ?>
   <?php endforeach; ?>
 </section>
+<div class="flex justify-center items-center"><span class="spinner">loading</span></div>

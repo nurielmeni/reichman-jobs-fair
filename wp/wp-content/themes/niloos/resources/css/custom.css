@@ -1,6 +1,6 @@
 .two-chars {
   text-overflow: clip;
-  width: calc(2ch - 3px);
+  width: 2ch;
   overflow: hidden;
   white-space: nowrap;
   display: flex;
