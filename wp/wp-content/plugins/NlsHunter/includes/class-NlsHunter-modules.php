@@ -78,8 +78,8 @@ class NlsHunter_modules
                 'blocks' => parse_blocks($jobFair[0]->post_content)
             ]);
 
-            $employers = $this->model->getEmployers();
-            
+            $employers = $this->model->getEmployers(0);
+
             echo render('employersGrid', [
                 'employers' => $employers,
             ]);

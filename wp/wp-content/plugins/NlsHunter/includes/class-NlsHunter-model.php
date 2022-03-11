@@ -13,7 +13,7 @@ require_once 'Hunter/NlsFilter.php';
 class NlsHunter_model
 {
     const STATUS_OPEN = 1;
-    const CACHE_EXPIRATION = 20;
+    const CACHE_EXPIRATION = 20 * 60; // 20 min
 
 
     private $nlsSecutity;
@@ -218,7 +218,7 @@ class NlsHunter_model
 
         if (false === $jobScopes) {
             $jobScopes = $this->nlsDirectory->getJobScopes();
-            wp_cache_set($cacheKey, $jobScopes, 'directory', 20 * 60);
+            wp_cache_set($cacheKey, $jobScopes, 'directory', self::CACHE_EXPIRATION);
         }
 
         return is_array($jobScopes) ? $jobScopes : [];
@@ -233,7 +233,7 @@ class NlsHunter_model
 
         if (false === $jobRanks) {
             $jobRanks = $this->nlsDirectory->getJobRanks();
-            wp_cache_set($cacheKey, $jobRanks, 'directory', 20 * 60);
+            wp_cache_set($cacheKey, $jobRanks, 'directory', self::CACHE_EXPIRATION);
         }
 
         return is_array($jobRanks) ? $jobRanks : [];
@@ -248,7 +248,7 @@ class NlsHunter_model
 
         if (false === $professionalFields) {
             $professionalFields = $this->nlsDirectory->getProfessionalFields();
-            wp_cache_set($cacheKey, $professionalFields, 'directory', 20 * 60);
+            wp_cache_set($cacheKey, $professionalFields, 'directory', self::CACHE_EXPIRATION);
         }
 
         return is_array($professionalFields) ? $professionalFields : [];
@@ -293,7 +293,7 @@ class NlsHunter_model
             : [];
     }
 
-    public function getEmployers($flash = false)
+    public function getEmployers($page = null, $flash = false)
     {
         $cache_key = 'nls_hunter_employers_6' . get_bloginfo('language');
         if ($flash) wp_cache_delete($cache_key);
@@ -312,7 +312,10 @@ class NlsHunter_model
                 wp_cache_set($cache_key, $employers, '', self::CACHE_EXPIRATION);
             }
         }
-
+        if ($page !== null && is_int($page)) {
+            $window = get_option(NlsHunter_Admin::NLS_JOBS_COUNT, 1);
+            return array_slice($employers, $page * $window, $window);
+        }
         return $employers;
     }
 
