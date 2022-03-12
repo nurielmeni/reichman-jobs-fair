@@ -248,7 +248,7 @@ class NlsHunter
 		// Set to true to get log messages in file /logs/default.log
 		$debug = false;
 
-		$plugin_public = new NlsHunter_Public($this->get_NlsHunter(), $this->get_version(), $debug);
+		$plugin_public = new NlsHunter_Public($this, $this->get_version(), $debug);
 
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
@@ -257,6 +257,8 @@ class NlsHunter
 		// THE AJAX APPLY CV ADD ACTIONS
 		$this->loader->add_action('wp_ajax_apply_cv_function', $plugin_public, 'apply_cv_function');
 		$this->loader->add_action('wp_ajax_nopriv_apply_cv_function', $plugin_public, 'apply_cv_function'); // need this to serve non logged in users
+		$this->loader->add_action('wp_ajax_load_employers_function', $plugin_public, 'load_employers_function');
+		$this->loader->add_action('wp_ajax_nopriv_load_employers_function', $plugin_public, 'load_employers_function'); // need this to serve non logged in users
 	}
 
 	/**
@@ -337,5 +339,16 @@ class NlsHunter
 	public function get_jobDetails()
 	{
 		return $this->jobDetails;
+	}
+
+	/**
+	 * Retrieve the model object.
+	 *
+	 * @since     2.0.0
+	 * @return    Object model.
+	 */
+	public function get_model()
+	{
+		return $this->model;
 	}
 }

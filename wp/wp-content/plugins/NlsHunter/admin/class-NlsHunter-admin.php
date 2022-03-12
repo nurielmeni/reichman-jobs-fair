@@ -82,6 +82,9 @@ class NlsHunter_Admin
             self::CARDS_WSDL_URL => 'https://huntercards.hunterhrms.com/HunterCards.svc?wsdl',
             self::SECURITY_WSDL_URL => 'https://hunterdirectory.hunterhrms.com/SecurityService.svc?wsdl',
             self::SEARCH_WSDL_URL => 'https://huntersearchengine.hunterhrms.com/SearchEngineHunterService.svc?wsdl',
+            self::NLS_EMPLOYERS_COUNT => 20,
+            self::NLS_JOBS_COUNT => 20,
+            self::NLS_HOT_JOBS_COUNT => 20,
         ];
     }
 

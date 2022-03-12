@@ -61,6 +61,8 @@ class NlsHunter_Public
      */
     private $debug;
 
+    private $model;
+
     /**
      * Initialize the class and set its properties.
      *
@@ -71,6 +73,7 @@ class NlsHunter_Public
     public function __construct($NlsHunter, $version, $debug = false)
     {
         $this->NlsHunter = $NlsHunter;
+        $this->model = $NlsHunter->get_model();
         $this->version = $version;
         $this->debug = $debug;
     }
@@ -240,6 +243,22 @@ class NlsHunter_Public
 
         $response = ['sent' => $applyCount, 'html' => ($applyCount > 0 ? $this->sentSuccess($applyCount) : $this->sentError())];
         wp_send_json($response);
+    }
+
+    public function load_employers_function()
+    {
+        // response: {page: int, html: html}
+        $page = intval($_POST['page']);
+        $employers = $this->model->getEmployers($page + 1);
+        if (count($employers) === 0) {
+            // Last result
+            wp_send_json(['page' => -1, 'html' => '']);
+            die();
+        }
+
+        $html = render('employersPage', ['employers' => $employers]);
+        wp_send_json(['page' => $page + 1, 'html' => $html]);
+        die();
     }
 
     /**

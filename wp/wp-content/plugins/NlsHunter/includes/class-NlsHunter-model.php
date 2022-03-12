@@ -250,7 +250,7 @@ class NlsHunter_model
             $professionalFields = $this->nlsDirectory->getProfessionalFields();
             wp_cache_set($cacheKey, $professionalFields, 'directory', self::CACHE_EXPIRATION);
         }
-        
+
         return is_array($professionalFields) ? $professionalFields : [];
     }
 
@@ -295,7 +295,7 @@ class NlsHunter_model
 
     public function getEmployers($page = null, $flash = false)
     {
-        $cache_key = 'nls_hunter_employers_6' . get_bloginfo('language');
+        $cache_key = 'nls_hunter_employers' . get_bloginfo('language');
         if ($flash) wp_cache_delete($cache_key);
 
         $employers = wp_cache_get($cache_key);
@@ -313,7 +313,7 @@ class NlsHunter_model
             }
         }
         if ($page !== null && is_int($page)) {
-            $window = get_option(NlsHunter_Admin::NLS_JOBS_COUNT, 1);
+            $window = intval(get_option(NlsHunter_Admin::NLS_EMPLOYERS_COUNT, 1));
             return array_slice($employers, $page * $window, $window);
         }
         return $employers;
