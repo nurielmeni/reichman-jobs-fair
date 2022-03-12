@@ -1,7 +1,9 @@
 <?php
 
 /**
+ * @wrapperClass
  * @label
+ * @labelClass
  * @name
  * @class
  * @required
@@ -15,7 +17,7 @@ $value = isset($value) && is_array($value) ? $value : [];
 ?>
 <div class="nls-field select <?= isset($wrapperClass) ? $wrapperClass : '' ?>">
   <?php if (isset($label)) : ?>
-    <label class="w-100 flex justify-between"><?= $label ?><span><? $required ? __('Not required', 'NlsHunter') : '' ?></span></label>
+    <label class="w-full flex justify-between <?= isset($labelClass) ? $labelClass : '' ?>"><?= $label ?><? $required ? '<span>' . __('Not required', 'NlsHunter') . '</span>' : '' ?></label>
   <?php endif; ?>
   <div class="relative">
     <select name="<?= isset($name) ? $name : '' ?><?= isset($multiple) && $multiple ? '[]' : '' ?>" class="sumo <?= isset($class) ? $class : '' ?>" validator="<? isset($required) && $required ? 'required' : '' ?>" aria-invalid="false" aria-required="<?= isset($required) && $required ? 'true' : 'false' ?>" placeholder="<?= isset($placeHolder) ? $placeHolder : '' ?>" <?= isset($multiple) && $multiple ? 'multiple' : '' ?>>

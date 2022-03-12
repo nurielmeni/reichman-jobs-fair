@@ -14,7 +14,7 @@ var ScrollTo = ScrollTo || (
             var viewPos = $(document).scrollTop() + $(window).height();
             positions.forEach(function (pos) {
                 // Number of calls permited for the function
-                if (pos.calls === 0) return;
+                if (pos.calls === 0 || $(pos.el).length === 0) return;
 
                 var elPos = $(pos.el).position().top;
 

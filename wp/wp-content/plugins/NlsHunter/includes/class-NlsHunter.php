@@ -259,6 +259,8 @@ class NlsHunter
 		$this->loader->add_action('wp_ajax_nopriv_apply_cv_function', $plugin_public, 'apply_cv_function'); // need this to serve non logged in users
 		$this->loader->add_action('wp_ajax_load_employers_function', $plugin_public, 'load_employers_function');
 		$this->loader->add_action('wp_ajax_nopriv_load_employers_function', $plugin_public, 'load_employers_function'); // need this to serve non logged in users
+		$this->loader->add_action('wp_ajax_load_jobs_function', $plugin_public, 'load_jobs_function');
+		$this->loader->add_action('wp_ajax_nopriv_load_jobs_function', $plugin_public, 'load_jobs_function'); // need this to serve non logged in users
 	}
 
 	/**

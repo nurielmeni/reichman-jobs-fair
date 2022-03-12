@@ -61,6 +61,11 @@ class NlsHunter_model
         }
     }
 
+    public function getDefaultLogo()
+    {
+        return esc_url(plugins_url('NlsHunter/public/images/employer-logo.svg'));
+    }
+
     public function queryParam($param, $default = '', $post = false)
     {
         if ($post) {
@@ -76,7 +81,7 @@ class NlsHunter_model
 
     public function nlsGetCountPerPage()
     {
-        return $this->countPerPage;
+        return intval($this->countPerPage);
     }
 
     public function front_add_message()
@@ -319,25 +324,51 @@ class NlsHunter_model
         return $employers;
     }
 
-    public function getJobHunterExecuteNewQuery2($searchParams = [], $hunterId = null, $resultRowOffset = 0, $resultRowLimit = null)
+    public function getEmployerData($employerId)
     {
-        $this->initSearchService();
+        $employers = $this->getEmployers();
+        if (!is_array($employers)) return null;
+        return key_exists($employerId, $employers) ? $employers[$employerId][0] : null;
+    }
+
+    public function getEmployerProperties($employerId)
+    {
+        $employerData = $this->getEmployerData($employerId);
+
+        return [
+            'logo' => $employerData->LogoPath !== null ? $employerData->LogoPath : $this->getDefaultLogo(),
+            'name' => $employerData->EmployerName
+        ];
+    }
+
+    public function getJobHunterExecuteNewQuery2($searchParams = [], $hunterId = null, $page = 0, $resultRowLimit = null, $flash = false)
+    {
         $resultRowLimit = $resultRowLimit ? $resultRowLimit : $this->nlsGetCountPerPage();
+        $resultRowOffset = is_int($page) ? $page * $resultRowLimit : 0;
 
-        if (!is_array($searchParams)) return [];
-        $filter = new NlsFilter();
+        $cache_key = 'nls_hunter_jobs_' . $resultRowOffset . '_' . $resultRowLimit;
+        if ($flash) wp_cache_delete($cache_key);
 
-        $filter->addSuplierIdFilter($this->nlsGetSupplierId());
-        try {
-            $jobs = $this->nlsSearch->JobHunterExecuteNewQuery2(
-                $hunterId,
-                $resultRowOffset,
-                $resultRowLimit,
-                $filter
-            );
-        } catch (Exception $ex) {
-            echo $ex->getMessage();
-            return null;
+        $jobs = wp_cache_get($cache_key);
+
+        if (false === $jobs) {
+            $this->initSearchService();
+
+            if (!is_array($searchParams)) $jobs = [];
+            $filter = new NlsFilter();
+
+            $filter->addSuplierIdFilter($this->nlsGetSupplierId());
+            try {
+                $jobs = $this->nlsSearch->JobHunterExecuteNewQuery2(
+                    $hunterId,
+                    $resultRowOffset,
+                    $resultRowLimit,
+                    $filter
+                );
+            } catch (Exception $ex) {
+                echo $ex->getMessage();
+                return null;
+            }
         }
 
         return $jobs;

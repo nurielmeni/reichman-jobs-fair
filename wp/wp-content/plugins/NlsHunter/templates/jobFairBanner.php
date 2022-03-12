@@ -4,7 +4,7 @@
     <?php endforeach; ?>
 </div>
 <div class="flex justify-center">
-    <button type="button" class="all-fair-jobs bg-secondary text-white text-xl md:text-3xl px-8 py-3 rounded-lg"><?= __('All Fair Jobs', 'NlsHunter') ?></button>
+    <a href="<?= $allJobsPage ?>" class="all-fair-jobs bg-secondary text-white text-xl md:text-3xl px-8 py-3 rounded-lg"><?= __('All Fair Jobs', 'NlsHunter') ?></a>
 </div>
 <div class="search-box relative px-8">
     <label for="employer-search" class="block text-primary font-bold md:text-3xl mt-3 md:mt-28"><?= __('Search By Employer', 'NlsHunter') ?></label>

@@ -29,8 +29,8 @@ class NlsHunter_modules
     {
         $language = get_bloginfo('language');
         $hunterAllJobsPageId = $language === 'he-IL' ?
-            get_option(NlsHunter_Admin::NLS_HUNTER_ALL_JOBS_EN) :
-            get_option(NlsHunter_Admin::NLS_HUNTER_ALL_JOBS_HE);
+            get_option(NlsHunter_Admin::NLS_HUNTER_ALL_JOBS_HE) :
+            get_option(NlsHunter_Admin::NLS_HUNTER_ALL_JOBS_EN);
         $hunterAllJobsPageUrl = get_page_link($hunterAllJobsPageId);
         return $hunterAllJobsPageUrl;
     }
@@ -39,8 +39,8 @@ class NlsHunter_modules
     {
         $language = get_bloginfo('language');
         $hunterEmployerDetailsPageId = $language === 'he-IL' ?
-            get_option(NlsHunter_Admin::NLS_HUNTER_EMPLOYER_DETAILS_EN) :
-            get_option(NlsHunter_Admin::NLS_HUNTER_EMPLOYER_DETAILS_HE);
+            get_option(NlsHunter_Admin::NLS_HUNTER_EMPLOYER_DETAILS_HE) :
+            get_option(NlsHunter_Admin::NLS_HUNTER_EMPLOYER_DETAILS_EN);
         $hunterEmployerDetailsPageUrl = get_page_link($hunterEmployerDetailsPageId);
         return $hunterEmployerDetailsPageUrl;
     }
@@ -75,13 +75,15 @@ class NlsHunter_modules
         if ($jobFair && count($jobFair) > 0) {
             echo render('jobFairBanner', [
                 'title' => $jobFair[0]->post_title,
-                'blocks' => parse_blocks($jobFair[0]->post_content)
+                'blocks' => parse_blocks($jobFair[0]->post_content),
+                'allJobsPage' => $this->getHunterAllJobsPageUrl()
             ]);
 
             $employers = $this->model->getEmployers(0);
 
             echo render('employersGrid', [
                 'employers' => $employers,
+                'defaultLogo' => $this->model->getDefaultLogo()
             ]);
         } else {
             echo $this->noFair_render();
@@ -117,9 +119,17 @@ class NlsHunter_modules
 
     public function nlsHunterAllJobs_render()
     {
+        $res = $this->model->getJobHunterExecuteNewQuery2();
+        $totalHits = $res->TotalHits;
+        $jobs = property_exists($res, 'Results') && property_exists($res->Results, 'JobInfo') && is_array($res->Results->JobInfo) ? $res->Results->JobInfo : [];
+
         ob_start();
 
-        echo '<p>All Jobs Short Code</p>';
+        echo render('jobList', [
+            'jobs' => $jobs,
+            'total' => $totalHits,
+            'model' => $this->model
+        ]);
 
         return ob_get_clean();
     }

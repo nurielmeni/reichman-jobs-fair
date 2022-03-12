@@ -99,11 +99,11 @@ class NlsHunter_Public
 
         wp_enqueue_style('NlsHunter', plugin_dir_url(__FILE__) . 'css/NlsHunter-public.css', array(), $this->version, 'all');
         wp_enqueue_style('NlsHunter-responsive', plugin_dir_url(__FILE__) . 'css/NlsHunter-public-responsive.css', array(), $this->version, 'all');
-        wp_enqueue_style('sumoselect', plugin_dir_url(__FILE__) . 'css/sumoselect.min.css', array(), $this->version, 'all');
+        //wp_enqueue_style('sumoselect', plugin_dir_url(__FILE__) . 'css/sumoselect.min.css', array(), $this->version, 'all');
         wp_enqueue_style('front-page-loader', plugin_dir_url(__FILE__) . 'css/loader.css', array(), $this->version, 'all');
 
         if (is_rtl()) {
-            wp_enqueue_style('sumoselect-rtl', plugin_dir_url(__FILE__) . 'css/sumoselect-rtl.css', array(), $this->version, 'all');
+            //wp_enqueue_style('sumoselect-rtl', plugin_dir_url(__FILE__) . 'css/sumoselect-rtl.css', array(), $this->version, 'all');
         }
     }
 
@@ -257,6 +257,27 @@ class NlsHunter_Public
         }
 
         $html = render('employersPage', ['employers' => $employers]);
+        wp_send_json(['page' => $page + 1, 'html' => $html]);
+        die();
+    }
+
+    public function load_jobs_function()
+    {
+        // response: {page: int, html: html}
+        $page = intval($_POST['page']);
+        $res = $this->model->getJobHunterExecuteNewQuery2([], null, $page + 1);
+        $jobs = property_exists($res, 'Results') && property_exists($res->Results, 'JobInfo') && is_array($res->Results->JobInfo) ? $res->Results->JobInfo : [];
+
+        if (count($jobs) === 0) {
+            // Last result
+            wp_send_json(['page' => -1, 'html' => '']);
+            die();
+        }
+
+        $html = render('jobsPage', [
+            'jobs' => $jobs,
+            'model' => $this->model
+        ]);
         wp_send_json(['page' => $page + 1, 'html' => $html]);
         die();
     }

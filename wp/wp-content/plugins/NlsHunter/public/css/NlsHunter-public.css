@@ -17,16 +17,16 @@
   width: 11rem;
 }
 
-.SumoSelect.open>.CaptionCont, 
-.SumoSelect:focus>.CaptionCont, 
-.SumoSelect:focus-visible>.CaptionCont, 
-.SumoSelect:hover>.CaptionCont {
+.SumoSelect.open > .CaptionCont,
+.SumoSelect:focus > .CaptionCont,
+.SumoSelect:focus-visible > .CaptionCont,
+.SumoSelect:hover > .CaptionCont {
   box-shadow: none !important;
-    border-color: -webkit-focus-ring-color !important;
-    outline: -webkit-focus-ring-color auto 1px;
-    outline-color: -webkit-focus-ring-color;
-    outline-style: auto;
-    outline-width: 1px;
+  border-color: -webkit-focus-ring-color !important;
+  outline: -webkit-focus-ring-color auto 1px;
+  outline-color: -webkit-focus-ring-color;
+  outline-style: auto;
+  outline-width: 1px;
 }
 
 .SumoSelect li {
@@ -45,7 +45,7 @@
 .nls-hunter-search-wrapper .SumoSelect.open > .optWrapper {
   top: 46px !important;
 }
-.job-apply-form-wrapper  .SumoSelect.open > .optWrapper {
+.job-apply-form-wrapper .SumoSelect.open > .optWrapper {
   top: 41px !important;
 }
 
@@ -56,15 +56,6 @@
 @media (max-width: 1279.9px) {
   .nls-hunter-search-wrapper .SumoSelect {
     width: 229px;
-  }
-}
-
-@media (max-width: 767.9px) {
- .nls-field.select {
-    width: calc(50% - 0.5rem);
-  }
-  .SumoSelect {
-    width: 100%;
   }
 }
 

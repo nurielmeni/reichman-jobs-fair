@@ -3,7 +3,7 @@
   <?php foreach ($employers as $employer) : ?>
     <?= render('employer', [
       'employer' => $employer,
-      'defaultLogo' => esc_url(plugins_url('NlsHunter/public/images/employer-logo.svg'))
+      'logo' => $employer[0]->LogoPath ? $employer[0]->LogoPath : $defaultLogo,
     ]) ?>
   <?php endforeach; ?>
 </section>
