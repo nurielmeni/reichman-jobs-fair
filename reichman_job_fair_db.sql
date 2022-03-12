@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Mar 06, 2022 at 10:33 PM
+-- Generation Time: Mar 12, 2022 at 11:26 PM
 -- Server version: 8.0.26
 -- PHP Version: 7.4.20
 
@@ -272,7 +272,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (171, 'polylang_wpml_strings', 'a:0:{}', 'yes'),
 (172, 'widget_polylang', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
 (180, 'pll_dismissed_notices', 'a:1:{i:0;s:6:\"wizard\";}', 'yes'),
-(181, 'niloosAuth', '{\"Authenticate2Result\":\"Success\",\"PasswordToken\":\"OPPLxxdo21YtUSh+k9lnTUK1u8Ig7lXfpnJeHrksfFpkgAlWovYN15K7\\/beta8uW7eSSP0t5OGPkD9rL2++pm\\/xwUr8+2qjeUfjPu1Jj1IxuR9W8rHfKCKMWjyqIQFsiwUZoJ9y1CYdUeKevSCjdb5fWT98TceEkDWyu0Ho2G54=\",\"UsernameToken\":\"idc.ac.il\\\\Jobssite^^^^9\\/3\\/2022 22:12:10\",\"daysToPasswordExpiration\":28604,\"licenseExpiration\":\"2022-09-06T00:00:00\"}', 'yes'),
+(181, 'niloosAuth', '{\"Authenticate2Result\":\"Success\",\"PasswordToken\":\"hSkIGzOArT\\/mZgfqHooki3o9z7R1OLBFBR+usmerCKdZkXFTav79Fp0TQXJgI4vFUCtC8BWGuvK5IN5SY6n54Wk5MlC0cBTnBYk4b+LEDzXshqNJB8pVLvuHaD20NNFi++wlE6aN\\/IXH4CkruXo+upa7dy1dhoUd5luYUSrUhs8=\",\"UsernameToken\":\"idc.ac.il\\\\Jobssite^^^^16\\/3\\/2022 22:12:32\",\"daysToPasswordExpiration\":28597,\"licenseExpiration\":\"2022-09-06T00:00:00\"}', 'yes'),
 (182, 'nlsFromName', 'Reichman Jobs Fair', 'yes'),
 (183, 'nlsFromMail', 'career@idc.ac.il', 'yes'),
 (184, 'nlsToMail', 'nurielmeni@gmail.com', 'yes'),
@@ -287,8 +287,8 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (193, 'nlsWebServiceDomain', 'idc.ac.il', 'yes'),
 (194, 'nlsSecurityUsername', 'Jobssite', 'yes'),
 (195, 'nlsSecurityPassword', 'pass2016', 'yes'),
-(196, 'nlsJobsCount', '', 'yes'),
-(197, 'nlsHotJobsCount', '', 'yes'),
+(196, 'nlsJobsCount', '12', 'yes'),
+(197, 'nlsHotJobsCount', '6', 'yes'),
 (198, 'WPLANG', '', 'yes'),
 (199, 'new_admin_email', 'nurielmeni@gmail.com', 'yes'),
 (211, 'theme_mods_twentytwentytwo', 'a:2:{s:18:\"custom_css_post_id\";i:-1;s:16:\"sidebars_widgets\";a:2:{s:4:\"time\";i:1646078831;s:4:\"data\";a:3:{s:19:\"wp_inactive_widgets\";a:0:{}s:9:\"sidebar-1\";a:3:{i:0;s:7:\"block-2\";i:1;s:7:\"block-3\";i:2;s:7:\"block-4\";}s:9:\"sidebar-2\";a:2:{i:0;s:7:\"block-5\";i:1;s:7:\"block-6\";}}}}', 'yes'),
@@ -345,7 +345,10 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (445, 'duplicate_post_title_prefix', '', 'yes'),
 (446, 'duplicate_post_title_suffix', '', 'yes'),
 (447, 'duplicate_post_increase_menu_order_by', '', 'yes'),
-(448, 'duplicate_post_roles', 'a:3:{i:0;s:13:\"administrator\";i:1;s:6:\"editor\";i:2;s:6:\"author\";}', 'yes');
+(448, 'duplicate_post_roles', 'a:3:{i:0;s:13:\"administrator\";i:1;s:6:\"editor\";i:2;s:6:\"author\";}', 'yes'),
+(449, 'nlsEmployersCount', '12', 'yes'),
+(450, 'nlsHunterAllJobs_en', '253', 'yes'),
+(451, 'nlsHunterAllJobs_he', '255', 'yes');
 
 -- --------------------------------------------------------
 
@@ -374,10 +377,10 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (7, 8, '_edit_lock', '1646079455:1'),
 (8, 8, '_wp_trash_meta_status', 'publish'),
 (9, 8, '_wp_trash_meta_time', '1646079464'),
-(10, 2, '_edit_lock', '1646474578:1'),
+(10, 2, '_edit_lock', '1647105300:1'),
 (11, 2, '_edit_last', '1'),
 (12, 11, '_wp_page_template', 'default'),
-(13, 11, '_edit_lock', '1646410663:1'),
+(13, 11, '_edit_lock', '1647105437:1'),
 (14, 11, '_edit_last', '1'),
 (17, 14, '_wp_page_template', 'default'),
 (18, 14, '_wp_trash_meta_status', 'publish'),
@@ -790,7 +793,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (463, 153, '_wp_attachment_metadata', 'a:5:{s:5:\"width\";i:512;s:6:\"height\";i:512;s:4:\"file\";s:35:\"2022/03/cropped-favicon-32x32-1.png\";s:5:\"sizes\";a:6:{s:6:\"medium\";a:4:{s:4:\"file\";s:35:\"cropped-favicon-32x32-1-300x300.png\";s:5:\"width\";i:300;s:6:\"height\";i:300;s:9:\"mime-type\";s:9:\"image/png\";}s:9:\"thumbnail\";a:4:{s:4:\"file\";s:35:\"cropped-favicon-32x32-1-150x150.png\";s:5:\"width\";i:150;s:6:\"height\";i:150;s:9:\"mime-type\";s:9:\"image/png\";}s:13:\"site_icon-270\";a:4:{s:4:\"file\";s:35:\"cropped-favicon-32x32-1-270x270.png\";s:5:\"width\";i:270;s:6:\"height\";i:270;s:9:\"mime-type\";s:9:\"image/png\";}s:13:\"site_icon-192\";a:4:{s:4:\"file\";s:35:\"cropped-favicon-32x32-1-192x192.png\";s:5:\"width\";i:192;s:6:\"height\";i:192;s:9:\"mime-type\";s:9:\"image/png\";}s:13:\"site_icon-180\";a:4:{s:4:\"file\";s:35:\"cropped-favicon-32x32-1-180x180.png\";s:5:\"width\";i:180;s:6:\"height\";i:180;s:9:\"mime-type\";s:9:\"image/png\";}s:12:\"site_icon-32\";a:4:{s:4:\"file\";s:33:\"cropped-favicon-32x32-1-32x32.png\";s:5:\"width\";i:32;s:6:\"height\";i:32;s:9:\"mime-type\";s:9:\"image/png\";}}s:10:\"image_meta\";a:12:{s:8:\"aperture\";s:1:\"0\";s:6:\"credit\";s:0:\"\";s:6:\"camera\";s:0:\"\";s:7:\"caption\";s:0:\"\";s:17:\"created_timestamp\";s:1:\"0\";s:9:\"copyright\";s:0:\"\";s:12:\"focal_length\";s:1:\"0\";s:3:\"iso\";s:1:\"0\";s:13:\"shutter_speed\";s:1:\"0\";s:5:\"title\";s:0:\"\";s:11:\"orientation\";s:1:\"0\";s:8:\"keywords\";a:0:{}}}'),
 (464, 136, '_wp_trash_meta_status', 'publish'),
 (465, 136, '_wp_trash_meta_time', '1646472238'),
-(466, 155, '_edit_lock', '1646604951:1'),
+(466, 155, '_edit_lock', '1646684764:1'),
 (467, 156, '_wp_attached_file', '2022/03/2423983@3x-1.png'),
 (468, 156, '_wp_attachment_metadata', 'a:5:{s:5:\"width\";i:696;s:6:\"height\";i:681;s:4:\"file\";s:24:\"2022/03/2423983@3x-1.png\";s:5:\"sizes\";a:2:{s:6:\"medium\";a:4:{s:4:\"file\";s:24:\"2423983@3x-1-300x294.png\";s:5:\"width\";i:300;s:6:\"height\";i:294;s:9:\"mime-type\";s:9:\"image/png\";}s:9:\"thumbnail\";a:4:{s:4:\"file\";s:24:\"2423983@3x-1-150x150.png\";s:5:\"width\";i:150;s:6:\"height\";i:150;s:9:\"mime-type\";s:9:\"image/png\";}}s:10:\"image_meta\";a:12:{s:8:\"aperture\";s:1:\"0\";s:6:\"credit\";s:0:\"\";s:6:\"camera\";s:0:\"\";s:7:\"caption\";s:0:\"\";s:17:\"created_timestamp\";s:1:\"0\";s:9:\"copyright\";s:0:\"\";s:12:\"focal_length\";s:1:\"0\";s:3:\"iso\";s:1:\"0\";s:13:\"shutter_speed\";s:1:\"0\";s:5:\"title\";s:0:\"\";s:11:\"orientation\";s:1:\"0\";s:8:\"keywords\";a:0:{}}}'),
 (469, 155, '_edit_last', '1'),
@@ -819,7 +822,11 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (492, 128, '_wp_old_slug', 'no-fair-he'),
 (493, 120, '_wp_old_slug', 'no-fair'),
 (498, 215, '_wp_attached_file', '2022/03/no-fair-trans-1.png'),
-(499, 215, '_wp_attachment_metadata', 'a:5:{s:5:\"width\";i:696;s:6:\"height\";i:681;s:4:\"file\";s:27:\"2022/03/no-fair-trans-1.png\";s:5:\"sizes\";a:2:{s:6:\"medium\";a:4:{s:4:\"file\";s:27:\"no-fair-trans-1-300x294.png\";s:5:\"width\";i:300;s:6:\"height\";i:294;s:9:\"mime-type\";s:9:\"image/png\";}s:9:\"thumbnail\";a:4:{s:4:\"file\";s:27:\"no-fair-trans-1-150x150.png\";s:5:\"width\";i:150;s:6:\"height\";i:150;s:9:\"mime-type\";s:9:\"image/png\";}}s:10:\"image_meta\";a:12:{s:8:\"aperture\";s:1:\"0\";s:6:\"credit\";s:0:\"\";s:6:\"camera\";s:0:\"\";s:7:\"caption\";s:0:\"\";s:17:\"created_timestamp\";s:1:\"0\";s:9:\"copyright\";s:0:\"\";s:12:\"focal_length\";s:1:\"0\";s:3:\"iso\";s:1:\"0\";s:13:\"shutter_speed\";s:1:\"0\";s:5:\"title\";s:0:\"\";s:11:\"orientation\";s:1:\"0\";s:8:\"keywords\";a:0:{}}}');
+(499, 215, '_wp_attachment_metadata', 'a:5:{s:5:\"width\";i:696;s:6:\"height\";i:681;s:4:\"file\";s:27:\"2022/03/no-fair-trans-1.png\";s:5:\"sizes\";a:2:{s:6:\"medium\";a:4:{s:4:\"file\";s:27:\"no-fair-trans-1-300x294.png\";s:5:\"width\";i:300;s:6:\"height\";i:294;s:9:\"mime-type\";s:9:\"image/png\";}s:9:\"thumbnail\";a:4:{s:4:\"file\";s:27:\"no-fair-trans-1-150x150.png\";s:5:\"width\";i:150;s:6:\"height\";i:150;s:9:\"mime-type\";s:9:\"image/png\";}}s:10:\"image_meta\";a:12:{s:8:\"aperture\";s:1:\"0\";s:6:\"credit\";s:0:\"\";s:6:\"camera\";s:0:\"\";s:7:\"caption\";s:0:\"\";s:17:\"created_timestamp\";s:1:\"0\";s:9:\"copyright\";s:0:\"\";s:12:\"focal_length\";s:1:\"0\";s:3:\"iso\";s:1:\"0\";s:13:\"shutter_speed\";s:1:\"0\";s:5:\"title\";s:0:\"\";s:11:\"orientation\";s:1:\"0\";s:8:\"keywords\";a:0:{}}}'),
+(500, 253, '_edit_lock', '1647107480:1'),
+(501, 253, '_edit_last', '1'),
+(502, 255, '_edit_lock', '1647105656:1'),
+(503, 255, '_edit_last', '1');
 
 -- --------------------------------------------------------
 
@@ -1056,7 +1063,16 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (249, 1, '2022-03-06 23:17:57', '2022-03-06 21:17:57', '<!-- wp:columns -->\n<div class=\"wp-block-columns\"><!-- wp:column -->\n<div class=\"wp-block-column\"><!-- wp:group {\"layout\":{\"type\":\"flex\",\"allowOrientation\":false}} -->\n<div class=\"wp-block-group\"><!-- wp:heading {\"style\":{\"typography\":{\"fontStyle\":\"normal\",\"fontWeight\":\"600\"}},\"backgroundColor\":\"dark\",\"textColor\":\"mainbg\",\"className\":\"job-fair-banner-title\",\"fontSize\":\"xxxl\"} -->\n<h2 class=\"job-fair-banner-title has-mainbg-color has-dark-background-color has-text-color has-background has-xxxl-font-size\" style=\"font-style:normal;font-weight:600\">יריד תעסוקה 2022</h2>\n<!-- /wp:heading --></div>\n<!-- /wp:group -->\n\n<!-- wp:cover {\"overlayColor\":\"bannerbg\",\"minHeight\":170,\"contentPosition\":\"bottom center\",\"className\":\"p-0\"} -->\n<div class=\"wp-block-cover has-custom-content-position is-position-bottom-center p-0\" style=\"min-height:170px\"><span aria-hidden=\"true\" class=\"has-bannerbg-background-color has-background-dim-100 wp-block-cover__gradient-background has-background-dim\"></span><div class=\"wp-block-cover__inner-container\"><!-- wp:image {\"align\":\"center\",\"id\":108,\"width\":448,\"height\":324,\"sizeSlug\":\"full\",\"linkDestination\":\"none\",\"className\":\"banner-image\"} -->\n<div class=\"wp-block-image banner-image\"><figure class=\"aligncenter size-full is-resized\"><img src=\"http://localhost:8080/wp-content/uploads/2022/03/hands.png\" alt=\"\" class=\"wp-image-108\" width=\"448\" height=\"324\"/></figure></div>\n<!-- /wp:image --></div></div>\n<!-- /wp:cover -->\n\n<!-- wp:paragraph {\"align\":\"center\",\"style\":{\"typography\":{\"fontStyle\":\"normal\",\"fontWeight\":\"600\"}},\"textColor\":\"primary\",\"className\":\"md:text-4xl my-4\"} -->\n<p class=\"has-text-align-center md:text-4xl my-4 has-primary-color has-text-color\" style=\"font-style:normal;font-weight:600\">ברוכים הבאים ליריד התעסוקה השנתי של המרכז לקריירה!</p>\n<!-- /wp:paragraph --></div>\n<!-- /wp:column --></div>\n<!-- /wp:columns -->', 'באנר יריד - עב', '', 'inherit', 'closed', 'closed', '', '181-revision-v1', '', '', '2022-03-06 23:17:57', '2022-03-06 21:17:57', '', 181, 'http://localhost:8080/?p=249', 0, 'revision', '', 0),
 (250, 1, '2022-03-06 23:20:03', '2022-03-06 21:20:03', '<!-- wp:columns -->\n<div class=\"wp-block-columns\"><!-- wp:column -->\n<div class=\"wp-block-column\"><!-- wp:group {\"layout\":{\"type\":\"flex\",\"allowOrientation\":false}} -->\n<div class=\"wp-block-group\"><!-- wp:heading {\"style\":{\"typography\":{\"fontStyle\":\"normal\",\"fontWeight\":\"600\"}},\"backgroundColor\":\"dark\",\"textColor\":\"mainbg\",\"className\":\"job-fair-banner-title\",\"fontSize\":\"xxxl\"} -->\n<h2 class=\"job-fair-banner-title has-mainbg-color has-dark-background-color has-text-color has-background has-xxxl-font-size\" style=\"font-style:normal;font-weight:600\">יריד תעסוקה 2022</h2>\n<!-- /wp:heading --></div>\n<!-- /wp:group -->\n\n<!-- wp:cover {\"overlayColor\":\"bannerbg\",\"minHeight\":170,\"contentPosition\":\"bottom center\",\"className\":\"p-0\"} -->\n<div class=\"wp-block-cover has-custom-content-position is-position-bottom-center p-0\" style=\"min-height:170px\"><span aria-hidden=\"true\" class=\"has-bannerbg-background-color has-background-dim-100 wp-block-cover__gradient-background has-background-dim\"></span><div class=\"wp-block-cover__inner-container\"><!-- wp:image {\"align\":\"center\",\"id\":108,\"width\":448,\"height\":324,\"sizeSlug\":\"full\",\"linkDestination\":\"none\",\"className\":\"banner-image\"} -->\n<div class=\"wp-block-image banner-image\"><figure class=\"aligncenter size-full is-resized\"><img src=\"http://localhost:8080/wp-content/uploads/2022/03/hands.png\" alt=\"\" class=\"wp-image-108\" width=\"448\" height=\"324\"/></figure></div>\n<!-- /wp:image --></div></div>\n<!-- /wp:cover -->\n\n<!-- wp:paragraph {\"align\":\"center\",\"style\":{\"typography\":{\"fontStyle\":\"normal\",\"fontWeight\":\"600\"}},\"textColor\":\"primary\",\"className\":\"md:text-4xl mt-8 mb-4\"} -->\n<p class=\"has-text-align-center md:text-4xl mt-8 mb-4 has-primary-color has-text-color\" style=\"font-style:normal;font-weight:600\">ברוכים הבאים ליריד התעסוקה השנתי של המרכז לקריירה!</p>\n<!-- /wp:paragraph --></div>\n<!-- /wp:column --></div>\n<!-- /wp:columns -->', 'באנר יריד - עב', '', 'inherit', 'closed', 'closed', '', '181-revision-v1', '', '', '2022-03-06 23:20:03', '2022-03-06 21:20:03', '', 181, 'http://localhost:8080/?p=250', 0, 'revision', '', 0),
 (251, 1, '2022-03-06 23:20:28', '2022-03-06 21:20:28', '<!-- wp:columns -->\n<div class=\"wp-block-columns\"><!-- wp:column -->\n<div class=\"wp-block-column\"><!-- wp:group {\"layout\":{\"type\":\"flex\",\"allowOrientation\":false}} -->\n<div class=\"wp-block-group\"><!-- wp:heading {\"textAlign\":\"center\",\"style\":{\"typography\":{\"fontStyle\":\"normal\",\"fontWeight\":\"600\"}},\"backgroundColor\":\"dark\",\"textColor\":\"mainbg\",\"className\":\"job-fair-banner-title\",\"fontSize\":\"xxxl\"} -->\n<h2 class=\"has-text-align-center job-fair-banner-title has-mainbg-color has-dark-background-color has-text-color has-background has-xxxl-font-size\" style=\"font-style:normal;font-weight:600\">Jobs Fair 2022</h2>\n<!-- /wp:heading --></div>\n<!-- /wp:group -->\n\n<!-- wp:cover {\"overlayColor\":\"bannerbg\",\"minHeight\":170,\"contentPosition\":\"bottom center\",\"className\":\"p-0\",\"style\":{\"color\":[]}} -->\n<div class=\"wp-block-cover has-custom-content-position is-position-bottom-center p-0\" style=\"min-height:170px\"><span aria-hidden=\"true\" class=\"has-bannerbg-background-color has-background-dim-100 wp-block-cover__gradient-background has-background-dim\"></span><div class=\"wp-block-cover__inner-container\"><!-- wp:image {\"align\":\"center\",\"id\":108,\"width\":448,\"height\":324,\"sizeSlug\":\"full\",\"linkDestination\":\"none\",\"className\":\"banner-image\"} -->\n<div class=\"wp-block-image banner-image\"><figure class=\"aligncenter size-full is-resized\"><img src=\"http://localhost:8080/wp-content/uploads/2022/03/hands.png\" alt=\"\" class=\"wp-image-108\" width=\"448\" height=\"324\"/></figure></div>\n<!-- /wp:image --></div></div>\n<!-- /wp:cover -->\n\n<!-- wp:heading {\"textAlign\":\"center\",\"style\":{\"typography\":{\"fontStyle\":\"normal\",\"fontWeight\":\"600\"}},\"textColor\":\"primary\",\"className\":\"md:text-4xl mt-8 mb-4\"} -->\n<h2 class=\"has-text-align-center md:text-4xl mt-8 mb-4 has-primary-color has-text-color\" style=\"font-style:normal;font-weight:600\">Welcome to the yearly Job Fair of the career center! </h2>\n<!-- /wp:heading --></div>\n<!-- /wp:column --></div>\n<!-- /wp:columns -->', 'Job Fair banner - en', '', 'inherit', 'closed', 'closed', '', '184-revision-v1', '', '', '2022-03-06 23:20:28', '2022-03-06 21:20:28', '', 184, 'http://localhost:8080/?p=251', 0, 'revision', '', 0),
-(252, 1, '2022-03-06 23:20:36', '2022-03-06 21:20:36', '<!-- wp:block {\"ref\":184} /-->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'יריד תעסוקה 2022 אנ', '', 'inherit', 'closed', 'closed', '', '155-autosave-v1', '', '', '2022-03-06 23:20:36', '2022-03-06 21:20:36', '', 155, 'http://localhost:8080/?p=252', 0, 'revision', '', 0);
+(252, 1, '2022-03-06 23:20:36', '2022-03-06 21:20:36', '<!-- wp:block {\"ref\":184} /-->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'יריד תעסוקה 2022 אנ', '', 'inherit', 'closed', 'closed', '', '155-autosave-v1', '', '', '2022-03-06 23:20:36', '2022-03-06 21:20:36', '', 155, 'http://localhost:8080/?p=252', 0, 'revision', '', 0),
+(253, 1, '2022-03-12 19:02:34', '2022-03-12 17:02:34', '<!-- wp:paragraph {\"align\":\"right\",\"textColor\":\"primary\"} -->\n<p class=\"has-text-align-right has-primary-color has-text-color\"><a href=\"http://localhost:8080/\" data-type=\"page\" data-id=\"2\">Back to home page</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_hunter_all_jobs]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'All Jobs', '', 'publish', 'closed', 'closed', '', 'search-results', '', '', '2022-03-12 19:21:20', '2022-03-12 17:21:20', '', 0, 'http://localhost:8080/?page_id=253', 0, 'page', '', 0),
+(254, 1, '2022-03-12 19:02:34', '2022-03-12 17:02:34', '<!-- wp:paragraph {\"align\":\"right\"} -->\n<p class=\"has-text-align-right\"><a href=\"http://localhost:8080/\" data-type=\"page\" data-id=\"2\">Back to home page</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_search_results]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'Search Results', '', 'inherit', 'closed', 'closed', '', '253-revision-v1', '', '', '2022-03-12 19:02:34', '2022-03-12 17:02:34', '', 253, 'http://localhost:8080/?p=254', 0, 'revision', '', 0),
+(255, 1, '2022-03-12 19:04:13', '2022-03-12 17:04:13', '<!-- wp:paragraph {\"align\":\"left\",\"textColor\":\"primary\"} -->\n<p class=\"has-text-align-left has-primary-color has-text-color\"><a href=\"http://localhost:8080/he/%d7%93%d7%a3-%d7%94%d7%91%d7%99%d7%aa/\" data-type=\"page\" data-id=\"11\">חזרה לעמוד הבית</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_hunter_all_jobs]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'כל המשרות', '', 'publish', 'closed', 'closed', '', '%d7%aa%d7%95%d7%a6%d7%90%d7%95%d7%aa-%d7%97%d7%99%d7%a4%d7%95%d7%a9', '', '', '2022-03-12 19:20:55', '2022-03-12 17:20:55', '', 0, 'http://localhost:8080/?page_id=255', 0, 'page', '', 0),
+(256, 1, '2022-03-12 19:04:13', '2022-03-12 17:04:13', '<!-- wp:paragraph -->\n<p><a href=\"http://localhost:8080/he/%d7%93%d7%a3-%d7%94%d7%91%d7%99%d7%aa/\" data-type=\"page\" data-id=\"11\">חזרה לעמוד הבית</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_search_results]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'תוצאות חיפוש', '', 'inherit', 'closed', 'closed', '', '255-revision-v1', '', '', '2022-03-12 19:04:13', '2022-03-12 17:04:13', '', 255, 'http://localhost:8080/?p=256', 0, 'revision', '', 0),
+(257, 1, '2022-03-12 19:08:44', '2022-03-12 17:08:44', '<!-- wp:paragraph {\"align\":\"right\"} -->\n<p class=\"has-text-align-right\"><a href=\"http://localhost:8080/\" data-type=\"page\" data-id=\"2\">Back to home page</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_hunter_all_jobs]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'All Jobs', '', 'inherit', 'closed', 'closed', '', '253-revision-v1', '', '', '2022-03-12 19:08:44', '2022-03-12 17:08:44', '', 253, 'http://localhost:8080/?p=257', 0, 'revision', '', 0),
+(258, 1, '2022-03-12 19:09:05', '2022-03-12 17:09:05', '<!-- wp:paragraph -->\n<p><a href=\"http://localhost:8080/he/%d7%93%d7%a3-%d7%94%d7%91%d7%99%d7%aa/\" data-type=\"page\" data-id=\"11\">חזרה לעמוד הבית</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_hunter_all_jobs]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'כל המשרות', '', 'inherit', 'closed', 'closed', '', '255-revision-v1', '', '', '2022-03-12 19:09:05', '2022-03-12 17:09:05', '', 255, 'http://localhost:8080/?p=258', 0, 'revision', '', 0),
+(259, 1, '2022-03-12 19:20:00', '2022-03-12 17:20:00', '<!-- wp:paragraph {\"align\":\"left\"} -->\n<p class=\"has-text-align-left\"><a href=\"http://localhost:8080/he/%d7%93%d7%a3-%d7%94%d7%91%d7%99%d7%aa/\" data-type=\"page\" data-id=\"11\">חזרה לעמוד הבית</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_hunter_all_jobs]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'כל המשרות', '', 'inherit', 'closed', 'closed', '', '255-revision-v1', '', '', '2022-03-12 19:20:00', '2022-03-12 17:20:00', '', 255, 'http://localhost:8080/?p=259', 0, 'revision', '', 0),
+(260, 1, '2022-03-12 19:20:55', '2022-03-12 17:20:55', '<!-- wp:paragraph {\"align\":\"left\",\"textColor\":\"primary\"} -->\n<p class=\"has-text-align-left has-primary-color has-text-color\"><a href=\"http://localhost:8080/he/%d7%93%d7%a3-%d7%94%d7%91%d7%99%d7%aa/\" data-type=\"page\" data-id=\"11\">חזרה לעמוד הבית</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_hunter_all_jobs]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'כל המשרות', '', 'inherit', 'closed', 'closed', '', '255-revision-v1', '', '', '2022-03-12 19:20:55', '2022-03-12 17:20:55', '', 255, 'http://localhost:8080/?p=260', 0, 'revision', '', 0),
+(261, 1, '2022-03-12 19:21:19', '2022-03-12 17:21:19', '<!-- wp:paragraph {\"align\":\"right\",\"textColor\":\"primary\"} -->\n<p class=\"has-text-align-right has-primary-color has-text-color\"><a href=\"http://localhost:8080/\" data-type=\"page\" data-id=\"2\">Back to home page</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_hunter_all_jobs]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'All Jobs', '', 'inherit', 'closed', 'closed', '', '253-revision-v1', '', '', '2022-03-12 19:21:19', '2022-03-12 17:21:19', '', 253, 'http://localhost:8080/?p=261', 0, 'revision', '', 0);
 
 -- --------------------------------------------------------
 
@@ -1113,7 +1129,8 @@ INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
 (23, 'יריד תעסוקה רייכמן', 'reichman-job-fair-he', 0),
 (25, 'Uncategorized', 'uncategorized-he', 0),
 (26, 'pll_621e7be490aab', 'pll_621e7be490aab', 0),
-(35, 'pll_622330eba599d', 'pll_622330eba599d', 0);
+(35, 'pll_622330eba599d', 'pll_622330eba599d', 0),
+(36, 'pll_622cd28e0b254', 'pll_622cd28e0b254', 0);
 
 -- --------------------------------------------------------
 
@@ -1234,7 +1251,11 @@ INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_orde
 (170, 4, 0),
 (171, 4, 0),
 (181, 2, 0),
-(184, 2, 0);
+(184, 2, 0),
+(253, 2, 0),
+(253, 36, 0),
+(255, 4, 0),
+(255, 36, 0);
 
 -- --------------------------------------------------------
 
@@ -1257,9 +1278,9 @@ CREATE TABLE `wp_term_taxonomy` (
 
 INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `description`, `parent`, `count`) VALUES
 (1, 1, 'category', '', 0, 1),
-(2, 2, 'language', 'a:3:{s:6:\"locale\";s:5:\"en_US\";s:3:\"rtl\";i:0;s:9:\"flag_code\";s:2:\"us\";}', 0, 6),
+(2, 2, 'language', 'a:3:{s:6:\"locale\";s:5:\"en_US\";s:3:\"rtl\";i:0;s:9:\"flag_code\";s:2:\"us\";}', 0, 7),
 (3, 3, 'term_language', '', 0, 2),
-(4, 4, 'language', 'a:3:{s:6:\"locale\";s:5:\"he_IL\";s:3:\"rtl\";i:1;s:9:\"flag_code\";s:2:\"il\";}', 0, 3),
+(4, 4, 'language', 'a:3:{s:6:\"locale\";s:5:\"he_IL\";s:3:\"rtl\";i:1;s:9:\"flag_code\";s:2:\"il\";}', 0, 4),
 (5, 5, 'term_language', '', 0, 2),
 (6, 6, 'term_translations', 'a:1:{s:2:\"en\";i:1;}', 0, 1),
 (7, 7, 'wp_theme', '', 0, 3),
@@ -1280,7 +1301,8 @@ INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `desc
 (23, 23, 'category', '', 0, 1),
 (25, 25, 'category', '', 0, 1),
 (26, 26, 'term_translations', 'a:1:{s:2:\"he\";i:25;}', 0, 1),
-(35, 35, 'post_translations', 'a:2:{s:2:\"he\";i:164;s:2:\"en\";i:155;}', 0, 2);
+(35, 35, 'post_translations', 'a:2:{s:2:\"he\";i:164;s:2:\"en\";i:155;}', 0, 2),
+(36, 36, 'post_translations', 'a:2:{s:2:\"he\";i:255;s:2:\"en\";i:253;}', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -1345,7 +1367,7 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 (45, 2, 'wp_user-settings-time', '1646473110'),
 (48, 2, 'description_he', ''),
 (54, 2, 'pll_filter_content', ''),
-(57, 1, 'session_tokens', 'a:1:{s:64:\"8a6f6a90f3147076d171ddeb845f99e808257d71dbbcb77ecf74287677fab083\";a:4:{s:10:\"expiration\";i:1646699650;s:2:\"ip\";s:10:\"172.22.0.1\";s:2:\"ua\";s:121:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.109 Safari/537.36\";s:5:\"login\";i:1646526850;}}');
+(57, 1, 'session_tokens', 'a:1:{s:64:\"5cc4925df061a5efc30229ab866c4e87f89e657cd34f7c83c2d1fbcccba94623\";a:4:{s:10:\"expiration\";i:1647252524;s:2:\"ip\";s:10:\"172.22.0.1\";s:2:\"ua\";s:120:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36\";s:5:\"login\";i:1647079724;}}');
 
 -- --------------------------------------------------------
 
@@ -1504,19 +1526,19 @@ ALTER TABLE `wp_links`
 -- AUTO_INCREMENT for table `wp_options`
 --
 ALTER TABLE `wp_options`
-  MODIFY `option_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=449;
+  MODIFY `option_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=452;
 
 --
 -- AUTO_INCREMENT for table `wp_postmeta`
 --
 ALTER TABLE `wp_postmeta`
-  MODIFY `meta_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=500;
+  MODIFY `meta_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=504;
 
 --
 -- AUTO_INCREMENT for table `wp_posts`
 --
 ALTER TABLE `wp_posts`
-  MODIFY `ID` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=253;
+  MODIFY `ID` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=262;
 
 --
 -- AUTO_INCREMENT for table `wp_termmeta`
@@ -1528,13 +1550,13 @@ ALTER TABLE `wp_termmeta`
 -- AUTO_INCREMENT for table `wp_terms`
 --
 ALTER TABLE `wp_terms`
-  MODIFY `term_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `term_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `wp_term_taxonomy`
 --
 ALTER TABLE `wp_term_taxonomy`
-  MODIFY `term_taxonomy_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `term_taxonomy_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `wp_usermeta`
