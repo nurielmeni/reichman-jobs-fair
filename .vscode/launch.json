@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "client: chrome",
       "url": "http://localhost:8080",
-      "webRoot": "${workspaceFolder}/wp/"
+      "webRoot": "\\wsl.localhost\\Ubuntu-20.04\\home\\nurielmeni\\Dev\\reichman-jobs-fair\\wp"
     },
     {
       "name": "Listen: XDebug",
@@ -23,7 +23,8 @@
         "max_children": 999,
         "max_depth": 10
       },
-      "stopOnEntry": false
+      "stopOnEntry": false,
+      "hostname": "localhost"
     }
   ],
   "compounds": [

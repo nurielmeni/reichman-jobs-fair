@@ -250,7 +250,7 @@ class NlsHunter_model
             $professionalFields = $this->nlsDirectory->getProfessionalFields();
             wp_cache_set($cacheKey, $professionalFields, 'directory', self::CACHE_EXPIRATION);
         }
-
+        
         return is_array($professionalFields) ? $professionalFields : [];
     }
 

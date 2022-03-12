@@ -5,7 +5,6 @@ var App = App || (
             ScrollTo && ScrollTo.add('.footer .spinner', () => { alert('more'); })
         });
 
-
         return {
 
         }

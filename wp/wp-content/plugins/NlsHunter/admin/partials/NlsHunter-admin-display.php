@@ -97,6 +97,9 @@
             <label for="nlsHotJobsCount">Hot Jobs Count</label>
             <input type="number" name="nlsHotJobsCount" id="nlsHotJobsCount" value="<?= $nlsHotJobsCount ?>">
             <br>
+            <label for="nlsEmployersCount">Employers Count</label>
+            <input type="number" name="nlsEmployersCount" id="nlsEmployersCount" value="<?= $nlsEmployersCount ?>">
+            <br>
         </section>
         <br>
         <section id="hunter_page_settings">

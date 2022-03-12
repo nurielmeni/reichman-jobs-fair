@@ -38,6 +38,7 @@ class NlsHunter_Admin
     const NLS_SECURITY_PASSWORD = 'nlsSecurityPassword';
     const NLS_JOBS_COUNT = 'nlsJobsCount';
     const NLS_HOT_JOBS_COUNT = 'nlsHotJobsCount';
+    const NLS_EMPLOYERS_COUNT = 'nlsEmployersCount';
     const NLS_HUNTER_ALL_JOBS_EN = 'nlsHunterAllJobs_en';
     const NLS_HUNTER_ALL_JOBS_HE = 'nlsHunterAllJobs_he';
     const NLS_HUNTER_EMPLOYER_DETAILS_EN = 'nlsHunterEmployerDetails_en';
@@ -170,6 +171,7 @@ class NlsHunter_Admin
         $nlsSecurityPassword = $this->getFieldValue(self::NLS_SECURITY_PASSWORD);
         $nlsJobsCount = $this->getFieldValue(self::NLS_JOBS_COUNT);
         $nlsHotJobsCount = $this->getFieldValue(self::NLS_HOT_JOBS_COUNT);
+        $nlsEmployersCount = $this->getFieldValue(self::NLS_EMPLOYERS_COUNT);
         $nlsHunterAllJobsEn = $this->getFieldValue(self::NLS_HUNTER_ALL_JOBS_EN);
         $nlsHunterAllJobsHe = $this->getFieldValue(self::NLS_HUNTER_ALL_JOBS_HE);
         $nlsHunterEmployerDetailsEn = $this->getFieldValue(self::NLS_HUNTER_EMPLOYER_DETAILS_EN);
