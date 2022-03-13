@@ -33,8 +33,7 @@ and open the template in the editor.
 .SumoSelect .select-all > label,
 .SumoSelect > .CaptionCont,
 .SumoSelect > .CaptionCont > label,
-.SumoSelect > .optWrapper > .options li.opt label,
-.nls-field label {
+.SumoSelect > .optWrapper > .options li.opt label {
   font-size: 1rem;
   font-weight: normal;
 }

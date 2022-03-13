@@ -98,12 +98,12 @@ class NlsHunter_Public
          */
 
         wp_enqueue_style('NlsHunter', plugin_dir_url(__FILE__) . 'css/NlsHunter-public.css', array(), $this->version, 'all');
-        wp_enqueue_style('NlsHunter-responsive', plugin_dir_url(__FILE__) . 'css/NlsHunter-public-responsive.css', array(), $this->version, 'all');
-        //wp_enqueue_style('sumoselect', plugin_dir_url(__FILE__) . 'css/sumoselect.min.css', array(), $this->version, 'all');
+        //wp_enqueue_style('NlsHunter-responsive', plugin_dir_url(__FILE__) . 'css/NlsHunter-public-responsive.css', array(), $this->version, 'all');
+        wp_enqueue_style('sumoselect', plugin_dir_url(__FILE__) . 'css/sumoselect.min.css', array(), $this->version, 'all');
         wp_enqueue_style('front-page-loader', plugin_dir_url(__FILE__) . 'css/loader.css', array(), $this->version, 'all');
 
         if (is_rtl()) {
-            //wp_enqueue_style('sumoselect-rtl', plugin_dir_url(__FILE__) . 'css/sumoselect-rtl.css', array(), $this->version, 'all');
+            wp_enqueue_style('sumoselect-rtl', plugin_dir_url(__FILE__) . 'css/sumoselect-rtl.css', array(), $this->version, 'all');
         }
     }
 
@@ -127,14 +127,13 @@ class NlsHunter_Public
          * class.
          */
 
-        wp_enqueue_script('mobile-check-js', plugin_dir_url(__FILE__) . 'js/mobileCheck.js', array('jquery'), $this->version, false);
-        wp_enqueue_script('job-search-js', plugin_dir_url(__FILE__) . 'js/jobSearch.js', array('jquery'), $this->version, false);
-        wp_enqueue_script('job-apply-js', plugin_dir_url(__FILE__) . 'js/jobApply.js', array('jquery'), $this->version, false);
+        wp_enqueue_script('mobile-check', plugin_dir_url(__FILE__) . 'js/mobileCheck.js', array('jquery'), $this->version, false);
+        wp_enqueue_script('nls-jobs', plugin_dir_url(__FILE__) . 'js/jobs.js', array('jquery'), $this->version, false);
         wp_enqueue_script('nls-form-validation', plugin_dir_url(__FILE__) . 'js/NlsHunterForm.js', array('jquery'), $this->version, false);
         wp_enqueue_script('nls-swipe-detect', plugin_dir_url(__FILE__) . 'js/swipeDetect.js', array('jquery'), $this->version, false);
         wp_enqueue_script('nls-scroll-to-event', plugin_dir_url(__FILE__) . 'js/scrollToEvent.js', array('jquery'), $this->version, false);
         wp_enqueue_script('nls-app', plugin_dir_url(__FILE__) . 'js/app.js', array('jquery'), $this->version, false);
-        //wp_enqueue_script('nls-sumo-select', plugin_dir_url(__FILE__) . 'js/jquery.sumoselect.min.js', array('jquery'), $this->version, false);
+        wp_enqueue_script('nls-sumo-select', plugin_dir_url(__FILE__) . 'js/jquery.sumoselect.min.js', array('jquery'), $this->version, false);
 
         // enqueue and localise scripts for handling Ajax Submit CV
         // Don't forget to add the action (apply_cv_function)
@@ -265,7 +264,9 @@ class NlsHunter_Public
     {
         // response: {page: int, html: html}
         $page = intval($_POST['page']);
-        $res = $this->model->getJobHunterExecuteNewQuery2([], null, $page + 1);
+        $area = intval($_POST['area']);
+        $searchParams = $area > 0 ? ['ProfessionalFields' => [$area]] : [];
+        $res = $this->model->getJobHunterExecuteNewQuery2($searchParams, null, $page + 1);
         $jobs = property_exists($res, 'Results') && property_exists($res->Results, 'JobInfo') && is_array($res->Results->JobInfo) ? $res->Results->JobInfo : [];
 
         if (count($jobs) === 0) {

@@ -229,6 +229,21 @@ class NlsHunter_model
         return is_array($jobScopes) ? $jobScopes : [];
     }
 
+    public function jobAreas()
+    {
+        $this->initDirectoryService();
+
+        $cacheKey = 'JOB_AREAS';
+        $jobAreas = wp_cache_get($cacheKey);
+
+        if (false === $jobAreas) {
+            $jobAreas = $this->nlsDirectory->getProfessionalFields();
+            wp_cache_set($cacheKey, $jobAreas, 'directory', self::CACHE_EXPIRATION);
+        }
+
+        return is_array($jobAreas) ? $jobAreas : [];
+    }
+
     public function jobRanks()
     {
         $this->initDirectoryService();
@@ -345,8 +360,9 @@ class NlsHunter_model
     {
         $resultRowLimit = $resultRowLimit ? $resultRowLimit : $this->nlsGetCountPerPage();
         $resultRowOffset = is_int($page) ? $page * $resultRowLimit : 0;
+        $areas = key_exists('ProfessionalFields', $searchParams) ? implode('_', $searchParams['ProfessionalFields']) : '';
 
-        $cache_key = 'nls_hunter_jobs_' . $resultRowOffset . '_' . $resultRowLimit;
+        $cache_key = 'nls_hunter_jobs_' . $areas . '_' . $resultRowOffset . '_' . $resultRowLimit;
         if ($flash) wp_cache_delete($cache_key);
 
         $jobs = wp_cache_get($cache_key);
@@ -358,6 +374,10 @@ class NlsHunter_model
             $filter = new NlsFilter();
 
             $filter->addSuplierIdFilter($this->nlsGetSupplierId());
+
+            $filterField = new FilterField('JobScope', SearchPhrase::ALL, $searchParams['ProfessionalFields'], NlsFilter::NUMERIC_VALUES);
+            $filter->addWhereFilter($filterField, Condition::AND);
+
             try {
                 $jobs = $this->nlsSearch->JobHunterExecuteNewQuery2(
                     $hunterId,

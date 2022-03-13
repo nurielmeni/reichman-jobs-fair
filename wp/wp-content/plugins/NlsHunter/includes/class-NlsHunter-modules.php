@@ -45,20 +45,6 @@ class NlsHunter_modules
         return $hunterEmployerDetailsPageUrl;
     }
 
-    private function searchParams()
-    {
-        $params['keywords'] = $this->model->queryParam('keywords');
-        $params['categoryId'] = $this->model->queryParam('job-category', []);
-        $params['regionValue'] = $this->model->queryParam('job-region', []);
-        $params['employmentType'] = $this->model->queryParam('employments-type', []);
-        $params['jobScope'] = $this->model->queryParam('job-scope', []);
-        $params['jobLocation'] = $this->model->queryParam('job-location', []);
-        $params['employerId'] = $this->model->queryParam('employerId');
-        $params['updateDate'] = $this->model->queryParam('last-update');
-
-        return $params;
-    }
-
     public function nlsHunterEmployers_render()
     {
         ob_start();
