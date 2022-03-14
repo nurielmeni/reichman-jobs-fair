@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Mar 12, 2022 at 11:26 PM
+-- Generation Time: Mar 14, 2022 at 02:20 PM
 -- Server version: 8.0.26
--- PHP Version: 7.4.20
+-- PHP Version: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,8 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `wp_commentmeta` (
   `meta_id` bigint UNSIGNED NOT NULL,
   `comment_id` bigint UNSIGNED NOT NULL DEFAULT '0',
-  `meta_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci
+  `meta_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `meta_value` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -43,17 +43,17 @@ CREATE TABLE `wp_commentmeta` (
 CREATE TABLE `wp_comments` (
   `comment_ID` bigint UNSIGNED NOT NULL,
   `comment_post_ID` bigint UNSIGNED NOT NULL DEFAULT '0',
-  `comment_author` tinytext COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `comment_author_email` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `comment_author_url` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `comment_author_IP` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `comment_author` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `comment_author_email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `comment_author_url` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `comment_author_IP` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `comment_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `comment_date_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `comment_content` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `comment_content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `comment_karma` int NOT NULL DEFAULT '0',
-  `comment_approved` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '1',
-  `comment_agent` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `comment_type` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'comment',
+  `comment_approved` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '1',
+  `comment_agent` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `comment_type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'comment',
   `comment_parent` bigint UNSIGNED NOT NULL DEFAULT '0',
   `user_id` bigint UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
@@ -73,18 +73,18 @@ INSERT INTO `wp_comments` (`comment_ID`, `comment_post_ID`, `comment_author`, `c
 
 CREATE TABLE `wp_links` (
   `link_id` bigint UNSIGNED NOT NULL,
-  `link_url` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `link_name` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `link_image` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `link_target` varchar(25) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `link_description` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `link_visible` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'Y',
+  `link_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `link_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `link_image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `link_target` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `link_description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `link_visible` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'Y',
   `link_owner` bigint UNSIGNED NOT NULL DEFAULT '1',
   `link_rating` int NOT NULL DEFAULT '0',
   `link_updated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `link_rel` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `link_notes` mediumtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `link_rss` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT ''
+  `link_rel` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `link_notes` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `link_rss` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -95,9 +95,9 @@ CREATE TABLE `wp_links` (
 
 CREATE TABLE `wp_options` (
   `option_id` bigint UNSIGNED NOT NULL,
-  `option_name` varchar(191) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `option_value` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `autoload` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'yes'
+  `option_name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `option_value` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `autoload` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'yes'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
@@ -359,8 +359,8 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 CREATE TABLE `wp_postmeta` (
   `meta_id` bigint UNSIGNED NOT NULL,
   `post_id` bigint UNSIGNED NOT NULL DEFAULT '0',
-  `meta_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci
+  `meta_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `meta_value` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
@@ -823,10 +823,14 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (493, 120, '_wp_old_slug', 'no-fair'),
 (498, 215, '_wp_attached_file', '2022/03/no-fair-trans-1.png'),
 (499, 215, '_wp_attachment_metadata', 'a:5:{s:5:\"width\";i:696;s:6:\"height\";i:681;s:4:\"file\";s:27:\"2022/03/no-fair-trans-1.png\";s:5:\"sizes\";a:2:{s:6:\"medium\";a:4:{s:4:\"file\";s:27:\"no-fair-trans-1-300x294.png\";s:5:\"width\";i:300;s:6:\"height\";i:294;s:9:\"mime-type\";s:9:\"image/png\";}s:9:\"thumbnail\";a:4:{s:4:\"file\";s:27:\"no-fair-trans-1-150x150.png\";s:5:\"width\";i:150;s:6:\"height\";i:150;s:9:\"mime-type\";s:9:\"image/png\";}}s:10:\"image_meta\";a:12:{s:8:\"aperture\";s:1:\"0\";s:6:\"credit\";s:0:\"\";s:6:\"camera\";s:0:\"\";s:7:\"caption\";s:0:\"\";s:17:\"created_timestamp\";s:1:\"0\";s:9:\"copyright\";s:0:\"\";s:12:\"focal_length\";s:1:\"0\";s:3:\"iso\";s:1:\"0\";s:13:\"shutter_speed\";s:1:\"0\";s:5:\"title\";s:0:\"\";s:11:\"orientation\";s:1:\"0\";s:8:\"keywords\";a:0:{}}}'),
-(500, 253, '_edit_lock', '1647107480:1'),
+(500, 253, '_edit_lock', '1647267572:1'),
 (501, 253, '_edit_last', '1'),
 (502, 255, '_edit_lock', '1647105656:1'),
-(503, 255, '_edit_last', '1');
+(503, 255, '_edit_last', '1'),
+(504, 262, '_edit_lock', '1647267596:1'),
+(505, 262, '_edit_last', '1'),
+(506, 264, '_edit_lock', '1647267576:1'),
+(507, 264, '_edit_last', '1');
 
 -- --------------------------------------------------------
 
@@ -839,24 +843,24 @@ CREATE TABLE `wp_posts` (
   `post_author` bigint UNSIGNED NOT NULL DEFAULT '0',
   `post_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `post_date_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `post_content` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `post_title` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `post_excerpt` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `post_status` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'publish',
-  `comment_status` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'open',
-  `ping_status` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'open',
-  `post_password` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `post_name` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `to_ping` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `pinged` text COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `post_content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `post_title` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `post_excerpt` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `post_status` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'publish',
+  `comment_status` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'open',
+  `ping_status` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'open',
+  `post_password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `post_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `to_ping` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `pinged` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `post_modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `post_modified_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `post_content_filtered` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `post_content_filtered` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `post_parent` bigint UNSIGNED NOT NULL DEFAULT '0',
-  `guid` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `guid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `menu_order` int NOT NULL DEFAULT '0',
-  `post_type` varchar(20) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'post',
-  `post_mime_type` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `post_type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT 'post',
+  `post_mime_type` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `comment_count` bigint NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
@@ -1064,7 +1068,7 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (250, 1, '2022-03-06 23:20:03', '2022-03-06 21:20:03', '<!-- wp:columns -->\n<div class=\"wp-block-columns\"><!-- wp:column -->\n<div class=\"wp-block-column\"><!-- wp:group {\"layout\":{\"type\":\"flex\",\"allowOrientation\":false}} -->\n<div class=\"wp-block-group\"><!-- wp:heading {\"style\":{\"typography\":{\"fontStyle\":\"normal\",\"fontWeight\":\"600\"}},\"backgroundColor\":\"dark\",\"textColor\":\"mainbg\",\"className\":\"job-fair-banner-title\",\"fontSize\":\"xxxl\"} -->\n<h2 class=\"job-fair-banner-title has-mainbg-color has-dark-background-color has-text-color has-background has-xxxl-font-size\" style=\"font-style:normal;font-weight:600\">יריד תעסוקה 2022</h2>\n<!-- /wp:heading --></div>\n<!-- /wp:group -->\n\n<!-- wp:cover {\"overlayColor\":\"bannerbg\",\"minHeight\":170,\"contentPosition\":\"bottom center\",\"className\":\"p-0\"} -->\n<div class=\"wp-block-cover has-custom-content-position is-position-bottom-center p-0\" style=\"min-height:170px\"><span aria-hidden=\"true\" class=\"has-bannerbg-background-color has-background-dim-100 wp-block-cover__gradient-background has-background-dim\"></span><div class=\"wp-block-cover__inner-container\"><!-- wp:image {\"align\":\"center\",\"id\":108,\"width\":448,\"height\":324,\"sizeSlug\":\"full\",\"linkDestination\":\"none\",\"className\":\"banner-image\"} -->\n<div class=\"wp-block-image banner-image\"><figure class=\"aligncenter size-full is-resized\"><img src=\"http://localhost:8080/wp-content/uploads/2022/03/hands.png\" alt=\"\" class=\"wp-image-108\" width=\"448\" height=\"324\"/></figure></div>\n<!-- /wp:image --></div></div>\n<!-- /wp:cover -->\n\n<!-- wp:paragraph {\"align\":\"center\",\"style\":{\"typography\":{\"fontStyle\":\"normal\",\"fontWeight\":\"600\"}},\"textColor\":\"primary\",\"className\":\"md:text-4xl mt-8 mb-4\"} -->\n<p class=\"has-text-align-center md:text-4xl mt-8 mb-4 has-primary-color has-text-color\" style=\"font-style:normal;font-weight:600\">ברוכים הבאים ליריד התעסוקה השנתי של המרכז לקריירה!</p>\n<!-- /wp:paragraph --></div>\n<!-- /wp:column --></div>\n<!-- /wp:columns -->', 'באנר יריד - עב', '', 'inherit', 'closed', 'closed', '', '181-revision-v1', '', '', '2022-03-06 23:20:03', '2022-03-06 21:20:03', '', 181, 'http://localhost:8080/?p=250', 0, 'revision', '', 0),
 (251, 1, '2022-03-06 23:20:28', '2022-03-06 21:20:28', '<!-- wp:columns -->\n<div class=\"wp-block-columns\"><!-- wp:column -->\n<div class=\"wp-block-column\"><!-- wp:group {\"layout\":{\"type\":\"flex\",\"allowOrientation\":false}} -->\n<div class=\"wp-block-group\"><!-- wp:heading {\"textAlign\":\"center\",\"style\":{\"typography\":{\"fontStyle\":\"normal\",\"fontWeight\":\"600\"}},\"backgroundColor\":\"dark\",\"textColor\":\"mainbg\",\"className\":\"job-fair-banner-title\",\"fontSize\":\"xxxl\"} -->\n<h2 class=\"has-text-align-center job-fair-banner-title has-mainbg-color has-dark-background-color has-text-color has-background has-xxxl-font-size\" style=\"font-style:normal;font-weight:600\">Jobs Fair 2022</h2>\n<!-- /wp:heading --></div>\n<!-- /wp:group -->\n\n<!-- wp:cover {\"overlayColor\":\"bannerbg\",\"minHeight\":170,\"contentPosition\":\"bottom center\",\"className\":\"p-0\",\"style\":{\"color\":[]}} -->\n<div class=\"wp-block-cover has-custom-content-position is-position-bottom-center p-0\" style=\"min-height:170px\"><span aria-hidden=\"true\" class=\"has-bannerbg-background-color has-background-dim-100 wp-block-cover__gradient-background has-background-dim\"></span><div class=\"wp-block-cover__inner-container\"><!-- wp:image {\"align\":\"center\",\"id\":108,\"width\":448,\"height\":324,\"sizeSlug\":\"full\",\"linkDestination\":\"none\",\"className\":\"banner-image\"} -->\n<div class=\"wp-block-image banner-image\"><figure class=\"aligncenter size-full is-resized\"><img src=\"http://localhost:8080/wp-content/uploads/2022/03/hands.png\" alt=\"\" class=\"wp-image-108\" width=\"448\" height=\"324\"/></figure></div>\n<!-- /wp:image --></div></div>\n<!-- /wp:cover -->\n\n<!-- wp:heading {\"textAlign\":\"center\",\"style\":{\"typography\":{\"fontStyle\":\"normal\",\"fontWeight\":\"600\"}},\"textColor\":\"primary\",\"className\":\"md:text-4xl mt-8 mb-4\"} -->\n<h2 class=\"has-text-align-center md:text-4xl mt-8 mb-4 has-primary-color has-text-color\" style=\"font-style:normal;font-weight:600\">Welcome to the yearly Job Fair of the career center! </h2>\n<!-- /wp:heading --></div>\n<!-- /wp:column --></div>\n<!-- /wp:columns -->', 'Job Fair banner - en', '', 'inherit', 'closed', 'closed', '', '184-revision-v1', '', '', '2022-03-06 23:20:28', '2022-03-06 21:20:28', '', 184, 'http://localhost:8080/?p=251', 0, 'revision', '', 0),
 (252, 1, '2022-03-06 23:20:36', '2022-03-06 21:20:36', '<!-- wp:block {\"ref\":184} /-->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'יריד תעסוקה 2022 אנ', '', 'inherit', 'closed', 'closed', '', '155-autosave-v1', '', '', '2022-03-06 23:20:36', '2022-03-06 21:20:36', '', 155, 'http://localhost:8080/?p=252', 0, 'revision', '', 0),
-(253, 1, '2022-03-12 19:02:34', '2022-03-12 17:02:34', '<!-- wp:paragraph {\"align\":\"right\",\"textColor\":\"primary\"} -->\n<p class=\"has-text-align-right has-primary-color has-text-color\"><a href=\"http://localhost:8080/\" data-type=\"page\" data-id=\"2\">Back to home page</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_hunter_all_jobs]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'All Jobs', '', 'publish', 'closed', 'closed', '', 'search-results', '', '', '2022-03-12 19:21:20', '2022-03-12 17:21:20', '', 0, 'http://localhost:8080/?page_id=253', 0, 'page', '', 0),
+(253, 1, '2022-03-12 19:02:34', '2022-03-12 17:02:34', '<!-- wp:paragraph {\"align\":\"right\",\"textColor\":\"primary\"} -->\n<p class=\"has-text-align-right has-primary-color has-text-color\"><a href=\"http://localhost:8080/\" data-type=\"page\" data-id=\"2\">Back to home page</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_hunter_all_jobs]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'All Jobs', '', 'publish', 'closed', 'closed', '', 'search-results', '', '', '2022-03-14 16:19:20', '2022-03-14 14:19:20', '', 0, 'http://localhost:8080/?page_id=253', 0, 'page', '', 0),
 (254, 1, '2022-03-12 19:02:34', '2022-03-12 17:02:34', '<!-- wp:paragraph {\"align\":\"right\"} -->\n<p class=\"has-text-align-right\"><a href=\"http://localhost:8080/\" data-type=\"page\" data-id=\"2\">Back to home page</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_search_results]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'Search Results', '', 'inherit', 'closed', 'closed', '', '253-revision-v1', '', '', '2022-03-12 19:02:34', '2022-03-12 17:02:34', '', 253, 'http://localhost:8080/?p=254', 0, 'revision', '', 0),
 (255, 1, '2022-03-12 19:04:13', '2022-03-12 17:04:13', '<!-- wp:paragraph {\"align\":\"left\",\"textColor\":\"primary\"} -->\n<p class=\"has-text-align-left has-primary-color has-text-color\"><a href=\"http://localhost:8080/he/%d7%93%d7%a3-%d7%94%d7%91%d7%99%d7%aa/\" data-type=\"page\" data-id=\"11\">חזרה לעמוד הבית</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_hunter_all_jobs]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'כל המשרות', '', 'publish', 'closed', 'closed', '', '%d7%aa%d7%95%d7%a6%d7%90%d7%95%d7%aa-%d7%97%d7%99%d7%a4%d7%95%d7%a9', '', '', '2022-03-12 19:20:55', '2022-03-12 17:20:55', '', 0, 'http://localhost:8080/?page_id=255', 0, 'page', '', 0),
 (256, 1, '2022-03-12 19:04:13', '2022-03-12 17:04:13', '<!-- wp:paragraph -->\n<p><a href=\"http://localhost:8080/he/%d7%93%d7%a3-%d7%94%d7%91%d7%99%d7%aa/\" data-type=\"page\" data-id=\"11\">חזרה לעמוד הבית</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_search_results]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'תוצאות חיפוש', '', 'inherit', 'closed', 'closed', '', '255-revision-v1', '', '', '2022-03-12 19:04:13', '2022-03-12 17:04:13', '', 255, 'http://localhost:8080/?p=256', 0, 'revision', '', 0),
@@ -1072,7 +1076,18 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (258, 1, '2022-03-12 19:09:05', '2022-03-12 17:09:05', '<!-- wp:paragraph -->\n<p><a href=\"http://localhost:8080/he/%d7%93%d7%a3-%d7%94%d7%91%d7%99%d7%aa/\" data-type=\"page\" data-id=\"11\">חזרה לעמוד הבית</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_hunter_all_jobs]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'כל המשרות', '', 'inherit', 'closed', 'closed', '', '255-revision-v1', '', '', '2022-03-12 19:09:05', '2022-03-12 17:09:05', '', 255, 'http://localhost:8080/?p=258', 0, 'revision', '', 0),
 (259, 1, '2022-03-12 19:20:00', '2022-03-12 17:20:00', '<!-- wp:paragraph {\"align\":\"left\"} -->\n<p class=\"has-text-align-left\"><a href=\"http://localhost:8080/he/%d7%93%d7%a3-%d7%94%d7%91%d7%99%d7%aa/\" data-type=\"page\" data-id=\"11\">חזרה לעמוד הבית</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_hunter_all_jobs]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'כל המשרות', '', 'inherit', 'closed', 'closed', '', '255-revision-v1', '', '', '2022-03-12 19:20:00', '2022-03-12 17:20:00', '', 255, 'http://localhost:8080/?p=259', 0, 'revision', '', 0),
 (260, 1, '2022-03-12 19:20:55', '2022-03-12 17:20:55', '<!-- wp:paragraph {\"align\":\"left\",\"textColor\":\"primary\"} -->\n<p class=\"has-text-align-left has-primary-color has-text-color\"><a href=\"http://localhost:8080/he/%d7%93%d7%a3-%d7%94%d7%91%d7%99%d7%aa/\" data-type=\"page\" data-id=\"11\">חזרה לעמוד הבית</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_hunter_all_jobs]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'כל המשרות', '', 'inherit', 'closed', 'closed', '', '255-revision-v1', '', '', '2022-03-12 19:20:55', '2022-03-12 17:20:55', '', 255, 'http://localhost:8080/?p=260', 0, 'revision', '', 0),
-(261, 1, '2022-03-12 19:21:19', '2022-03-12 17:21:19', '<!-- wp:paragraph {\"align\":\"right\",\"textColor\":\"primary\"} -->\n<p class=\"has-text-align-right has-primary-color has-text-color\"><a href=\"http://localhost:8080/\" data-type=\"page\" data-id=\"2\">Back to home page</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_hunter_all_jobs]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'All Jobs', '', 'inherit', 'closed', 'closed', '', '253-revision-v1', '', '', '2022-03-12 19:21:19', '2022-03-12 17:21:19', '', 253, 'http://localhost:8080/?p=261', 0, 'revision', '', 0);
+(261, 1, '2022-03-12 19:21:19', '2022-03-12 17:21:19', '<!-- wp:paragraph {\"align\":\"right\",\"textColor\":\"primary\"} -->\n<p class=\"has-text-align-right has-primary-color has-text-color\"><a href=\"http://localhost:8080/\" data-type=\"page\" data-id=\"2\">Back to home page</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_hunter_all_jobs]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'All Jobs', '', 'inherit', 'closed', 'closed', '', '253-revision-v1', '', '', '2022-03-12 19:21:19', '2022-03-12 17:21:19', '', 253, 'http://localhost:8080/?p=261', 0, 'revision', '', 0),
+(262, 1, '2022-03-14 16:04:05', '2022-03-14 14:04:05', '<!-- wp:paragraph {\"align\":\"right\"} -->\n<p class=\"has-text-align-right\"><a href=\"http://localhost:8080/\" data-type=\"page\" data-id=\"2\">Back to home page</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_job_details]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'Job Details', '', 'publish', 'closed', 'closed', '', 'job-details', '', '', '2022-03-14 16:19:56', '2022-03-14 14:19:56', '', 0, 'http://localhost:8080/?page_id=262', 0, 'page', '', 0),
+(263, 1, '2022-03-14 16:04:05', '2022-03-14 14:04:05', '', 'Job Details', '', 'inherit', 'closed', 'closed', '', '262-revision-v1', '', '', '2022-03-14 16:04:05', '2022-03-14 14:04:05', '', 262, 'http://localhost:8080/?p=263', 0, 'revision', '', 0),
+(264, 1, '2022-03-14 16:04:25', '2022-03-14 14:04:25', '<!-- wp:paragraph {\"align\":\"left\"} -->\n<p class=\"has-text-align-left\"><a href=\"http://localhost:8080/\" data-type=\"page\" data-id=\"2\">חזרה לעמוד הבית</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_job_details]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'פרטי משרה', '', 'publish', 'closed', 'closed', '', '%d7%a4%d7%a8%d7%98%d7%99-%d7%9e%d7%a9%d7%a8%d7%94', '', '', '2022-03-14 16:18:07', '2022-03-14 14:18:07', '', 0, 'http://localhost:8080/?page_id=264', 0, 'page', '', 0),
+(265, 1, '2022-03-14 16:04:25', '2022-03-14 14:04:25', '', 'פרטי משרה', '', 'inherit', 'closed', 'closed', '', '264-revision-v1', '', '', '2022-03-14 16:04:25', '2022-03-14 14:04:25', '', 264, 'http://localhost:8080/?p=265', 0, 'revision', '', 0),
+(266, 1, '2022-03-14 16:12:30', '2022-03-14 14:12:30', '', 'Navigation', '', 'publish', 'closed', 'closed', '', 'navigation', '', '', '2022-03-14 16:12:30', '2022-03-14 14:12:30', '', 0, 'http://localhost:8080/navigation/', 0, 'wp_navigation', '', 0),
+(269, 1, '2022-03-14 16:16:26', '2022-03-14 14:16:26', '<!-- wp:paragraph -->\n<p><a href=\"http://localhost:8080/\" data-type=\"page\" data-id=\"2\">Back to home page</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_job_details]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'Job Details', '', 'inherit', 'closed', 'closed', '', '262-revision-v1', '', '', '2022-03-14 16:16:26', '2022-03-14 14:16:26', '', 262, 'http://localhost:8080/?p=269', 0, 'revision', '', 0),
+(270, 1, '2022-03-14 16:17:23', '2022-03-14 14:17:23', '<!-- wp:paragraph {\"align\":\"right\"} -->\n<p class=\"has-text-align-right\"><a href=\"http://localhost:8080/\" data-type=\"page\" data-id=\"2\">חזרה לעמוד הבית</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_job_details]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'פרטי משרה', '', 'inherit', 'closed', 'closed', '', '264-revision-v1', '', '', '2022-03-14 16:17:23', '2022-03-14 14:17:23', '', 264, 'http://localhost:8080/?p=270', 0, 'revision', '', 0),
+(272, 1, '2022-03-14 16:18:07', '2022-03-14 14:18:07', '<!-- wp:paragraph {\"align\":\"left\"} -->\n<p class=\"has-text-align-left\"><a href=\"http://localhost:8080/\" data-type=\"page\" data-id=\"2\">חזרה לעמוד הבית</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_job_details]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'פרטי משרה', '', 'inherit', 'closed', 'closed', '', '264-revision-v1', '', '', '2022-03-14 16:18:07', '2022-03-14 14:18:07', '', 264, 'http://localhost:8080/?p=272', 0, 'revision', '', 0),
+(273, 1, '2022-03-14 16:18:34', '2022-03-14 14:18:34', '<!-- wp:paragraph {\"textColor\":\"primary\"} -->\n<p class=\"has-primary-color has-text-color\"><a href=\"http://localhost:8080/\" data-type=\"page\" data-id=\"2\">Back to home page</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_hunter_all_jobs]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'All Jobs', '', 'inherit', 'closed', 'closed', '', '253-revision-v1', '', '', '2022-03-14 16:18:34', '2022-03-14 14:18:34', '', 253, 'http://localhost:8080/?p=273', 0, 'revision', '', 0),
+(274, 1, '2022-03-14 16:18:52', '2022-03-14 14:18:52', '<!-- wp:paragraph {\"align\":\"right\",\"textColor\":\"primary\"} -->\n<p class=\"has-text-align-right has-primary-color has-text-color\"><a href=\"http://localhost:8080/\" data-type=\"page\" data-id=\"2\">Back to home page</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_hunter_all_jobs]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'All Jobs', '', 'inherit', 'closed', 'closed', '', '253-revision-v1', '', '', '2022-03-14 16:18:52', '2022-03-14 14:18:52', '', 253, 'http://localhost:8080/?p=274', 0, 'revision', '', 0),
+(275, 1, '2022-03-14 16:19:56', '2022-03-14 14:19:56', '<!-- wp:paragraph {\"align\":\"right\"} -->\n<p class=\"has-text-align-right\"><a href=\"http://localhost:8080/\" data-type=\"page\" data-id=\"2\">Back to home page</a></p>\n<!-- /wp:paragraph -->\n\n<!-- wp:shortcode -->\n[nls_job_details]\n<!-- /wp:shortcode -->\n\n<!-- wp:paragraph -->\n<p></p>\n<!-- /wp:paragraph -->', 'Job Details', '', 'inherit', 'closed', 'closed', '', '262-revision-v1', '', '', '2022-03-14 16:19:56', '2022-03-14 14:19:56', '', 262, 'http://localhost:8080/?p=275', 0, 'revision', '', 0);
 
 -- --------------------------------------------------------
 
@@ -1083,8 +1098,8 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 CREATE TABLE `wp_termmeta` (
   `meta_id` bigint UNSIGNED NOT NULL,
   `term_id` bigint UNSIGNED NOT NULL DEFAULT '0',
-  `meta_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci
+  `meta_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `meta_value` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- --------------------------------------------------------
@@ -1095,8 +1110,8 @@ CREATE TABLE `wp_termmeta` (
 
 CREATE TABLE `wp_terms` (
   `term_id` bigint UNSIGNED NOT NULL,
-  `name` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `slug` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `slug` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `term_group` bigint NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
@@ -1130,7 +1145,8 @@ INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
 (25, 'Uncategorized', 'uncategorized-he', 0),
 (26, 'pll_621e7be490aab', 'pll_621e7be490aab', 0),
 (35, 'pll_622330eba599d', 'pll_622330eba599d', 0),
-(36, 'pll_622cd28e0b254', 'pll_622cd28e0b254', 0);
+(36, 'pll_622cd28e0b254', 'pll_622cd28e0b254', 0),
+(37, 'pll_622f4b6a3e52a', 'pll_622f4b6a3e52a', 0);
 
 -- --------------------------------------------------------
 
@@ -1255,7 +1271,11 @@ INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_orde
 (253, 2, 0),
 (253, 36, 0),
 (255, 4, 0),
-(255, 36, 0);
+(255, 36, 0),
+(262, 2, 0),
+(262, 37, 0),
+(264, 4, 0),
+(264, 37, 0);
 
 -- --------------------------------------------------------
 
@@ -1266,8 +1286,8 @@ INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_orde
 CREATE TABLE `wp_term_taxonomy` (
   `term_taxonomy_id` bigint UNSIGNED NOT NULL,
   `term_id` bigint UNSIGNED NOT NULL DEFAULT '0',
-  `taxonomy` varchar(32) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `description` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `taxonomy` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL,
   `parent` bigint UNSIGNED NOT NULL DEFAULT '0',
   `count` bigint NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
@@ -1278,9 +1298,9 @@ CREATE TABLE `wp_term_taxonomy` (
 
 INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `description`, `parent`, `count`) VALUES
 (1, 1, 'category', '', 0, 1),
-(2, 2, 'language', 'a:3:{s:6:\"locale\";s:5:\"en_US\";s:3:\"rtl\";i:0;s:9:\"flag_code\";s:2:\"us\";}', 0, 7),
+(2, 2, 'language', 'a:3:{s:6:\"locale\";s:5:\"en_US\";s:3:\"rtl\";i:0;s:9:\"flag_code\";s:2:\"us\";}', 0, 8),
 (3, 3, 'term_language', '', 0, 2),
-(4, 4, 'language', 'a:3:{s:6:\"locale\";s:5:\"he_IL\";s:3:\"rtl\";i:1;s:9:\"flag_code\";s:2:\"il\";}', 0, 4),
+(4, 4, 'language', 'a:3:{s:6:\"locale\";s:5:\"he_IL\";s:3:\"rtl\";i:1;s:9:\"flag_code\";s:2:\"il\";}', 0, 5),
 (5, 5, 'term_language', '', 0, 2),
 (6, 6, 'term_translations', 'a:1:{s:2:\"en\";i:1;}', 0, 1),
 (7, 7, 'wp_theme', '', 0, 3),
@@ -1302,7 +1322,8 @@ INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `desc
 (25, 25, 'category', '', 0, 1),
 (26, 26, 'term_translations', 'a:1:{s:2:\"he\";i:25;}', 0, 1),
 (35, 35, 'post_translations', 'a:2:{s:2:\"he\";i:164;s:2:\"en\";i:155;}', 0, 2),
-(36, 36, 'post_translations', 'a:2:{s:2:\"he\";i:255;s:2:\"en\";i:253;}', 0, 2);
+(36, 36, 'post_translations', 'a:2:{s:2:\"he\";i:255;s:2:\"en\";i:253;}', 0, 2),
+(37, 37, 'post_translations', 'a:2:{s:2:\"he\";i:264;s:2:\"en\";i:262;}', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -1313,8 +1334,8 @@ INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `desc
 CREATE TABLE `wp_usermeta` (
   `umeta_id` bigint UNSIGNED NOT NULL,
   `user_id` bigint UNSIGNED NOT NULL DEFAULT '0',
-  `meta_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `meta_value` longtext COLLATE utf8mb4_unicode_520_ci
+  `meta_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `meta_value` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
@@ -1338,7 +1359,7 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 (14, 1, 'dismissed_wp_pointers', ''),
 (15, 1, 'show_welcome_panel', '0'),
 (17, 1, 'wp_dashboard_quick_press_last_post_id', '4'),
-(18, 1, 'community-events-location', 'a:1:{s:2:\"ip\";s:10:\"172.22.0.0\";}'),
+(18, 1, 'community-events-location', 'a:1:{s:2:\"ip\";s:10:\"172.26.0.0\";}'),
 (19, 1, 'wp_user-settings', 'libraryContent=browse'),
 (20, 1, 'wp_user-settings-time', '1646079461'),
 (21, 1, 'managenav-menuscolumnshidden', 'a:4:{i:0;s:11:\"link-target\";i:1;s:15:\"title-attribute\";i:2;s:3:\"xfn\";i:3;s:11:\"description\";}'),
@@ -1367,7 +1388,7 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 (45, 2, 'wp_user-settings-time', '1646473110'),
 (48, 2, 'description_he', ''),
 (54, 2, 'pll_filter_content', ''),
-(57, 1, 'session_tokens', 'a:1:{s:64:\"5cc4925df061a5efc30229ab866c4e87f89e657cd34f7c83c2d1fbcccba94623\";a:4:{s:10:\"expiration\";i:1647252524;s:2:\"ip\";s:10:\"172.22.0.1\";s:2:\"ua\";s:120:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36\";s:5:\"login\";i:1647079724;}}');
+(57, 1, 'session_tokens', 'a:1:{s:64:\"94bdd9dfc7442ce892adb5ee4fae24cf16b920f756422286ba9f9d1c7e02d943\";a:4:{s:10:\"expiration\";i:1647439324;s:2:\"ip\";s:10:\"172.26.0.1\";s:2:\"ua\";s:114:\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36\";s:5:\"login\";i:1647266524;}}');
 
 -- --------------------------------------------------------
 
@@ -1377,15 +1398,15 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 
 CREATE TABLE `wp_users` (
   `ID` bigint UNSIGNED NOT NULL,
-  `user_login` varchar(60) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `user_pass` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `user_nicename` varchar(50) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `user_email` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
-  `user_url` varchar(100) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `user_login` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `user_pass` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `user_nicename` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `user_email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `user_url` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `user_registered` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `user_activation_key` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
+  `user_activation_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `user_status` int NOT NULL DEFAULT '0',
-  `display_name` varchar(250) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT ''
+  `display_name` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
@@ -1532,13 +1553,13 @@ ALTER TABLE `wp_options`
 -- AUTO_INCREMENT for table `wp_postmeta`
 --
 ALTER TABLE `wp_postmeta`
-  MODIFY `meta_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=504;
+  MODIFY `meta_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=508;
 
 --
 -- AUTO_INCREMENT for table `wp_posts`
 --
 ALTER TABLE `wp_posts`
-  MODIFY `ID` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=262;
+  MODIFY `ID` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=276;
 
 --
 -- AUTO_INCREMENT for table `wp_termmeta`
@@ -1550,13 +1571,13 @@ ALTER TABLE `wp_termmeta`
 -- AUTO_INCREMENT for table `wp_terms`
 --
 ALTER TABLE `wp_terms`
-  MODIFY `term_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `term_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `wp_term_taxonomy`
 --
 ALTER TABLE `wp_term_taxonomy`
-  MODIFY `term_taxonomy_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `term_taxonomy_id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `wp_usermeta`

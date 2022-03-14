@@ -375,8 +375,10 @@ class NlsHunter_model
 
             $filter->addSuplierIdFilter($this->nlsGetSupplierId());
 
-            $filterField = new FilterField('JobScope', SearchPhrase::ALL, $searchParams['ProfessionalFields'], NlsFilter::NUMERIC_VALUES);
-            $filter->addWhereFilter($filterField, Condition::AND);
+            if (key_exists('ProfessionalFields', $searchParams)) {
+                $filterField = new FilterField('JobProfessionalFieldsInfo', SearchPhrase::ALL, $searchParams['ProfessionalFields'], NlsFilter::NUMERIC_VALUES);
+                $filter->addWhereFilter($filterField, Condition::AND);
+            }
 
             try {
                 $jobs = $this->nlsSearch->JobHunterExecuteNewQuery2(
