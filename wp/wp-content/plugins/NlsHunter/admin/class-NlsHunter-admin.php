@@ -45,6 +45,8 @@ class NlsHunter_Admin
     const NLS_HUNTER_EMPLOYER_DETAILS_HE = 'nlsHunterEmployerDetails_he';
     const NLS_HUNTER_EMPLOYERS_EN = 'nlsHunterEmployers_en';
     const NLS_HUNTER_EMPLOYERS_HE = 'nlsHunterEmployers_he';
+    const NLS_HUNTER_JOB_DETAILS_EN = 'nlsJobDetails_en';
+    const NLS_HUNTER_JOB_DETAILS_HE = 'nlsJobDetails_he';
 
     private $defaultValue;
     /**
@@ -181,6 +183,8 @@ class NlsHunter_Admin
         $nlsHunterEmployerDetailsHe = $this->getFieldValue(self::NLS_HUNTER_EMPLOYER_DETAILS_HE);
         $nlsHunterEmployersEn = $this->getFieldValue(self::NLS_HUNTER_EMPLOYERS_EN);
         $nlsHunterEmployersHe = $this->getFieldValue(self::NLS_HUNTER_EMPLOYERS_HE);
+        $nlsHunterJobDetailsEn = $this->getFieldValue(self::NLS_HUNTER_JOB_DETAILS_EN);
+        $nlsHunterJobDetailsHe = $this->getFieldValue(self::NLS_HUNTER_JOB_DETAILS_HE);
 
         require_once plugin_dir_path(__FILE__) . 'partials/NlsHunter-admin-display.php';
     }

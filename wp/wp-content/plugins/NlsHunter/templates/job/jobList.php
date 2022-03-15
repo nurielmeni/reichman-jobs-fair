@@ -5,13 +5,13 @@
         'labelClass' => 'md:text-3xl text-primary font-bold my-6',
         'name' => 'jobs-by-area',
         'placeHolder' => __('Select Area', 'NlsHunter'),
-        'options' => $model->jobAreas(),
+        'options' => $model->regions(),
         'clearAllButton' => true, // For single select
         'clearAllButtonClass' => 'hidden bg-primary text-white py-1 px-2 mx-1 border border-primary rounded-xl', // For single select
     ]) ?>
     <h2 class="md:text-3xl text-primary my-6 px-3 md:px-0"><?= sprintf(__('%s Open Positions', 'NlsHunter'), $total) ?></h2>
     <section class="all-jobs flex flex-col gap-8 px-3 md:px-0">
-        <?= render('jobsPage', [
+        <?= render('job/jobsPage', [
             'jobs' => $jobs,
             'model' => $model
         ]) ?>

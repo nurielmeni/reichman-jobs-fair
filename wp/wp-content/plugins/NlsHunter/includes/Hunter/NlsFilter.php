@@ -10,6 +10,7 @@ abstract class Condition
 abstract class SearchPhrase
 {
   const ALL = 'All';
+  const EXACT = 'Exact';
 }
 
 class FilterField

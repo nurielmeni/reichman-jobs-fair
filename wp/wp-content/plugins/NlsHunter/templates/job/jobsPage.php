@@ -1,5 +1,5 @@
     <?php foreach ($jobs as $job) : ?>
-        <?= render('jobCard', [
+        <?= render('job/jobCard', [
             'job' => $job,
             'model' => $model
         ]) ?>

@@ -255,7 +255,7 @@ class NlsHunter_Public
             die();
         }
 
-        $html = render('employersPage', ['employers' => $employers]);
+        $html = render('employer/employersPage', ['employers' => $employers]);
         wp_send_json(['page' => $page + 1, 'html' => $html]);
         die();
     }
@@ -265,7 +265,7 @@ class NlsHunter_Public
         // response: {page: int, html: html}
         $page = intval($_POST['page']);
         $area = intval($_POST['area']);
-        $searchParams = $area > 0 ? ['ProfessionalFields' => [$area]] : [];
+        $searchParams = $area > 0 ? ['Regions' => [$area]] : [];
         $res = $this->model->getJobHunterExecuteNewQuery2($searchParams, null, $page + 1);
         $jobs = property_exists($res, 'Results') && property_exists($res->Results, 'JobInfo') && is_array($res->Results->JobInfo) ? $res->Results->JobInfo : [];
 
@@ -275,7 +275,7 @@ class NlsHunter_Public
             die();
         }
 
-        $html = render('jobsPage', [
+        $html = render('job/jobsPage', [
             'jobs' => $jobs,
             'model' => $this->model
         ]);

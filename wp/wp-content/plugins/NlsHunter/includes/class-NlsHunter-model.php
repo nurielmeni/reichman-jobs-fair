@@ -274,6 +274,21 @@ class NlsHunter_model
         return is_array($professionalFields) ? $professionalFields : [];
     }
 
+    public function regions()
+    {
+        $this->initDirectoryService();
+
+        $cacheKey = 'REGIONS';
+        $regions = wp_cache_get($cacheKey);
+
+        if (false === $regions) {
+            $regions = $this->nlsDirectory->getRegions();
+            wp_cache_set($cacheKey, $regions, 'directory', self::CACHE_EXPIRATION);
+        }
+
+        return is_array($regions) ? $regions : [];
+    }
+
     /**
      * Uses the card service to get jobs (depricted)
      * The search is noe done by Search service (getJobHunterExecuteNewQuery2)
@@ -375,8 +390,8 @@ class NlsHunter_model
 
             $filter->addSuplierIdFilter($this->nlsGetSupplierId());
 
-            if (key_exists('ProfessionalFields', $searchParams)) {
-                $filterField = new FilterField('JobProfessionalFieldsInfo', SearchPhrase::ALL, $searchParams['ProfessionalFields'], NlsFilter::NUMERIC_VALUES);
+            if (key_exists('Regions', $searchParams)) {
+                $filterField = new FilterField(50, SearchPhrase::ALL, $searchParams['Regions'], NlsFilter::NUMERIC_VALUES);
                 $filter->addWhereFilter($filterField, Condition::AND);
             }
 

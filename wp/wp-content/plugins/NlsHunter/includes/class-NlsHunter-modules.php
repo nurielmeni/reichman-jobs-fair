@@ -45,6 +45,19 @@ class NlsHunter_modules
         return $hunterEmployerDetailsPageUrl;
     }
 
+    private function getHunterJobDetailsPageUrl()
+    {
+        $language = get_bloginfo('language');
+        $hunterJobDetailsPageId = $language === 'he-IL' ?
+            get_option(NlsHunter_Admin::NLS_HUNTER_JOB_DETAILS_HE) :
+            get_option(NlsHunter_Admin::NLS_HUNTER_JOB_DETAILS_EN);
+        $hunterJobDetailsPageUrl = get_page_link($hunterJobDetailsPageId);
+        return $hunterJobDetailsPageUrl;
+    }
+
+    /**
+     * Shortcodes Renderers functions
+     */
     public function nlsHunterEmployers_render()
     {
         ob_start();
@@ -67,7 +80,7 @@ class NlsHunter_modules
 
             $employers = $this->model->getEmployers(0);
 
-            echo render('employersGrid', [
+            echo render('employer/employersGrid', [
                 'employers' => $employers,
                 'defaultLogo' => $this->model->getDefaultLogo()
             ]);
@@ -103,6 +116,15 @@ class NlsHunter_modules
         return ob_get_clean();
     }
 
+    public function nlsHunterJobDetails_render()
+    {
+        ob_start();
+
+        echo '<strong>Job Details</strong>';
+
+        return ob_get_clean();
+    }
+
     public function nlsHunterAllJobs_render()
     {
         $res = $this->model->getJobHunterExecuteNewQuery2();
@@ -111,7 +133,7 @@ class NlsHunter_modules
 
         ob_start();
 
-        echo render('jobList', [
+        echo render('job/jobList', [
             'jobs' => $jobs,
             'total' => $totalHits,
             'model' => $this->model

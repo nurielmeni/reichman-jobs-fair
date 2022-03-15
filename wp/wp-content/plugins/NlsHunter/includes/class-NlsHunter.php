@@ -274,6 +274,7 @@ class NlsHunter
 		// Add Shortcode
 		add_shortcode('nls_hunter_employers', [$this->modules, 'nlsHunterEmployers_render']);
 		add_shortcode('nls_hunter_employer_details', [$this->modules, 'nlsHunterEmployerDetails_render']);
+		add_shortcode('nls_hunter_job_details', [$this->modules, 'nlsHunterJobDetails_render']);
 		add_shortcode('nls_hunter_all_jobs', [$this->modules, 'nlsHunterAllJobs_render']);
 	}
 

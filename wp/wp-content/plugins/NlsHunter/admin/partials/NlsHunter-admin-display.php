@@ -112,17 +112,26 @@
             <small>* The page must have the slug <i>[nls_hunter_employers]</i></small>
             <br>
             <hr>
+
             <?= $this->adminSelectPage(NlsHunter_Admin::NLS_HUNTER_EMPLOYER_DETAILS_EN, $nlsHunterEmployerDetailsEn, 'Hunter Employer details Page EN') ?>
             <small>* The page must have the slug <i>[nls_hunter_employer_details]</i></small>
             <br>
             <?= $this->adminSelectPage(NlsHunter_Admin::NLS_HUNTER_EMPLOYER_DETAILS_HE, $nlsHunterEmployerDetailsHe, 'Hunter Employer details Page HE') ?>
             <small>* The page must have the slug <i>[nls_hunter_employer_details]</i></small>
             <hr>
+
             <?= $this->adminSelectPage(NlsHunter_Admin::NLS_HUNTER_ALL_JOBS_EN, $nlsHunterAllJobsEn, 'Hunter All Jobs Page EN') ?>
             <small>* The page must have the slug <i>[nls_hunter_all_jobs]</i></small>
             <br>
             <?= $this->adminSelectPage(NlsHunter_Admin::NLS_HUNTER_ALL_JOBS_HE, $nlsHunterAllJobsHe, 'Hunter All Jobs Page HE') ?>
             <small>* The page must have the slug <i>[nls_hunter_all_jobs]</i></small>
+            <hr>
+
+            <?= $this->adminSelectPage(NlsHunter_Admin::NLS_HUNTER_JOB_DETAILS_EN, $nlsHunterJobDetailsEn, 'Hunter Job Details Page EN') ?>
+            <small>* The page must have the slug <i>[nls_hunter_job_details]</i></small>
+            <br>
+            <?= $this->adminSelectPage(NlsHunter_Admin::NLS_HUNTER_JOB_DETAILS_HE, $nlsHunterJobDetailsHe, 'Hunter Job Details Page HE') ?>
+            <small>* The page must have the slug <i>[nls_hunter_job_details]</i></small>
         </section>
 
         <input type="submit" value="Save" class="button button-primary button-large">

@@ -371,6 +371,29 @@ class NlsDirectory extends NlsService
         }
     }
 
+    public function getRegions()
+    {
+        $transactionCode = NlsHelper::newGuid();
+        try {
+
+            $params = array(
+                "transactionCode" => $transactionCode,
+                "languageId" => $this->langCode,
+                "listName" => 'Regions'
+            );
+
+
+            $res = $this->client->GetListByListName($params)->GetListByListNameResult->HunterListItem;
+            $list = [];
+            foreach ($res as $region) {
+                $list[] = ['id' => $region->Value, 'name' => $region->Text];
+            }
+            return $list;
+        } catch (Exception $ex) {
+            throw new Exception('Error: Niloos services are not availiable, try later.');
+        }
+    }
+
     public function getUserIdByCardId($cardId)
     {
         $transactionCode = NlsHelper::newGuid();
