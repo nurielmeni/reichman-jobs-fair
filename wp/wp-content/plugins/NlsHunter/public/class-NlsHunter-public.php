@@ -265,8 +265,8 @@ class NlsHunter_Public
         // response: {page: int, html: html}
         $page = intval($_POST['page']);
         $area = intval($_POST['area']);
-        $searchParams = $area > 0 ? ['Regions' => [$area]] : [];
-        $res = $this->model->getJobHunterExecuteNewQuery2($searchParams, null, $page + 1);
+        $searchParams = $area > 0 ? ['Region' => $area] : [];
+        $res = $this->model->getJobHunterExecuteNewQuery2($searchParams, null, $page);
         $jobs = property_exists($res, 'Results') && property_exists($res->Results, 'JobInfo') && is_array($res->Results->JobInfo) ? $res->Results->JobInfo : [];
 
         if (count($jobs) === 0) {

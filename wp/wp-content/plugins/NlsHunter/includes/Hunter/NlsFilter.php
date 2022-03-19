@@ -20,7 +20,7 @@ class FilterField
   public $Value;
   public $Field;
   public $FieldFilterType;
-  public $NestedFields;
+  //public $NestedFields;
 
   public function __construct($field, $searchPhrase, $value, $fieldType = "")
   {

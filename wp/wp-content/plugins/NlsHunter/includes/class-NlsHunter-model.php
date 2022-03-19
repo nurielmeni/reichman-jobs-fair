@@ -375,9 +375,9 @@ class NlsHunter_model
     {
         $resultRowLimit = $resultRowLimit ? $resultRowLimit : $this->nlsGetCountPerPage();
         $resultRowOffset = is_int($page) ? $page * $resultRowLimit : 0;
-        $areas = key_exists('ProfessionalFields', $searchParams) ? implode('_', $searchParams['ProfessionalFields']) : '';
+        $region = key_exists('Region', $searchParams) ? $searchParams['Region'] : 0;
 
-        $cache_key = 'nls_hunter_jobs_' . $areas . '_' . $resultRowOffset . '_' . $resultRowLimit;
+        $cache_key = 'nls_hunter_jobs_' . $region . '_' . $resultRowOffset . '_' . $resultRowLimit;
         if ($flash) wp_cache_delete($cache_key);
 
         $jobs = wp_cache_get($cache_key);
@@ -390,8 +390,8 @@ class NlsHunter_model
 
             $filter->addSuplierIdFilter($this->nlsGetSupplierId());
 
-            if (key_exists('Regions', $searchParams)) {
-                $filterField = new FilterField(50, SearchPhrase::ALL, $searchParams['Regions'], NlsFilter::NUMERIC_VALUES);
+            if (key_exists('Region', $searchParams)) {
+                $filterField = new FilterField('RegionId', SearchPhrase::EXACT, $searchParams['Region'], NlsFilter::NUMERIC_VALUES);
                 $filter->addWhereFilter($filterField, Condition::AND);
             }
 
