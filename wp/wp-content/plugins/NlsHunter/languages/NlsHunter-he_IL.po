@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: NlsHunter\n"
-"POT-Creation-Date: 2022-03-13 01:08+0200\n"
-"PO-Revision-Date: 2022-03-13 01:09+0200\n"
+"POT-Creation-Date: 2022-03-19 23:27+0200\n"
+"PO-Revision-Date: 2022-03-19 23:28+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: he_IL\n"
@@ -17,12 +17,12 @@ msgstr ""
 "X-Poedit-WPHeader: NlsHunter.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: admin/class-NlsHunter-admin.php:155
+#: admin/class-NlsHunter-admin.php:157
 msgid "You do not have sufficient permissions to access this page."
 msgstr "אין לך הרשאות מספיקות כדי לגשת לעמוד זה."
 
@@ -64,212 +64,150 @@ msgstr "אין אפשרות להתחבר לשירותי Search"
 msgid "Error: Search Services: "
 msgstr "שגיאה: שירותי חיפוש"
 
-#: public/class-NlsHunter-public.php:162
+#: public/class-NlsHunter-public.php:161
 msgid "Supplier Id"
 msgstr "מזהה ספק"
 
-#: public/class-NlsHunter-public.php:164 public/class-NlsHunter-public.php:169
-#: public/css/templates-to-delete/applyForJobs.php:17
+#: public/class-NlsHunter-public.php:163 public/class-NlsHunter-public.php:168
 #: templates/applyForJobs.php:17
 msgid "Full Name"
 msgstr "שם החבר:"
 
-#: public/class-NlsHunter-public.php:165
-#: public/css/templates-to-delete/applyForJobs.php:24
-#: templates/applyForJobs.php:24
+#: public/class-NlsHunter-public.php:164 templates/applyForJobs.php:24
 msgid "Cell"
 msgstr "טלפון:"
 
-#: public/class-NlsHunter-public.php:166
-#: public/css/templates-to-delete/applyForJobs.php:31
-#: templates/applyForJobs.php:31
+#: public/class-NlsHunter-public.php:165 templates/applyForJobs.php:31
 msgid "Area"
 msgstr "מתגורר ב…"
 
-#: public/class-NlsHunter-public.php:167
+#: public/class-NlsHunter-public.php:166
 msgid "Job Code"
 msgstr "קוד משרה"
 
-#: public/class-NlsHunter-public.php:170
-#: public/css/templates-to-delete/applyForJobs.php:78
-#: templates/applyForJobs.php:78
+#: public/class-NlsHunter-public.php:169 templates/applyForJobs.php:78
 msgid "Employee ID"
 msgstr "מזהה מעסיק"
 
-#: public/class-NlsHunter-public.php:171
-#: public/css/templates-to-delete/applyForJobs.php:85
-#: templates/applyForJobs.php:85
+#: public/class-NlsHunter-public.php:170 templates/applyForJobs.php:85
 msgid "Company email"
 msgstr "אימייל פרטי:"
 
-#: public/class-NlsHunter-public.php:372
+#: public/class-NlsHunter-public.php:374
 msgid "Applicant form data: "
 msgstr "פרטי החבר/ה שלי:"
 
-#: public/class-NlsHunter-public.php:404
+#: public/class-NlsHunter-public.php:406
 msgid "CV Applied from Reichman Jobs Site"
 msgstr "קורות חיים נשלחו מאתר משרות רייכמן"
 
-#: public/css/templates-to-delete/applyForJobs.php:10
 #: templates/applyForJobs.php:10
 msgid "My friend details:"
 msgstr "פרטי החבר/ה שלי:"
 
-#: public/css/templates-to-delete/applyForJobs.php:38
 #: templates/applyForJobs.php:38
 msgid "What job?"
 msgstr "התפקיד שתפור עליו:"
 
-#: public/css/templates-to-delete/applyForJobs.php:51
 #: templates/applyForJobs.php:51
 msgid "Append CV File"
 msgstr "צירוף קורות חיים (רק למשרות מטה)"
 
-#: public/css/templates-to-delete/applyForJobs.php:66
 #: templates/applyForJobs.php:66
 msgid "My details:"
 msgstr "הפרטים שלי:"
 
-#: public/css/templates-to-delete/applyForJobs.php:71
 #: templates/applyForJobs.php:71
 msgid "My Name"
 msgstr "שמי:"
 
-#: public/css/templates-to-delete/applyForJobs.php:97
 #: templates/applyForJobs.php:97
 msgid "* By the terms"
 msgstr "* כפוף לתקנון"
 
-#: public/css/templates-to-delete/employersGrid.php:1
-#: templates/employersGrid.php:1
+#: templates/employer/employersGrid.php:1
 msgid "Employers List"
 msgstr "רשימת מעסיקים"
 
-#: public/css/templates-to-delete/jobFairBanner.php:7
+#: templates/job/jobCardFooter.php:4
+msgid "More Details"
+msgstr "לפרטים נוספים"
+
+#: templates/job/jobList.php:4
+msgid "Open positions by area"
+msgstr "משרות פתוחות לפי תחום לימוד"
+
+#: templates/job/jobList.php:7
+msgid "Select Area"
+msgstr "בחר תחום לימוד"
+
+#: templates/job/jobList.php:12
+msgid "Open Positions"
+msgstr "משרות פתוחות"
+
 #: templates/jobFairBanner.php:7
 msgid "All Fair Jobs"
 msgstr "לכל משרות היריד"
 
-#: public/css/templates-to-delete/jobFairBanner.php:10
 #: templates/jobFairBanner.php:10
 msgid "Search By Employer"
 msgstr "חיפוש לפי מעסיק"
 
-#: public/css/templates-to-delete/jobFairBanner.php:15
-#: public/css/templates-to-delete/nlsJobSearch.php:34
-#: public/css/templates-to-delete/nlsJobSearch.php:43
-#: templates/jobFairBanner.php:15 templates/nlsJobSearch.php:34
-#: templates/nlsJobSearch.php:43
+#: templates/jobFairBanner.php:15
 msgid "Search"
 msgstr "חיפוש"
 
-#: public/css/templates-to-delete/mailApply.php:82 templates/mailApply.php:82
+#: templates/mail/mailApply.php:82
 msgid "Applied CV from Jobs Site"
 msgstr "קורות חיים נשלחו מאתר משרות"
 
-#: public/css/templates-to-delete/mailError.php:4 templates/mailError.php:4
+#: templates/mail/mailError.php:4
 msgid "Some error occured"
 msgstr "התרחשה שגיאה"
 
-#: public/css/templates-to-delete/mailError.php:5 templates/mailError.php:5
+#: templates/mail/mailError.php:5
 msgid "No CV was not submited"
 msgstr "לא נשלחו קורות חיים"
 
-#: public/css/templates-to-delete/mailError.php:7
-#: public/css/templates-to-delete/mailSuccess.php:7 templates/mailError.php:7
-#: templates/mailSuccess.php:7
+#: templates/mail/mailError.php:7 templates/mail/mailSuccess.php:7
 msgid "Back"
 msgstr "חזור"
 
-#: public/css/templates-to-delete/mailSuccess.php:4 templates/mailSuccess.php:4
+#: templates/mail/mailSuccess.php:4
 msgid "Thenk you!"
 msgstr "תודה!"
 
-#: public/css/templates-to-delete/mailSuccess.php:5 templates/mailSuccess.php:5
+#: templates/mail/mailSuccess.php:5
 msgid "The details recieved successfully"
 msgstr "הפרטים נקלטו בהצלחה"
 
-#: public/css/templates-to-delete/nlsInputField.php:19
-#: public/css/templates-to-delete/nlsSelectField.php:18
-#: templates/nlsInputField.php:19 templates/nlsSelectField.php:19
+#: templates/nlsInputField.php:19 templates/nlsSelectField.php:21
 msgid "Not required"
 msgstr "לא חובה"
 
-#: public/css/templates-to-delete/nlsJobApplyForm.php:9
 #: templates/nlsJobApplyForm.php:9
 msgid "Select CV file"
 msgstr "בחירת קובץ קו״ח"
 
-#: public/css/templates-to-delete/nlsJobApplyForm.php:15
-#: public/css/templates-to-delete/nlsJobApplyForm.php:29
 #: templates/nlsJobApplyForm.php:15 templates/nlsJobApplyForm.php:29
 msgid "Or"
 msgstr "או"
 
-#: public/css/templates-to-delete/nlsJobApplyForm.php:16
-#: public/css/templates-to-delete/nlsJobApplyForm.php:30
 #: templates/nlsJobApplyForm.php:16 templates/nlsJobApplyForm.php:30
 msgid "Add New"
 msgstr "העלה קובץ חדש"
 
-#: public/css/templates-to-delete/nlsJobApplyForm.php:22
 #: templates/nlsJobApplyForm.php:22
 msgid "Select other files"
 msgstr "בחירת קבצים אחרים"
 
-#: public/css/templates-to-delete/nlsJobApplyForm.php:23
 #: templates/nlsJobApplyForm.php:23
 msgid "(Not Required)"
 msgstr "(לא חובה)"
 
-#: public/css/templates-to-delete/nlsJobApplyForm.php:36
 #: templates/nlsJobApplyForm.php:36
 msgid "Apply CV"
 msgstr "הגש קורות חיים"
-
-#: public/css/templates-to-delete/nlsJobCard.php:27 templates/nlsJobCard.php:27
-msgid "Additional Details"
-msgstr "לפרטים נוספים"
-
-#: public/css/templates-to-delete/nlsJobCard.php:37 templates/nlsJobCard.php:37
-msgid "Submit in employer site"
-msgstr "הגש קו״ח באתר המעסיק"
-
-#: public/css/templates-to-delete/nlsJobCard.php:41 templates/nlsJobCard.php:41
-msgid "Upload CV and submit"
-msgstr "העלה קו”ח ושלח מועמדות"
-
-#: public/css/templates-to-delete/nlsJobSearch.php:45
-#: templates/nlsJobSearch.php:45
-msgid "You can define each search as an agent in the personal area"
-msgstr "ניתן להגדיר כל חיפוש כסוכן חכם דרך האיזור האישי"
-
-#: public/css/templates-to-delete/nlsSearcResults.php:11
-#: templates/nlsSearchResults.php:11
-msgid "Jobs"
-msgstr "משרות"
-
-#: public/css/templates-to-delete/nlsSearcResults.php:24
-#: templates/nlsSearchResults.php:24
-msgid "More Results"
-msgstr "תוצאות נוספות"
-
-#: templates/jobCardFooter.php:4
-msgid "More Details"
-msgstr "לפרטים נוספים"
-
-#: templates/jobList.php:2
-msgid "Open positions by area"
-msgstr "משרות פתוחות לפי תחום לימוד"
-
-#: templates/jobList.php:5
-msgid "Select Area"
-msgstr "בחר תחום לימוד"
-
-#: templates/jobList.php:8
-#, php-format
-msgid "%s Open Positions"
-msgstr "‫%s משרות פתוחות"
 
 #. Plugin Name of the plugin/theme
 #, fuzzy
@@ -284,6 +222,24 @@ msgstr ".‫API fot Niloosoft HunterHRMS System"
 #. Author of the plugin/theme
 msgid "Meni Nurie"
 msgstr "מני נוריאל"
+
+#~ msgid "Additional Details"
+#~ msgstr "לפרטים נוספים"
+
+#~ msgid "Submit in employer site"
+#~ msgstr "הגש קו״ח באתר המעסיק"
+
+#~ msgid "Upload CV and submit"
+#~ msgstr "העלה קו”ח ושלח מועמדות"
+
+#~ msgid "You can define each search as an agent in the personal area"
+#~ msgstr "ניתן להגדיר כל חיפוש כסוכן חכם דרך האיזור האישי"
+
+#~ msgid "Jobs"
+#~ msgstr "משרות"
+
+#~ msgid "More Results"
+#~ msgstr "תוצאות נוספות"
 
 #~ msgid "Job Area"
 #~ msgstr "תחום לימוד"

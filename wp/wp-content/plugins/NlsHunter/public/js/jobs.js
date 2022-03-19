@@ -9,6 +9,7 @@ var Jobs =
         var allJobsSection = '.jobs-wrapper section.all-jobs';
         var areaSelect = '.jobs-wrapper select[name="jobs-by-area"]';
         var buttonClear = '.jobs-wrapper button.clear';
+        var totalHits = '.jobs-wrapper span.total-hits'
 
         function initSumoSelect(selectBoxItem) {
             var name = $(selectBoxItem).attr('name') || '';
@@ -59,6 +60,9 @@ var Jobs =
                 success: function (response) {
                     var page = Number(response.page);
                     hideSpinner();
+
+                    $(totalHits).text(response.totalHits);
+
                     if (isNaN(page) || page < 0) return;
 
                     $(allJobsSection).append(response.html);

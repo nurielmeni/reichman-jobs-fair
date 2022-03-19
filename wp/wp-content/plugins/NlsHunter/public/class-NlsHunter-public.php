@@ -268,10 +268,11 @@ class NlsHunter_Public
         $searchParams = $area > 0 ? ['Region' => $area] : [];
         $res = $this->model->getJobHunterExecuteNewQuery2($searchParams, null, $page);
         $jobs = property_exists($res, 'Results') && property_exists($res->Results, 'JobInfo') && is_array($res->Results->JobInfo) ? $res->Results->JobInfo : [];
+        $totalHits = property_exists($res, 'TotalHits') ? $res->TotalHits : 0;
 
         if (count($jobs) === 0) {
             // Last result
-            wp_send_json(['page' => -1, 'html' => '']);
+            wp_send_json(['page' => -1, 'totalHits' => $totalHits, 'html' => '']);
             die();
         }
 
@@ -279,7 +280,7 @@ class NlsHunter_Public
             'jobs' => $jobs,
             'model' => $this->model
         ]);
-        wp_send_json(['page' => $page + 1, 'html' => $html]);
+        wp_send_json(['page' => $page + 1, 'totalHits' => $totalHits, 'html' => $html]);
         die();
     }
 
