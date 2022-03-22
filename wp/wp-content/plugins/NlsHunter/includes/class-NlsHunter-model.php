@@ -427,7 +427,14 @@ class NlsHunter_model
             // Set the Employer Data needed
             $properties['generalDescription'] = $employer->GeneralDescription;
             $properties['webSite'] = strlen($employer->WebSite) > 0 && strpos($employer->WebSite, 'http') !== 0 ? "http://$employer->WebSite" : $employer->WebSite;
+
             $properties['videoUrl'] = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+
+            $properties['images'] = [
+                ['src' => plugins_url('NlsHunter/public/images') . '/apply.png', 'alt' => 'apply'],
+                ['src' => plugins_url('NlsHunter/public/images') . '/apply.png', 'alt' => 'apply'],
+                ['src' => plugins_url('NlsHunter/public/images') . '/apply.png', 'alt' => 'apply'],
+            ];
         }
 
         if ($employerData) {
