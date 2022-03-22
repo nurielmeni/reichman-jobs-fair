@@ -1,10 +1,14 @@
-var Hotjobs =
-  Hotjobs ||
+var Slider =
+  Slider ||
   (function ($) {
     "use strict";
 
     var wrapper, nav, slider, item;
 
+    /**
+     * 
+     * @param {*} config Object with specific definintions for the elemnts classes
+     */
     function init(config) {
       wrapper = config && "wrapper" in config ? config.wrapper : ".hs-wrapper";
       nav =
@@ -18,7 +22,7 @@ var Hotjobs =
       item =
         config && "item" in config !== "undefined"
           ? slider + " " + config.item
-          : slider + " .hot-job-card";
+          : slider + " > *";
 
       $(slider).scrollLeft((sliderWidth() - window.screen.width) / 2);
 
@@ -83,5 +87,5 @@ var Hotjobs =
   })(jQuery);
 
 jQuery(document).ready(function () {
-  Hotjobs.init();
+  Slider.init();
 });

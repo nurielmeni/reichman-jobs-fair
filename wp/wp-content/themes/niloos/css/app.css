@@ -508,8 +508,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   top: 0px;
 }
 
-.top-auto {
-  top: auto;
+.bottom-20 {
+  bottom: 5rem;
+}
+
+.left-11 {
+  left: 2.75rem;
+}
+
+.top-1\/2 {
+  top: 50%;
 }
 
 .left-3 {
@@ -518,14 +526,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .right-3 {
   right: 0.75rem;
-}
-
-.bottom-20 {
-  bottom: 5rem;
-}
-
-.left-11 {
-  left: 2.75rem;
 }
 
 .z-20 {
@@ -656,16 +656,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: none;
 }
 
-.h-10 {
-  height: 2.5rem;
-}
-
 .h-5 {
   height: 1.25rem;
 }
 
 .h-12 {
   height: 3rem;
+}
+
+.h-10 {
+  height: 2.5rem;
 }
 
 .h-1 {
@@ -682,10 +682,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-full {
   width: 100%;
-}
-
-.w-10 {
-  width: 2.5rem;
 }
 
 .w-5 {
@@ -718,6 +714,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 2rem;
 }
 
+.w-10 {
+  width: 2.5rem;
+}
+
 .w-16 {
   width: 4rem;
 }
@@ -726,16 +726,25 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 1.5rem;
 }
 
-.max-w-120 {
-  max-width: 120px;
+.min-w-mslider {
+  min-width: 272px;
 }
 
 .max-w-sm {
   max-width: 24rem;
 }
 
+.max-w-mslider {
+  max-width: 272px;
+}
+
 .flex-grow {
   flex-grow: 1;
+}
+
+.-translate-y-1\/2 {
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .transform {
@@ -831,12 +840,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   white-space: nowrap;
 }
 
-.rounded-full {
-  border-radius: 9999px;
-}
-
 .rounded-lg {
   border-radius: 0.5rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
 }
 
 .rounded-md {
@@ -897,11 +906,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(0 41 82 / var(--tw-bg-opacity));
 }
 
-.bg-sliderbg {
-  --tw-bg-opacity: 1;
-  background-color: rgb(241 242 242 / var(--tw-bg-opacity));
-}
-
 .bg-secondary {
   --tw-bg-opacity: 1;
   background-color: rgb(102 187 106 / var(--tw-bg-opacity));
@@ -920,6 +924,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-sliderbg {
+  --tw-bg-opacity: 1;
+  background-color: rgb(241 242 242 / var(--tw-bg-opacity));
 }
 
 .bg-gray-200 {
@@ -961,16 +970,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding: 0px;
 }
 
-.px-6 {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-.py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
@@ -986,6 +985,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-bottom: 0.5rem;
 }
 
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -999,6 +1003,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .px-12 {
   padding-left: 3rem;
   padding-right: 3rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .px-5 {
@@ -1024,10 +1033,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-}
-
-.pb-8 {
-  padding-bottom: 2rem;
 }
 
 .pl-10 {
@@ -1134,16 +1139,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   -moz-osx-font-smoothing: grayscale;
 }
 
-.opacity-50 {
-  opacity: 0.5;
-}
-
 .opacity-25 {
   opacity: 0.25;
 }
 
 .opacity-75 {
   opacity: 0.75;
+}
+
+.opacity-50 {
+  opacity: 0.5;
 }
 
 .outline {
@@ -1506,8 +1511,12 @@ li.transparent-text {
     width: 50%;
   }
 
-  .md\:max-w-160 {
-    max-width: 160px;
+  .md\:min-w-slider {
+    min-width: 380px;
+  }
+
+  .md\:max-w-slider {
+    max-width: 380px;
   }
 
   .md\:grid-cols-autofit-160 {
@@ -1540,6 +1549,10 @@ li.transparent-text {
 
   .md\:gap-5 {
     gap: 1.25rem;
+  }
+
+  .md\:gap-4 {
+    gap: 1rem;
   }
 
   .md\:p-8 {

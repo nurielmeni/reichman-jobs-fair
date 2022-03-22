@@ -110,11 +110,6 @@ class NlsHunter_modules
             'employer' => $employer
         ]);
 
-        echo render('slider/horizontalSlider', [
-            'elementTemplate' => 'slider/elementTemplate',
-            'elements' => $employer['images'],
-        ]);
-
         echo render('job/jobList', [
             'jobs' => $jobs['list'],
             'total' => $jobs['totalHits'],

@@ -10,7 +10,8 @@
             'class' => 'rounded-md px-3 py-2 text-primary w-full',
             'label' => __('Full Name', 'NlsHunter'),
             'name' => 'fullname',
-            'validators' => ['required']
+            'validators' => ['required'],
+            'autofocus' => true
         ]) ?>
 
         <?= render('nlsInputField', [

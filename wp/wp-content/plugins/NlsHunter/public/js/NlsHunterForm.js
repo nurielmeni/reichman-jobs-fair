@@ -185,7 +185,7 @@ var nls =
 
     var updateFileName = function () {
       var filename = $(fileSelectEl).length && $(fileSelectEl).val().split('\\').pop();
-      $('.nls-field.file .file-picker input[name="file-name"]').val(filename).focus();
+      $('.nls-field.file .file-picker input[name="file-name"]').val(filename);
     };
 
     $(document).ready(function () {

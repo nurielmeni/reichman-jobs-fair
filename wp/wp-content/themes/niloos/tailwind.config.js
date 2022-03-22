@@ -35,8 +35,12 @@ module.exports = {
         '1/31': '31%',
       },
       maxWidth: {
-        '120': '120px',
-        '160': '160px'
+        'slider': '380px',
+        'mslider': '272px'
+      },
+      minWidth: {
+        'slider': '380px',
+        'mslider': '272px'
       },
       rotate: {
         '270': '270deg',
