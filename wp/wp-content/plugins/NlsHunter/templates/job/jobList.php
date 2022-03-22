@@ -13,7 +13,8 @@
     <section class="all-jobs flex flex-col gap-8 px-3 md:px-0">
         <?= render('job/jobsPage', [
             'jobs' => $jobs,
-            'model' => $model
+            'model' => $model,
+            'jobDetailsPageUrl' => $jobDetailsPageUrl
         ]) ?>
     </section>
     <?= render('loader', ['id' => 'all-jobs-loader']) ?>

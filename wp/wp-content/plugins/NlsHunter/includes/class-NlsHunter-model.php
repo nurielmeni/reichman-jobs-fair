@@ -74,6 +74,26 @@ class NlsHunter_model
         return isset($_GET[$param]) ? $_GET[$param] : $default;
     }
 
+    public function getHunterEmployerDetailsPageUrl($id = false)
+    {
+        $language = get_bloginfo('language');
+        $hunterEmployerDetailsPageId = $language === 'he-IL' ?
+            get_option(NlsHunter_Admin::NLS_HUNTER_EMPLOYER_DETAILS_HE) :
+            get_option(NlsHunter_Admin::NLS_HUNTER_EMPLOYER_DETAILS_EN);
+        $hunterEmployerDetailsPageUrl = get_page_link($hunterEmployerDetailsPageId);
+        return $id ? $hunterEmployerDetailsPageUrl . '?employer-id=' . $id : $hunterEmployerDetailsPageUrl;
+    }
+
+    public function getHunterJobDetailsPageUrl($jobCode = false)
+    {
+        $language = get_bloginfo('language');
+        $hunterJobDetailsPageId = $language === 'he-IL' ?
+            get_option(NlsHunter_Admin::NLS_HUNTER_JOB_DETAILS_HE) :
+            get_option(NlsHunter_Admin::NLS_HUNTER_JOB_DETAILS_EN);
+        $hunterJobDetailsPageUrl = get_page_link($hunterJobDetailsPageId);
+        return $jobCode ? $hunterJobDetailsPageUrl . '?job-code=' . $jobCode : $hunterJobDetailsPageUrl;
+    }
+
     public function nlsGetSupplierId()
     {
         return $this->supplierId;
@@ -199,9 +219,46 @@ class NlsHunter_model
         }
     }
 
-    public function searchJobByJobCode($jobCode)
+    public function getJobByJobCode($jobCode)
     {
-        return $this->nlsCards->searchJobByJobCode($jobCode);
+        return $this->nlsCards->getJobByJobCode($jobCode);
+    }
+
+    public function searchJobByJobCode($jobCode, $flash = false)
+    {
+        if (!$jobCode) return null;
+        $resultRowLimit = 1;
+        $resultRowOffset = 0;
+
+        $cache_key = 'nls_hunter_job_' . $jobCode;
+        if ($flash) wp_cache_delete($cache_key);
+
+        $job = wp_cache_get($cache_key);
+
+        if (false === $job) {
+            $this->initSearchService();
+
+            $filter = new NlsFilter();
+
+            $filter->addSuplierIdFilter($this->nlsGetSupplierId());
+
+            $filterField = new FilterField('JobCode', SearchPhrase::EXACT, $jobCode, NlsFilter::TERMS_NON_ANALAYZED);
+            $filter->addWhereFilter($filterField, Condition::AND);
+
+            try {
+                $job = $this->nlsSearch->JobHunterExecuteNewQuery2(
+                    null,
+                    $resultRowOffset,
+                    $resultRowLimit,
+                    $filter
+                );
+            } catch (Exception $ex) {
+                echo $ex->getMessage();
+                return null;
+            }
+        }
+
+        return $job->TotalHits === 1 && property_exists($job, 'Results') && property_exists($job->Results, 'JobInfo') ? $job->Results->JobInfo : null;
     }
 
     /**
@@ -323,9 +380,7 @@ class NlsHunter_model
         $searchParams = is_array($professionalFields) ? ['' => $professionalFields] : [];
 
         $res =  $this->getJobHunterExecuteNewQuery2($searchParams, null, 0, $this->countHotJobs);
-        return property_exists($res, 'Results') && property_exists($res->Results, 'JobInfo')
-            ? $res->Results->JobInfo
-            : [];
+        return $res['list'];
     }
 
     public function getEmployers($page = null, $flash = false)
@@ -335,17 +390,15 @@ class NlsHunter_model
 
         $employers = wp_cache_get($cache_key);
         if (false === $employers) {
-
-            $res = $this->getJobHunterExecuteNewQuery2([], null, 0, 10000);
-            if ($res && property_exists($res, 'Results') && property_exists($res->Results, 'JobInfo')) {
-                foreach ($res->Results->JobInfo as $job) {
-                    if (property_exists($job, 'EmployerId') && $job->EmployerId !== null) {
-                        $employers[$job->EmployerId][] = $job;
-                    }
+            $employers = [];
+            $jobs = $this->getJobHunterExecuteNewQuery2([], null, 0, 10000);
+            foreach ($jobs['list'] as $job) {
+                if (property_exists($job, 'EmployerId') && $job->EmployerId !== null) {
+                    $employers[$job->EmployerId][] = $job;
                 }
-
-                wp_cache_set($cache_key, $employers, '', self::CACHE_EXPIRATION);
             }
+
+            wp_cache_set($cache_key, $employers, '', self::CACHE_EXPIRATION);
         }
         if ($page !== null && is_int($page)) {
             $window = intval(get_option(NlsHunter_Admin::NLS_EMPLOYERS_COUNT, 1));
@@ -361,14 +414,28 @@ class NlsHunter_model
         return key_exists($employerId, $employers) ? $employers[$employerId][0] : null;
     }
 
-    public function getEmployerProperties($employerId)
+    public function getEmployerProperties($employerId, $full = false)
     {
+        $properties = null;
         $employerData = $this->getEmployerData($employerId);
+        if ($full) {
+            $res = $this->employerGet($employerId);
+            $employer = $res && property_exists($res, 'EmployerGetResult') ? $res->EmployerGetResult : null;
+            $fileList = $this->filesListGet($employerId);
 
-        return [
-            'logo' => $employerData->LogoPath !== null ? $employerData->LogoPath : $this->getDefaultLogo(),
-            'name' => $employerData->EmployerName
-        ];
+            // Set the Employer Data needed
+            $properties['generalDescription'] = $employer->GeneralDescription;
+            $properties['webSite'] = strlen($employer->WebSite) > 0 && strpos($employer->WebSite, 'http') !== 0 ? "http://$employer->WebSite" : $employer->WebSite;
+            $properties['videoUrl'] = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+        }
+
+        if ($employerData) {
+            $properties['id'] = $employerId;
+            $properties['logo'] = $employerData->LogoPath !== null ? $employerData->LogoPath : $this->getDefaultLogo();
+            $properties['name'] = $employerData->EmployerName;
+        }
+
+        return $properties;
     }
 
     public function getJobHunterExecuteNewQuery2($searchParams = [], $hunterId = null, $page = 0, $resultRowLimit = null, $flash = false)
@@ -376,8 +443,9 @@ class NlsHunter_model
         $resultRowLimit = $resultRowLimit ? $resultRowLimit : $this->nlsGetCountPerPage();
         $resultRowOffset = is_int($page) ? $page * $resultRowLimit : 0;
         $region = key_exists('Region', $searchParams) ? $searchParams['Region'] : 0;
+        $employer = key_exists('EmployerId', $searchParams) ? $searchParams['EmployerId'] : 0;
 
-        $cache_key = 'nls_hunter_jobs_' . $region . '_' . $resultRowOffset . '_' . $resultRowLimit;
+        $cache_key = 'nls_hunter_jobs_' . $region . '_' . $employer . '_' . $resultRowOffset . '_' . $resultRowLimit;
         if ($flash) wp_cache_delete($cache_key);
 
         $jobs = wp_cache_get($cache_key);
@@ -395,8 +463,13 @@ class NlsHunter_model
                 $filter->addWhereFilter($filterField, Condition::AND);
             }
 
+            if (key_exists('EmployerId', $searchParams)) {
+                $filterField = new FilterField('EmployerId', SearchPhrase::EXACT, $searchParams['EmployerId'], NlsFilter::TERMS_NON_ANALAYZED);
+                $filter->addWhereFilter($filterField, Condition::AND);
+            }
+
             try {
-                $jobs = $this->nlsSearch->JobHunterExecuteNewQuery2(
+                $res = $this->nlsSearch->JobHunterExecuteNewQuery2(
                     $hunterId,
                     $resultRowOffset,
                     $resultRowLimit,
@@ -406,6 +479,14 @@ class NlsHunter_model
                 echo $ex->getMessage();
                 return null;
             }
+        }
+
+        $jobs['totalHits'] = property_exists($res, 'TotalHits') ? $res->TotalHits : 0;
+        if ($jobs['totalHits'] === 0) {
+            $jobs['list'] = [];
+        } else {
+            $jobInfo = property_exists($res, 'Results') && property_exists($res->Results, 'JobInfo') ? $res->Results->JobInfo : false;
+            $jobs['list'] = is_array($jobInfo) ? $jobInfo : [$jobInfo];
         }
 
         return $jobs;
@@ -418,6 +499,13 @@ class NlsHunter_model
         $professionalFields = $this->nlsCards->cardProfessinalField($cardId);
 
         return $professionalFields;
+    }
+
+    public function filesListGet($parentId)
+    {
+        $this->initCardService();
+
+        return $this->nlsCards->filesListGet($parentId);
     }
 
     /**
@@ -447,5 +535,12 @@ class NlsHunter_model
             }
         }
         return $applicantCvList;
+    }
+
+    public function employerGet($employerId)
+    {
+        $this->initCardService();
+
+        return $this->nlsCards->employerGet($employerId);
     }
 }

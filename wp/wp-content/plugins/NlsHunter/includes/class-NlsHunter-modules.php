@@ -35,26 +35,6 @@ class NlsHunter_modules
         return $hunterAllJobsPageUrl;
     }
 
-    private function getHunterEmployerDetailsPageUrl()
-    {
-        $language = get_bloginfo('language');
-        $hunterEmployerDetailsPageId = $language === 'he-IL' ?
-            get_option(NlsHunter_Admin::NLS_HUNTER_EMPLOYER_DETAILS_HE) :
-            get_option(NlsHunter_Admin::NLS_HUNTER_EMPLOYER_DETAILS_EN);
-        $hunterEmployerDetailsPageUrl = get_page_link($hunterEmployerDetailsPageId);
-        return $hunterEmployerDetailsPageUrl;
-    }
-
-    private function getHunterJobDetailsPageUrl()
-    {
-        $language = get_bloginfo('language');
-        $hunterJobDetailsPageId = $language === 'he-IL' ?
-            get_option(NlsHunter_Admin::NLS_HUNTER_JOB_DETAILS_HE) :
-            get_option(NlsHunter_Admin::NLS_HUNTER_JOB_DETAILS_EN);
-        $hunterJobDetailsPageUrl = get_page_link($hunterJobDetailsPageId);
-        return $hunterJobDetailsPageUrl;
-    }
-
     /**
      * Shortcodes Renderers functions
      */
@@ -82,13 +62,13 @@ class NlsHunter_modules
 
             echo render('employer/employersGrid', [
                 'employers' => $employers,
-                'defaultLogo' => $this->model->getDefaultLogo()
+                'model' => $this->model
             ]);
         } else {
             echo $this->noFair_render();
         }
 
-        $this->model->front_display_message('Meni Nuriel');
+        //$this->model->front_display_message('Meni Nuriel');
 
         return ob_get_clean();
     }
@@ -109,34 +89,74 @@ class NlsHunter_modules
 
     public function nlsHunterEmployerDetails_render()
     {
+        $employerId = $this->model->queryParam('employer-id', null);
+
+        if ($employerId) {
+            $employer = $this->model->getEmployerProperties($employerId, true);
+        }
+
+        if (!$employerId || !$employer) {
+            ob_start();
+            echo render('employer/employerNotFound', ['employerId' => $employerId]);
+            return ob_get_clean();
+        };
+
+        // Get employer Jobs
+        $jobs = $this->model->getJobHunterExecuteNewQuery2(['EmployerId' => $employerId]);
+
         ob_start();
 
-        echo '<p>Employer Details Short Code</p>';
+        echo render('employer/employerDetails', [
+            'employer' => $employer
+        ]);
+
+        echo render('job/jobList', [
+            'jobs' => $jobs['list'],
+            'total' => $jobs['totalHits'],
+            'model' => $this->model,
+            'jobDetailsPageUrl' => $this->model->getHunterJobDetailsPageUrl()
+        ]);
 
         return ob_get_clean();
     }
 
     public function nlsHunterJobDetails_render()
     {
+        $jobCode = $this->model->queryParam('job-code', null);
+        if ($jobCode) {
+            $job = $this->model->searchJobByJobCode($jobCode);
+        }
+        if (!$jobCode || !$job) {
+            ob_start();
+            echo render('job/jobNotFound', ['jobCode' => $jobCode]);
+            return ob_get_clean();
+        };
+
+        $employerId = property_exists($job, 'EmployerId') ? $job->EmployerId : null;
+        $employer = $this->model->getEmployerProperties($employerId);
+
         ob_start();
 
-        echo '<strong>Job Details</strong>';
+        echo render('job/jobDetails', [
+            'job' => $job,
+            'employer' => $employer,
+            'employerUrl' => $this->model->getHunterEmployerDetailsPageUrl($employerId)
+        ]);
 
         return ob_get_clean();
     }
 
     public function nlsHunterAllJobs_render()
     {
-        $res = $this->model->getJobHunterExecuteNewQuery2();
-        $totalHits = $res->TotalHits;
-        $jobs = property_exists($res, 'Results') && property_exists($res->Results, 'JobInfo') && is_array($res->Results->JobInfo) ? $res->Results->JobInfo : [];
+        $jobs = $this->model->getJobHunterExecuteNewQuery2();
 
         ob_start();
 
         echo render('job/jobList', [
-            'jobs' => $jobs,
-            'total' => $totalHits,
-            'model' => $this->model
+            'jobs' => $jobs['list'],
+            'total' => $jobs['totalHits'],
+            'model' => $this->model,
+            'jobDetailsPageUrl' => $this->model->getHunterJobDetailsPageUrl()
         ]);
 
         return ob_get_clean();

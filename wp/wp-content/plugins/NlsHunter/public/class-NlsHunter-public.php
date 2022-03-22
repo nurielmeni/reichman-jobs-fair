@@ -28,15 +28,11 @@ class NlsHunter_Public
      */
     const SID = 'sid';
 
-    const FRIEND_NAME = 'friend-name';
-    const FRIEND_CELL = 'friend-cell';
-    const FRIEND_AREA = 'friend-area';
-    const FRIEND_JOB_CODE = 'friend-job-code';
-    const FRIEND_CV = 'friend-cv';
-
-    const EMPLOYEE_NAME = 'employee-name';
-    const EMPLOYEE_ID = 'employee-id';
-    const EMPLOYEE_EMAIL = 'employee-email';
+    const JOB_CODE = 'job-code';
+    const FULL_NAME = 'fullname';
+    const PHONE = 'phone';
+    const EMAIL = 'email';
+    const CV_FILE = 'cv-file';
 
     /**
      * The ID of this plugin.
@@ -76,6 +72,13 @@ class NlsHunter_Public
         $this->model = $NlsHunter->get_model();
         $this->version = $version;
         $this->debug = $debug;
+    }
+
+
+    private function getSubmitResultUrl()
+    {
+        $language = get_bloginfo('language');
+        return get_permalink(get_page_by_path($language === 'he-IL' ? 'submit-success-he' : 'submit-success', OBJECT, ['page']));
     }
 
     /**
@@ -159,15 +162,12 @@ class NlsHunter_Public
         $fields = [];
 
         $fields[self::SID] = ['label' => __('Supplier Id', 'NlsHunter'), 'value' => isset($_POST[self::SID]) ? $_POST[self::SID] : ""];
+        $fields[self::JOB_CODE] = ['label' => __('Job Code', 'NlsHunter'), 'value' => isset($_POST[self::JOB_CODE]) ? $_POST[self::JOB_CODE] : []];
 
-        $fields[self::FRIEND_NAME] = ['label' => __('Full Name', 'NlsHunter'), 'value' => isset($_POST[self::FRIEND_NAME]) ? $_POST[self::FRIEND_NAME] : []];
-        $fields[self::FRIEND_CELL] = ['label' => __('Cell', 'NlsHunter'), 'value' => isset($_POST[self::FRIEND_CELL]) ? $_POST[self::FRIEND_CELL] : []];
-        $fields[self::FRIEND_AREA] = ['label' => __('Area', 'NlsHunter'), 'value' => isset($_POST[self::FRIEND_AREA]) ? $_POST[self::FRIEND_AREA] : []];
-        $fields[self::FRIEND_JOB_CODE] = ['label' => __('Job Code', 'NlsHunter'), 'value' => isset($_POST[self::FRIEND_JOB_CODE]) ? $_POST[self::FRIEND_JOB_CODE] : []];
-
-        $fields[self::EMPLOYEE_NAME] = ['label' => __('Full Name', 'NlsHunter'), 'value' => isset($_POST[self::EMPLOYEE_NAME]) ? $_POST[self::EMPLOYEE_NAME] : ""];
-        $fields[self::EMPLOYEE_ID] = ['label' => __('Employee ID', 'NlsHunter'), 'value' => isset($_POST[self::EMPLOYEE_ID]) ? $_POST[self::EMPLOYEE_ID] : ""];
-        $fields[self::EMPLOYEE_EMAIL] = ['label' => __('Company email', 'NlsHunter'), 'value' => isset($_POST[self::EMPLOYEE_EMAIL]) ? $_POST[self::EMPLOYEE_EMAIL] : ""];
+        $fields[self::FULL_NAME] = ['label' => __('Full Name', 'NlsHunter'), 'value' => isset($_POST[self::FULL_NAME]) ? $_POST[self::FULL_NAME] : []];
+        $fields[self::PHONE] = ['label' => __('Phone', 'NlsHunter'), 'value' => isset($_POST[self::PHONE]) ? $_POST[self::PHONE] : []];
+        $fields[self::EMAIL] = ['label' => __('Email', 'NlsHunter'), 'value' => isset($_POST[self::EMAIL]) ? $_POST[self::EMAIL] : []];
+        //$fields[self::CV_FILE] = ['label' => __('CV File', 'NlsHunter'), 'value' => isset($_POST[self::CV_FILE]) ? $_POST[self::CV_FILE] : []];
 
         return $fields;
     }
@@ -176,20 +176,19 @@ class NlsHunter_Public
      * Get the CV file for the applicable friend
      * the CV file uploads temporarily and assigned a name
      */
-    private function getCvFile($i)
+    private function getCvFile()
     {
         if (
-            isset($_FILES[self::FRIEND_CV]) &&
-            isset($_FILES[self::FRIEND_CV]['name']) &&
-            count($_FILES[self::FRIEND_CV]['name']) > 0 &&
-            strlen($_FILES[self::FRIEND_CV]['name'][$i]) > 0 &&
-            strlen($_FILES[self::FRIEND_CV]['tmp_name'][$i]) > 0 &&
-            !$_FILES[self::FRIEND_CV]['error'][$i] &&
-            $_FILES[self::FRIEND_CV]['size'][$i] > 0
+            isset($_FILES[self::CV_FILE]) &&
+            isset($_FILES[self::CV_FILE]['name']) &&
+            strlen($_FILES[self::CV_FILE]['name']) > 0 &&
+            strlen($_FILES[self::CV_FILE]['tmp_name']) > 0 &&
+            !$_FILES[self::CV_FILE]['error'] &&
+            $_FILES[self::CV_FILE]['size'] > 0
         ) {
-            $fileExt = pathinfo($_FILES[self::FRIEND_CV]['name'][$i])['extension'];
+            $fileExt = pathinfo($_FILES[self::CV_FILE]['name'])['extension'];
             $tmpCvFile = $this->getTempFile($fileExt);
-            move_uploaded_file($_FILES[self::FRIEND_CV]['tmp_name'][$i], $tmpCvFile);
+            move_uploaded_file($_FILES[self::CV_FILE]['tmp_name'], $tmpCvFile);
             return $tmpCvFile;
         }
         return '';
@@ -198,34 +197,32 @@ class NlsHunter_Public
     /*
      * Apply the friend request
      */
-    private function apply_friend($fields, $friendsNum)
+    private function apply_job($fields)
     {
         $count = 0;
 
-        for ($i = 0; $i < $friendsNum; $i++) {
-            $files = [];
+        $files = [];
 
-            // 1. Create NCAI
-            $ncaiFile = $this->createNCAI($fields, $i);
-            if (!empty($ncaiFile)) array_push($files, $ncaiFile);
+        // 1. Create NCAI
+        $ncaiFile = $this->createNCAI($fields);
+        if (!empty($ncaiFile)) array_push($files, $ncaiFile);
 
-            // 2. Get CV File
-            $tmpCvFile = $this->getCvFile($i);
-            if (empty($tmpCvFile)) {
-                $tmpCvFile = $this->genarateCvFile($fields, $i);
-            }
-
-            if (!empty($tmpCvFile)) array_push($files, $tmpCvFile);
-
-            // 3. Sent email with file attachments
-            $jobCode = $fields[self::FRIEND_JOB_CODE]['value'][$i];
-            $count += $this->sendHtmlMail($jobCode, $files, $fields, $i) ? 1 : 0;
-
-            // 4. Remove temp files
-
-            // Remove the temp CV file and NCAI file from the Upload directory
-            foreach ($files as $file) unlink($file);
+        // 2. Get CV File
+        $tmpCvFile = $this->getCvFile();
+        if (empty($tmpCvFile)) {
+            $tmpCvFile = $this->genarateCvFile($fields);
         }
+
+        if (!empty($tmpCvFile)) array_push($files, $tmpCvFile);
+
+        // 3. Sent email with file attachments
+        $jobCode = $fields[self::JOB_CODE]['value'];
+        $count += $this->sendHtmlMail($jobCode, $files, $fields, 0) ? 1 : 0;
+
+        // 4. Remove temp files
+
+        // Remove the temp CV file and NCAI file from the Upload directory
+        foreach ($files as $file) unlink($file);
 
         return $count;
     }
@@ -236,26 +233,35 @@ class NlsHunter_Public
     public function apply_cv_function()
     {
         $fields = $this->getFields();
-        $friendsNum = count($fields[self::FRIEND_NAME]['value']);
 
-        $applyCount = $this->apply_friend($fields, $friendsNum);
+        $applyCount = $this->apply_job($fields);
 
-        $response = ['sent' => $applyCount, 'html' => ($applyCount > 0 ? $this->sentSuccess($applyCount) : $this->sentError())];
+        $response = ['sent' => $applyCount];
+        if ($applyCount > 0) {
+            $response['location'] = $this->getSubmitResultUrl();
+        } else {
+            $response['html'] = $this->sentError();
+        }
         wp_send_json($response);
     }
 
     public function load_employers_function()
     {
         // response: {page: int, html: html}
-        $page = intval($_POST['page']);
+        $page = intval($this->model->queryParam('page', 0, true));
         $employers = $this->model->getEmployers($page + 1);
+
         if (count($employers) === 0) {
             // Last result
             wp_send_json(['page' => -1, 'html' => '']);
             die();
         }
 
-        $html = render('employer/employersPage', ['employers' => $employers]);
+        $html = render('employer/employersPage', [
+            'employers' => $employers,
+            'model' => $this->model
+        ]);
+
         wp_send_json(['page' => $page + 1, 'html' => $html]);
         die();
     }
@@ -263,24 +269,29 @@ class NlsHunter_Public
     public function load_jobs_function()
     {
         // response: {page: int, html: html}
-        $page = intval($_POST['page']);
-        $area = intval($_POST['area']);
-        $searchParams = $area > 0 ? ['Region' => $area] : [];
-        $res = $this->model->getJobHunterExecuteNewQuery2($searchParams, null, $page);
-        $jobs = property_exists($res, 'Results') && property_exists($res->Results, 'JobInfo') && is_array($res->Results->JobInfo) ? $res->Results->JobInfo : [];
-        $totalHits = property_exists($res, 'TotalHits') ? $res->TotalHits : 0;
+        $searchParams = [];
 
-        if (count($jobs) === 0) {
+        $page = intval($this->model->queryParam('page', 0, true));
+        $area = intval($this->model->queryParam('area', 0, true));
+        $employer = $this->model->queryParam('employer', null, true);
+
+        if ($area > 0) $searchParams['Region'] = $area;
+        if ($employer) $searchParams['EmployerId'] = $employer;
+
+        $jobs = $this->model->getJobHunterExecuteNewQuery2($searchParams, null, $page + 1);
+
+        if (count($jobs['list']) === 0) {
             // Last result
-            wp_send_json(['page' => -1, 'totalHits' => $totalHits, 'html' => '']);
+            wp_send_json(['page' => -1, 'totalHits' => $jobs['totalHits'], 'html' => '']);
             die();
         }
 
         $html = render('job/jobsPage', [
-            'jobs' => $jobs,
+            'jobs' => $jobs['list'],
             'model' => $this->model
         ]);
-        wp_send_json(['page' => $page + 1, 'totalHits' => $totalHits, 'html' => $html]);
+
+        wp_send_json(['page' => $page + 1, 'totalHits' => $jobs['totalHits'], 'html' => $html]);
         die();
     }
 
@@ -359,9 +370,9 @@ class NlsHunter_Public
 
         // Applying Person
         $applyingPerson = $xml_obj->addChild('ApplyingPerson');
-        $applyingPerson->addChild('EntityLocalName', $fields[self::FRIEND_NAME]['value'][$i]);
+        $applyingPerson->addChild('EntityLocalName', $fields[self::FULL_NAME]['value']);
 
-        $phoneData = $this->getPhoneData($fields[self::FRIEND_CELL]['value'][$i]);
+        $phoneData = $this->getPhoneData($fields[self::PHONE]['value']);
         $phoneInfo = $applyingPerson->addChild('Phones')->addChild('PhoneInfo');
         $phoneInfo->addChild('CountryCode', $phoneData['CountryCode']);
         $phoneInfo->addChild('AreaCode', $phoneData['AreaCode']);
@@ -382,14 +393,6 @@ class NlsHunter_Public
         // Supplier ID
         $xml_obj->SupplierId = $fields[self::SID]['value'];
 
-        // Recomending Person
-        $recomendingPerson = $xml_obj->addChild('RecommendingPerson');
-        $recomendingPerson->addChild('Email', $fields[self::EMPLOYEE_EMAIL]['value']);
-        $recomendingPerson->addChild('EntityLocalName', $fields[self::EMPLOYEE_NAME]['value']);
-        //$recomendingPerson->addChild('ForeignEntityCode', $fields[self::EMPLOYEE_ID]['value']);
-        //$recomendingPerson->addChild('PersonalId', $fields[self::EMPLOYEE_ID]['value']);
-        $recomendingPerson->addChild('SupplierId', $fields[self::SID]['value']);
-
         $ncaiFile = $this->getTempFile('ncai');
         $xml_obj->asXML($ncaiFile);
         return $ncaiFile;
@@ -403,7 +406,7 @@ class NlsHunter_Public
         $headers = ['Content-Type: text/html; charset=UTF-8'];
         if (strlen($bcc) > 0) array_push($headers, 'Bcc: ' . $bcc);
 
-        $subject = __('CV Applied from Reichman Jobs Site', 'NlsHunter') . ': ';
+        $subject = __('CV Applied from Reichman Jobs Fair Site', 'NlsHunter') . ': ';
         $subject .= $jobcode ? $jobcode : $msg;
 
         $attachments = $files ?: [];
@@ -434,6 +437,6 @@ class NlsHunter_Public
 
     private function sentError($msg = '')
     {
-        return render('mailError', ['msg' => $msg]);
+        return render('mail/mailError', ['msg' => $msg]);
     }
 }

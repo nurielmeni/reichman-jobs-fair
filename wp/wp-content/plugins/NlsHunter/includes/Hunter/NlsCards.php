@@ -758,7 +758,7 @@ class NlsCards extends NlsService
         }
     }
 
-    public function searchJobByJobCode($jobCode = null)
+    public function getJobByJobCode($jobCode = null)
     {
         if (!$jobCode || empty($jobCode)) return [];
         $filter = new stdClass();
@@ -886,6 +886,46 @@ class NlsCards extends NlsService
             return $res;
         } catch (Exception $ex) {
             throw new Exception('Error: getFileInfo: Niloos services are not availiable, try later.' . $ex->getMessage());
+        }
+    }
+
+    public function employerGet($employerId)
+    {
+        $transactionCode = NlsHelper::newGuid();
+        $params = array(
+            "transactionCode" => $transactionCode,
+            "employerId" => $employerId
+        );
+
+        try {
+            $res = $this->client->EmployerGet($params);
+            return $res;
+        } catch (Exception $ex) {
+            throw new Exception('Error: EmployerGet: Niloos services are not availiable, try later.' . $ex->getMessage());
+        }
+    }
+
+    public function filesListGet($parentId, $fromRow = 0, $toRow = 1000)
+    {
+        $params = [
+            'ParentId' => $parentId,
+            'fromRow' => $fromRow,
+            'toRow' => $toRow,
+            //'sortColumn' => '',
+            //'isAscending' => true,
+            'filter' => [
+                //     'ParentEntityId' => '',
+                //     'ParentEntityTypeCode' => ''
+            ],
+            'languageId' => NlsHelper::languageCode(),
+            'transactionCode' => NlsHelper::newGuid()
+        ];
+
+        try {
+            $res = $this->client->FilesListGet($params);
+            return $res;
+        } catch (Exception $ex) {
+            throw new Exception('Error: EmployerGet: Niloos services are not availiable, try later.' . $ex->getMessage());
         }
     }
 }

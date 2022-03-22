@@ -4,6 +4,7 @@ var nls =
     "use strict";
 
     var emptyFriendDetails = '';
+    var fileSelectEl = 'form.nls-apply-for-jobs .nls-field input[name="cv-file"]';
 
     var Validators = {
       ISRID: {
@@ -76,7 +77,7 @@ var nls =
           if (typeof name === "undefined") return valid;
 
           $(el)
-            .parents(".nls-apply-field")
+            .parents(".nls-field")
             .find('input[name="' + name + '"]')
             .each(function (i, option) {
               if ($(option).prop("checked")) valid = true;
@@ -94,7 +95,7 @@ var nls =
       $(form)
         .find("input")
         .each(function (i, el) {
-          if ($(el).parents(".nls-apply-field").css("display") === "none")
+          if ($(el).parents(".nls-field").css("display") === "none")
             return;
           if (typeof $(el).attr("validator") === "undefined") return;
           if (!fieldValidate(el)) valid = false;
@@ -136,31 +137,36 @@ var nls =
 
           $(invalidElement).addClass("nls-invalid");
           $(el)
-            .parents(".nls-apply-field")
+            .parents(".nls-field")
             .find(".help-block")
-            .text(Validators[validator].msg);
+            .text(Validators[validator].msg)
+            .addClass('nls-invalid');
+          $(el).attr('aria-invalid', 'true');
         }
       });
       return valid;
     };
 
     var clearFields = function (form) {
+      if (!form) return;
       form.find('input:not([type="radio"],[type="hidden"])').val("");
       clearValidation(form);
     };
 
     var clearValidation = function (form) {
       form.find(".nls-invalid").removeClass("nls-invalid");
-      form.find(".nls-apply-field .help-block").text("");
+      form.find(".nls-field .help-block").text("").removeClass('nls-invalid');
+      form.find(".nls-field input").attr('aria-invalid', 'false');
       validForm();
     };
 
     var clearFieldValidation = function (el) {
       $(el)
-        .parents(".nls-apply-field")
+        .parents(".nls-field")
         .find(".nls-invalid")
         .removeClass("nls-invalid");
-      $(el).parents(".nls-apply-field").find(".help-block").text("");
+      $(el).parents(".nls-field").find(".help-block").text("").removeClass('nls-invalid');
+      $(el).attr('aria-invalid', 'false');
     };
 
     var getParam = function (param) {
@@ -171,21 +177,23 @@ var nls =
 
     var hideBeforeApply = function () {
       $(".nls-apply-for-jobs").hide();
-      $("section.nls-fbf-flow-wrapper").hide();
     };
 
     var showHomePage = function () {
-      $("#apply-response").remove();
-      $(".nls-reply-message").remove();
-      $(".hide-response-success").show();
-      $(".hide-response-error").show();
-      $(".nls-apply-for-jobs").show();
-      $("section.nls-fbf-flow-wrapper").show();
+
+    };
+
+    var updateFileName = function () {
+      var filename = $(fileSelectEl).length && $(fileSelectEl).val().split('\\').pop();
+      $('.nls-field.file .file-picker input[name="file-name"]').val(filename).focus();
     };
 
     $(document).ready(function () {
       // Set the sid if exist
       getParam("sid") && $('input[name="sid"').val(getParam("sid"));
+
+      // Reset the file select
+      updateFileName();
 
       // Add event listeners
       console.log("Ready Function");
@@ -193,10 +201,10 @@ var nls =
       // Apply selected jobs
       $(document).on(
         "click",
-        ".nls-apply-for-jobs .nls-button .apply-cv",
+        ".nls-apply-for-jobs button.apply-job",
         function (event) {
-          var applyCvButton = this;
-          var form = $(this).parents("form.nls-apply-for-jobs");
+          var applyCvButton = event.target;
+          var form = $(applyCvButton).parents("form.nls-apply-for-jobs");
           var formData = new FormData(form[0]);
 
           if (!validateSubmit(form, formData)) {
@@ -225,23 +233,19 @@ var nls =
             },
             success: function (response) {
               $("#nls-loader").remove();
-              console.log("Status: ", response.sent);
+              console.log("Success: ", response.success);
+              console.log("Sent: ", response.sent);
+              $(".hide-response-success").hide();
+              $("#apply-response").remove();
 
               if (response.sent > 0) {
-                $(".hide-response-success").hide();
-                $("#apply-response").remove();
-                $('.nls-apply-for-jobs').after(response.html);
+                window.location.href(response.location);
               } else {
-                $('.hide-response-error').hide();
-                $("#apply-response").remove();
                 $('.nls-apply-for-jobs').after(response.html);
               }
 
               // Call this function so the wp will inform the change to the post
               $(document.body).trigger("post-load");
-            },
-            complete: function () {
-              window.history.pushState({}, '/');
             },
             type: "POST",
           });
@@ -249,37 +253,6 @@ var nls =
           event.preventDefault();
         }
       );
-
-      // State handler
-      window.addEventListener("popstate", function (event) {
-        if (event.state === null) {
-          showHomePage();
-        }
-      });
-
-      // Apply friend button handler
-      $(".apply-friend a").on("click", function () {
-        $(".friends-container")[0].scrollIntoView();
-        $("#friend-name--0")[0].focus();
-      });
-
-      // Create an empty element
-      emptyFriendDetails = $('.nls-apply-for-jobs .friends-details .friends-container').html();
-
-      // Add new friend hendler
-      $('.nls-apply-for-jobs .friends-details .form-footer .nls-button .add-friend').on('click', function () {
-        var count = $('.nls-apply-for-jobs .friends-details .friends-container .form-body').length;
-        var needle = /--0/g;
-        var re = '--' + count;
-
-        $(emptyFriendDetails.replace(needle, re)).hide().appendTo('.nls-apply-for-jobs .friends-details .friends-container').show('slow');
-      });
-
-      // Remove friend
-      $(document).on('click', '.nls-apply-for-jobs .friends-details .friends-container .form-body span.remove', function () {
-        var target = $(this).parent();
-        $(target).hide('slow', function () { $(target).remove(); });
-      });
 
       // Add file indication when selected
       $(document).on("change", '.nls-apply-for-jobs input[type="file"]', function (e) {
@@ -305,16 +278,17 @@ var nls =
 
       // Toggle visibility of radio
       $(document).on("change", 'input[type="radio"]', function () {
-        var showClass = ".nls-apply-field." + $(this).attr("name") + "-show";
+        var showClass = ".nls-field." + $(this).attr("name") + "-show";
         $('input[name="' + $(this).attr("name") + '"]').prop("checked")
           ? $(showClass).show()
           : $(showClass).hide();
       });
 
-      $(document).on('click', 'button.nls-btn.back', function () {
-        $(this).parents('section.nls-hunter-fbf-wrapper').find('form.nls-apply-for-jobs').slideDown();
-        $(this).parents('.submit-response').remove();
+      $('.nls-field.file .file-picker button').on('click', function () {
+        $(this).parents('.nls-field.file').find('input[type="file"]').trigger('click');
       });
+
+      $('.nls-field.file input[type="file"]').on('change', updateFileName);
 
       // Make sure to initilize the radio display options
       $('input[type="radio"]').trigger("change");

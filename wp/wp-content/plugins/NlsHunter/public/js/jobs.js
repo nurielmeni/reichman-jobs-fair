@@ -9,7 +9,8 @@ var Jobs =
         var allJobsSection = '.jobs-wrapper section.all-jobs';
         var areaSelect = '.jobs-wrapper select[name="jobs-by-area"]';
         var buttonClear = '.jobs-wrapper button.clear';
-        var totalHits = '.jobs-wrapper span.total-hits'
+        var totalHits = '.jobs-wrapper span.total-hits';
+        var employer = 'section.employer-details-wrapper';
 
         function initSumoSelect(selectBoxItem) {
             var name = $(selectBoxItem).attr('name') || '';
@@ -25,7 +26,7 @@ var Jobs =
         }
 
         function clearAllSelection(selectEl) {
-            $(selectEl).get(0).sumo.unSelectAll();
+            $(selectEl).length && $(selectEl).get(0).sumo.unSelectAll();
         }
 
         function showSpinner() {
@@ -49,7 +50,8 @@ var Jobs =
             var data = {
                 action: 'load_jobs_function',
                 area: area,
-                page: page
+                page: page,
+                employer: $(employer).length ? $(employer).data('employerId') : 0
             };
 
             $.ajax({

@@ -8,6 +8,10 @@
   --nls-placeholder: #7f94a8;
 }
 
+.underline > a {
+  text-decoration: underline;
+}
+
 /** Sumo Select */
 .nls-hunter-search-wrapper .SumoSelect {
   width: 198px;

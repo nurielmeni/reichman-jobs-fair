@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: NlsHunter\n"
-"POT-Creation-Date: 2022-03-19 23:27+0200\n"
-"PO-Revision-Date: 2022-03-19 23:28+0200\n"
+"POT-Creation-Date: 2022-03-22 00:17+0200\n"
+"PO-Revision-Date: 2022-03-22 00:17+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: he_IL\n"
@@ -40,70 +40,70 @@ msgstr "אין אפשרות ליצור מודל."
 msgid "Error: NlsHunter_model: "
 msgstr "שגיאה: NlsHunterFbf_model: "
 
-#: includes/class-NlsHunter-model.php:155
+#: includes/class-NlsHunter-model.php:165
 msgid "Could not init Card Services."
 msgstr "אין אפשרות להתחבר לשירותי Card"
 
-#: includes/class-NlsHunter-model.php:156
+#: includes/class-NlsHunter-model.php:166
 msgid "Error: Card Services: "
 msgstr "שגיאה: שירותי כרטיס"
 
-#: includes/class-NlsHunter-model.php:175
+#: includes/class-NlsHunter-model.php:185
 msgid "Could not init Directory Services."
 msgstr "אין אפשרות להתחבר לשירותי Directory"
 
-#: includes/class-NlsHunter-model.php:176
+#: includes/class-NlsHunter-model.php:186
 msgid "Error: Directory Services: "
 msgstr "שגיאה: שירותי מדריך"
 
-#: includes/class-NlsHunter-model.php:195
+#: includes/class-NlsHunter-model.php:205
 msgid "Could not init Search Services."
 msgstr "אין אפשרות להתחבר לשירותי Search"
 
-#: includes/class-NlsHunter-model.php:196
+#: includes/class-NlsHunter-model.php:206
 msgid "Error: Search Services: "
 msgstr "שגיאה: שירותי חיפוש"
 
-#: public/class-NlsHunter-public.php:161
+#: public/class-NlsHunter-public.php:164
 msgid "Supplier Id"
 msgstr "מזהה ספק"
 
-#: public/class-NlsHunter-public.php:163 public/class-NlsHunter-public.php:168
-#: templates/applyForJobs.php:17
-msgid "Full Name"
-msgstr "שם החבר:"
-
-#: public/class-NlsHunter-public.php:164 templates/applyForJobs.php:24
-msgid "Cell"
-msgstr "טלפון:"
-
-#: public/class-NlsHunter-public.php:165 templates/applyForJobs.php:31
-msgid "Area"
-msgstr "מתגורר ב…"
-
-#: public/class-NlsHunter-public.php:166
+#: public/class-NlsHunter-public.php:165
 msgid "Job Code"
 msgstr "קוד משרה"
 
-#: public/class-NlsHunter-public.php:169 templates/applyForJobs.php:78
-msgid "Employee ID"
-msgstr "מזהה מעסיק"
+#: public/class-NlsHunter-public.php:167 templates/applyForJobs.php:17
+#: templates/job/jobApplyForm.php:11
+msgid "Full Name"
+msgstr "שם החבר:"
 
-#: public/class-NlsHunter-public.php:170 templates/applyForJobs.php:85
-msgid "Company email"
-msgstr "אימייל פרטי:"
+#: public/class-NlsHunter-public.php:168 templates/job/jobApplyForm.php:20
+msgid "Phone"
+msgstr "טלפון"
 
-#: public/class-NlsHunter-public.php:374
+#: public/class-NlsHunter-public.php:169 templates/job/jobApplyForm.php:29
+msgid "Email"
+msgstr "מייל חברה"
+
+#: public/class-NlsHunter-public.php:379
 msgid "Applicant form data: "
 msgstr "פרטי החבר/ה שלי:"
 
-#: public/class-NlsHunter-public.php:406
-msgid "CV Applied from Reichman Jobs Site"
-msgstr "קורות חיים נשלחו מאתר משרות רייכמן"
+#: public/class-NlsHunter-public.php:403
+msgid "CV Applied from Reichman Jobs Fair Site"
+msgstr "קורות חיים נשלחו מאתר יריד משרות רייכמן"
 
 #: templates/applyForJobs.php:10
 msgid "My friend details:"
 msgstr "פרטי החבר/ה שלי:"
+
+#: templates/applyForJobs.php:24
+msgid "Cell"
+msgstr "טלפון:"
+
+#: templates/applyForJobs.php:31
+msgid "Area"
+msgstr "מתגורר ב…"
 
 #: templates/applyForJobs.php:38
 msgid "What job?"
@@ -121,13 +121,51 @@ msgstr "הפרטים שלי:"
 msgid "My Name"
 msgstr "שמי:"
 
+#: templates/applyForJobs.php:78
+msgid "Employee ID"
+msgstr "מזהה מעסיק"
+
+#: templates/applyForJobs.php:85
+msgid "Company email"
+msgstr "אימייל פרטי:"
+
 #: templates/applyForJobs.php:97
 msgid "* By the terms"
 msgstr "* כפוף לתקנון"
 
+#: templates/employer/employerDescription.php:6
+msgid "Company Website:"
+msgstr "אתר החברה:"
+
+#: templates/employer/employerNotFound.php:3
+#, fuzzy
+#| msgid "Not Found: The requested Job Code was not found."
+msgid "Not Found: The requested Employer was not found."
+msgstr "לא נמצא: משרה עם קוד המשרה המבוקש, לא נמצאה."
+
+#: templates/employer/employerTitle.php:8
+msgid "To employer page"
+msgstr "לעמוד המעסיק"
+
 #: templates/employer/employersGrid.php:1
 msgid "Employers List"
 msgstr "רשימת מעסיקים"
+
+#: templates/job/jobApplyForm.php:2
+msgid "Submit Application"
+msgstr "הגשת מועמדות"
+
+#: templates/job/jobApplyForm.php:36
+msgid "Upload CV"
+msgstr "העלאת קובץ קו”ח"
+
+#: templates/job/jobApplyForm.php:38
+msgid "Select file"
+msgstr "בחר קובץ"
+
+#: templates/job/jobApplyForm.php:45
+msgid "Send"
+msgstr "שלח"
 
 #: templates/job/jobCardFooter.php:4
 msgid "More Details"
@@ -144,6 +182,10 @@ msgstr "בחר תחום לימוד"
 #: templates/job/jobList.php:12
 msgid "Open Positions"
 msgstr "משרות פתוחות"
+
+#: templates/job/jobNotFound.php:3
+msgid "Not Found: The requested Job Code was not found."
+msgstr "לא נמצא: משרה עם קוד המשרה המבוקש, לא נמצאה."
 
 #: templates/jobFairBanner.php:7
 msgid "All Fair Jobs"
@@ -166,12 +208,12 @@ msgid "Some error occured"
 msgstr "התרחשה שגיאה"
 
 #: templates/mail/mailError.php:5
-msgid "No CV was not submited"
+msgid "CV was not submited"
 msgstr "לא נשלחו קורות חיים"
 
-#: templates/mail/mailError.php:7 templates/mail/mailSuccess.php:7
-msgid "Back"
-msgstr "חזור"
+#: templates/mail/mailError.php:7
+msgid "Back to home page"
+msgstr "חזור לדף הבית"
 
 #: templates/mail/mailSuccess.php:4
 msgid "Thenk you!"
@@ -181,33 +223,14 @@ msgstr "תודה!"
 msgid "The details recieved successfully"
 msgstr "הפרטים נקלטו בהצלחה"
 
-#: templates/nlsInputField.php:19 templates/nlsSelectField.php:21
+#: templates/mail/mailSuccess.php:7
+msgid "Back"
+msgstr "חזור"
+
+#: templates/nlsFileField.php:19 templates/nlsInputField.php:20
+#: templates/nlsSelectField.php:21
 msgid "Not required"
 msgstr "לא חובה"
-
-#: templates/nlsJobApplyForm.php:9
-msgid "Select CV file"
-msgstr "בחירת קובץ קו״ח"
-
-#: templates/nlsJobApplyForm.php:15 templates/nlsJobApplyForm.php:29
-msgid "Or"
-msgstr "או"
-
-#: templates/nlsJobApplyForm.php:16 templates/nlsJobApplyForm.php:30
-msgid "Add New"
-msgstr "העלה קובץ חדש"
-
-#: templates/nlsJobApplyForm.php:22
-msgid "Select other files"
-msgstr "בחירת קבצים אחרים"
-
-#: templates/nlsJobApplyForm.php:23
-msgid "(Not Required)"
-msgstr "(לא חובה)"
-
-#: templates/nlsJobApplyForm.php:36
-msgid "Apply CV"
-msgstr "הגש קורות חיים"
 
 #. Plugin Name of the plugin/theme
 #, fuzzy
@@ -223,14 +246,29 @@ msgstr ".‫API fot Niloosoft HunterHRMS System"
 msgid "Meni Nurie"
 msgstr "מני נוריאל"
 
+#~ msgid "CV File"
+#~ msgstr "קובץ קורות חיים"
+
+#~ msgid "Select other files"
+#~ msgstr "בחירת קבצים אחרים"
+
+#~ msgid "(Not Required)"
+#~ msgstr "(לא חובה)"
+
+#~ msgid "Or"
+#~ msgstr "או"
+
+#~ msgid "Add New"
+#~ msgstr "העלה קובץ חדש"
+
+#~ msgid "Apply CV"
+#~ msgstr "הגש קורות חיים"
+
 #~ msgid "Additional Details"
 #~ msgstr "לפרטים נוספים"
 
 #~ msgid "Submit in employer site"
 #~ msgstr "הגש קו״ח באתר המעסיק"
-
-#~ msgid "Upload CV and submit"
-#~ msgstr "העלה קו”ח ושלח מועמדות"
 
 #~ msgid "You can define each search as an agent in the personal area"
 #~ msgstr "ניתן להגדיר כל חיפוש כסוכן חכם דרך האיזור האישי"
@@ -279,9 +317,6 @@ msgstr "מני נוריאל"
 
 #~ msgid "Error on uploading the file"
 #~ msgstr "התרחשה שגיאה בהעלאת הקובץ"
-
-#~ msgid "Email"
-#~ msgstr "מייל חברה"
 
 #~ msgid "City"
 #~ msgstr "עיר"

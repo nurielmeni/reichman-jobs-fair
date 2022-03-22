@@ -65,6 +65,11 @@
           "name": "Banner Bg",
           "slug": "bannerbg",
           "color": "#00a19a"
+        },
+        {
+          "name": "Error",
+          "slug": "error",
+          "color": "#ef4444"
         }
       ]
     },

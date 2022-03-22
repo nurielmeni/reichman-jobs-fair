@@ -1,10 +1,15 @@
 .two-chars {
   text-overflow: clip;
-  width: 2ch;
+  width: calc(2ch - 2px);
   overflow: hidden;
   white-space: nowrap;
   display: flex;
   flex-direction: row-reverse;
+}
+
+.nls-invalid {
+  border-color: #ef4444;
+  color: #ef4444;
 }
 
 .banner-image {
