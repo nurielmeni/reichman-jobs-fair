@@ -14,6 +14,7 @@ class NlsHunter_model
 {
     const STATUS_OPEN = 1;
     const CACHE_EXPIRATION = 20 * 60; // 20 min
+    const FLASH = true;
 
 
     private $nlsSecutity;
@@ -224,7 +225,7 @@ class NlsHunter_model
         return $this->nlsCards->getJobByJobCode($jobCode);
     }
 
-    public function searchJobByJobCode($jobCode, $flash = false)
+    public function searchJobByJobCode($jobCode, $flash = self::FLASH)
     {
         if (!$jobCode) return null;
         $resultRowLimit = 1;
@@ -383,9 +384,9 @@ class NlsHunter_model
         return $res['list'];
     }
 
-    public function getEmployers($page = null, $flash = false)
+    public function getEmployers($page = null, $flash = self::FLASH)
     {
-        $cache_key = 'nls_hunter_employers' . get_bloginfo('language');
+        $cache_key = 'nls_hunter_employers_' . get_bloginfo('language');
         if ($flash) wp_cache_delete($cache_key);
 
         $employers = wp_cache_get($cache_key);
@@ -438,7 +439,7 @@ class NlsHunter_model
         return $properties;
     }
 
-    public function getJobHunterExecuteNewQuery2($searchParams = [], $hunterId = null, $page = 0, $resultRowLimit = null, $flash = false)
+    public function getJobHunterExecuteNewQuery2($searchParams = [], $hunterId = null, $page = 0, $resultRowLimit = null, $flash = self::FLASH)
     {
         $resultRowLimit = $resultRowLimit ? $resultRowLimit : $this->nlsGetCountPerPage();
         $resultRowOffset = is_int($page) ? $page * $resultRowLimit : 0;
@@ -486,7 +487,7 @@ class NlsHunter_model
             $jobs['list'] = [];
         } else {
             $jobInfo = property_exists($res, 'Results') && property_exists($res->Results, 'JobInfo') ? $res->Results->JobInfo : false;
-            $jobs['list'] = is_array($jobInfo) ? $jobInfo : [$jobInfo];
+            $jobs['list'] = !$jobInfo ? [] : (is_array($jobInfo) ? $jobInfo : [$jobInfo]);
         }
 
         return $jobs;
