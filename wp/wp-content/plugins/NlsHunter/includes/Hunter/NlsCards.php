@@ -892,10 +892,11 @@ class NlsCards extends NlsService
     public function employerGet($employerId)
     {
         $transactionCode = NlsHelper::newGuid();
-        $params = array(
+        $params = [
+            "CollectionOptions" => 8192,
             "transactionCode" => $transactionCode,
-            "employerId" => $employerId
-        );
+            "employerId" => $employerId,
+        ];
 
         try {
             $res = $this->client->EmployerGet($params);
@@ -909,8 +910,8 @@ class NlsCards extends NlsService
     {
         $params = [
             'ParentId' => $parentId,
-            'fromRow' => $fromRow,
-            'toRow' => $toRow,
+            //'fromRow' => $fromRow,
+            //'toRow' => $toRow,
             //'sortColumn' => '',
             //'isAscending' => true,
             'filter' => [

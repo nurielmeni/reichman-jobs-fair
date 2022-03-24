@@ -176,8 +176,13 @@ class NlsHunter_model
                 __('Could not init Card Services.', 'NlsHunter'),
                 __('Error: Card Services: ', 'NlsHunter')
             );
+            $this->nlsPublicNotice(
+                __('Could not init Card Services.', 'NlsHunter'),
+                __('Error: Card Services: ', 'NlsHunter')
+            );
             return null;
         }
+        return true;
     }
 
     /**
@@ -196,8 +201,10 @@ class NlsHunter_model
                 __('Could not init Directory Services.', 'NlsHunter'),
                 __('Error: Directory Services: ', 'NlsHunter')
             );
+            $this->front_display_message(__('Could not init Directory Services.', 'NlsHunter'));
             return null;
         }
+        return true;
     }
 
     /**
@@ -216,8 +223,13 @@ class NlsHunter_model
                 __('Could not init Search Services.', 'NlsHunter'),
                 __('Error: Search Services: ', 'NlsHunter')
             );
+            $this->nlsPublicNotice(
+                __('Could not init Search Services.', 'NlsHunter'),
+                __('Error: Search Services: ', 'NlsHunter')
+            );
             return null;
         }
+        return true;
     }
 
     public function getJobByJobCode($jobCode)
@@ -237,7 +249,7 @@ class NlsHunter_model
         $job = wp_cache_get($cache_key);
 
         if (false === $job) {
-            $this->initSearchService();
+            if (!$this->initSearchService()) return ['totalHits' => 0, 'list' => []];
 
             $filter = new NlsFilter();
 
@@ -464,20 +476,20 @@ class NlsHunter_model
         $jobs = wp_cache_get($cache_key);
 
         if (false === $jobs) {
-            $this->initSearchService();
+            if (!$this->initSearchService()) return ['totalHits' => 0, 'list' => []];
 
             if (!is_array($searchParams)) $jobs = [];
             $filter = new NlsFilter();
 
             $filter->addSuplierIdFilter($this->nlsGetSupplierId());
 
-            if (key_exists('Region', $searchParams)) {
-                $filterField = new FilterField('RegionId', SearchPhrase::EXACT, $searchParams['Region'], NlsFilter::NUMERIC_VALUES);
+            if ($region !== 0) {
+                $filterField = new FilterField('RegionId', SearchPhrase::EXACT, $region, NlsFilter::NUMERIC_VALUES);
                 $filter->addWhereFilter($filterField, Condition::AND);
             }
 
-            if (key_exists('EmployerId', $searchParams)) {
-                $filterField = new FilterField('EmployerId', SearchPhrase::EXACT, $searchParams['EmployerId'], NlsFilter::TERMS_NON_ANALAYZED);
+            if ($employer !== 0) {
+                $filterField = new FilterField('EmployerId', SearchPhrase::EXACT, $employer, NlsFilter::TERMS_NON_ANALAYZED);
                 $filter->addWhereFilter($filterField, Condition::AND);
             }
 
@@ -507,7 +519,7 @@ class NlsHunter_model
 
     public function getCardProfessinalField($cardId)
     {
-        $this->initCardService();
+        if (!$this->initCardService()) return [];
 
         $professionalFields = $this->nlsCards->cardProfessinalField($cardId);
 
@@ -516,7 +528,7 @@ class NlsHunter_model
 
     public function filesListGet($parentId)
     {
-        $this->initCardService();
+        if (!$this->initCardService()) return [];
 
         return $this->nlsCards->filesListGet($parentId);
     }
@@ -527,7 +539,7 @@ class NlsHunter_model
      */
     public function getJobDetails($jobId)
     {
-        $this->initCardService();
+        if (!$this->initCardService()) return [];
 
         return $this->nlsCards->jobGet($jobId);
     }
@@ -539,7 +551,7 @@ class NlsHunter_model
 
         if (false === $applicantCvList) {
             $applicantCvList = [];
-            $this->initCardService();
+            if (!$this->initCardService()) return [];
             $cvList = $this->nlsCards->getCVList($applicantId);
 
             foreach ($cvList as $cv) {
@@ -552,7 +564,7 @@ class NlsHunter_model
 
     public function employerGet($employerId)
     {
-        $this->initCardService();
+        if (!$this->initCardService()) return [];
 
         return $this->nlsCards->employerGet($employerId);
     }

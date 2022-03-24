@@ -45,7 +45,7 @@ var Jobs =
             var page = page === null || page === undefined ? $(allJobsSection).data('page') : page;
             var area = $(areaSelect).val();
 
-            if (page === 0) clearAllJobs();
+            if (page === -1) clearAllJobs();
 
             var data = {
                 action: 'load_jobs_function',
@@ -95,7 +95,7 @@ var Jobs =
                     $(buttonClear).addClass('hidden');
                 }
 
-                loadJobs(0);
+                loadJobs(-1);
             });
         }
 

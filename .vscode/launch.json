@@ -21,7 +21,8 @@
       },
       "xdebugSettings": {
         "max_children": 999,
-        "max_depth": 10
+        "max_depth": 10,
+        "max_data": 10000
       },
       "stopOnEntry": false,
       "hostname": "localhost"

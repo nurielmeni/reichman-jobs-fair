@@ -730,12 +730,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   min-width: 272px;
 }
 
-.max-w-sm {
-  max-width: 24rem;
-}
-
 .max-w-mslider {
   max-width: 272px;
+}
+
+.max-w-sm {
+  max-width: 24rem;
 }
 
 .flex-grow {
