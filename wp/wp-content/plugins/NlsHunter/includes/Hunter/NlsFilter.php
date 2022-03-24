@@ -3,8 +3,8 @@ require_once 'NlsHelper.php';
 
 abstract class WhereCondition
 {
-  const OR = 'OR';
-  const AND = 'AND';
+  const C_OR = 'OR';
+  const C_AND = 'AND';
 }
 
 abstract class SearchPhrase
@@ -92,7 +92,7 @@ class NlsFilter
     $sidNestedFilterField = new FilterField('PublishedJobSupplier_SupplierId', SearchPhrase::ALL, $supplierId, self::TERMS_NON_ANALAYZED);
     $sidParentFilterField->setNested($sidNestedFilterField);
 
-    $this->addWhereFilter($sidParentFilterField, 'AND');
+    $this->addWhereFilter($sidParentFilterField, WhereCondition::C_AND);
   }
 
   /**

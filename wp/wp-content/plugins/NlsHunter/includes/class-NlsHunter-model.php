@@ -256,7 +256,7 @@ class NlsHunter_model
             $filter->addSuplierIdFilter($this->nlsGetSupplierId());
 
             $filterField = new FilterField('JobCode', SearchPhrase::EXACT, $jobCode, NlsFilter::TERMS_NON_ANALAYZED);
-            $filter->addWhereFilter($filterField, 'AND');
+            $filter->addWhereFilter($filterField, WhereCondition::C_AND);
 
             try {
                 $job = $this->nlsSearch->JobHunterExecuteNewQuery2(
@@ -485,12 +485,12 @@ class NlsHunter_model
 
             if ($region !== 0) {
                 $filterField = new FilterField('RegionId', SearchPhrase::EXACT, $region, NlsFilter::NUMERIC_VALUES);
-                $filter->addWhereFilter($filterField, 'AND');
+                $filter->addWhereFilter($filterField, WhereCondition::C_AND);
             }
 
             if ($employer !== 0) {
                 $filterField = new FilterField('EmployerId', SearchPhrase::EXACT, $employer, NlsFilter::TERMS_NON_ANALAYZED);
-                $filter->addWhereFilter($filterField, 'AND');
+                $filter->addWhereFilter($filterField, WhereCondition::C_AND);
             }
 
             try {
