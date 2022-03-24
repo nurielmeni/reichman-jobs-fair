@@ -3,6 +3,7 @@ var App = App || (
         var employersGrid = 'section.employers-grid';
         var searchBoxButton = '.search-box button.search-btn';
         var searchBoxInput = 'input#employer-search';
+        var loading = false;
 
         function showSpinner() {
             $('.footer .spinner svg').removeClass('hidden');
@@ -17,6 +18,7 @@ var App = App || (
         }
 
         function loadEmployers(page) {
+            if (loading) return;
             var searchPhrase = $(searchBoxButton).data('search-phrase') ? $(searchBoxButton).data('search-phrase').trim() : '';
 
             var page = page || $(employersGrid).data('page');
@@ -31,6 +33,7 @@ var App = App || (
                 type: "POST",
                 beforeSend: function () {
                     showSpinner();
+                    loading = true;
                     $(searchBoxButton).prop('disabled', true)
                 },
                 success: function (response) {
@@ -47,6 +50,7 @@ var App = App || (
                     ScrollTo && ScrollTo.setCalls('#employers-loader .spinner', 1);
                 },
                 complete: function () {
+                    loading = false;
                     $(searchBoxButton).prop('disabled', false)
                 }
             });

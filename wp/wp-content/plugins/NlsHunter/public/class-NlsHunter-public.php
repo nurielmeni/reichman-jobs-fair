@@ -249,7 +249,7 @@ class NlsHunter_Public
     public function load_employers_function()
     {
         // response: {page: int, html: html}
-        $page = intval($this->model->queryParam('page', 0, true));
+        $page = intval($this->model->queryParam('page', -1, true));
         $searchPhrase = $this->model->queryParam('searchPhrase', '', true);
         $employers = $this->model->getEmployers($page + 1, $searchPhrase);
 
