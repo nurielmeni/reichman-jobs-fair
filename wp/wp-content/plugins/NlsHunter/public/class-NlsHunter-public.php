@@ -405,7 +405,12 @@ class NlsHunter_Public
         // Change the $fields value for strongSide to include the name and not the id
         $to = get_option(NlsHunter_Admin::TO_MAIL);
         $bcc = get_option(NlsHunter_Admin::BCC_MAIL);
+        $fromName = get_option(NlsHunter_Admin::FROM_NAME, 'Job Site');
+        $fromName = trim(empty(trim($fromName)) ? 'Job Site' : $fromName);
+        $fromMail = trim(get_option(NlsHunter_Admin::FROM_MAIL, 'reichman@hunterhrms.com'));
+
         $headers = ['Content-Type: text/html; charset=UTF-8'];
+        array_push($headers, 'From: ' . $fromName . ' <' . $fromMail . '>');
         if (strlen($bcc) > 0) array_push($headers, 'Bcc: ' . $bcc);
 
         $subject = __('CV Applied from Reichman Jobs Fair Site', 'NlsHunter') . ': ';
@@ -413,7 +418,7 @@ class NlsHunter_Public
 
         $attachments = $files ?: [];
 
-        $body = render('mailApply', [
+        $body = render('mail/mailApply', [
             'fields' => $fields,
             'i' => $i
         ]);
@@ -434,7 +439,7 @@ class NlsHunter_Public
 
     private function sentSuccess($sent)
     {
-        return render('mailSuccess', []);
+        return render('mail/mailSuccess', []);
     }
 
     private function sentError($msg = '')
