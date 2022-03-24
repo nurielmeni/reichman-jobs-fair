@@ -1,6 +1,8 @@
 var App = App || (
     function ($) {
         var employersGrid = 'section.employers-grid';
+        var searchBoxButton = '.search-box button.search-btn';
+        var searchBoxInput = 'input#employer-search';
 
         function showSpinner() {
             $('.footer .spinner svg').removeClass('hidden');
@@ -10,11 +12,14 @@ var App = App || (
             $('.footer .spinner svg').addClass('hidden');
         }
 
-        function loadEmployers() {
-            var page = $(employersGrid).data('page');
+        function loadEmployers(page) {
+            var searchPhrase = $(searchBoxButton).data('search-phrase') ? $(searchBoxButton).data('search-phrase').trim() : '';
+
+            var page = page || $(employersGrid).data('page');
             var data = {
                 action: 'load_employers_function',
-                page: page
+                page: page,
+                searchPhrase: searchPhrase
             };
             $.ajax({
                 url: frontend_ajax.url,
@@ -39,6 +44,13 @@ var App = App || (
 
         $(document).ready(function () {
             ScrollTo && ScrollTo.add('#employers-loader .spinner', loadEmployers, 1);
+
+            $(searchBoxButton).on('click', function () {
+                $(this).data('search-phrase', $(searchBoxInput).val());
+                loadEmployers(-1);
+            });
+
+            $(this).data('search-phrase', false);
         });
 
         return {

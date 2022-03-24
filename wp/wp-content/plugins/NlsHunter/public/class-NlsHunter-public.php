@@ -250,7 +250,8 @@ class NlsHunter_Public
     {
         // response: {page: int, html: html}
         $page = intval($this->model->queryParam('page', 0, true));
-        $employers = $this->model->getEmployers($page + 1);
+        $searchPhrase = $this->model->queryParam('searchPhrase', '', true);
+        $employers = $this->model->getEmployers($page + 1, $searchPhrase);
 
         if (count($employers) === 0) {
             // Last result

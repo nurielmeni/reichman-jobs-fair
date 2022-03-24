@@ -397,7 +397,7 @@ class NlsHunter_model
         return $res['list'];
     }
 
-    public function getEmployers($page = null)
+    public function getEmployers($page = null, $searchPhrase = '')
     {
         $cache_key = 'nls_hunter_employers_' . get_bloginfo('language');
         if ($this->nlsFlashCache) wp_cache_delete($cache_key);
@@ -408,7 +408,12 @@ class NlsHunter_model
             $jobs = $this->getJobHunterExecuteNewQuery2([], null, 0, 10000);
             foreach ($jobs['list'] as $job) {
                 if (property_exists($job, 'EmployerId') && $job->EmployerId !== null) {
-                    $employers[$job->EmployerId][] = $job;
+                    $data['EmployerEntityTypeCode'] = $job->EmployerEntityTypeCode;
+                    $data['EmployerName'] = $job->EmployerName;
+                    $data['EmployerPartyUtilizerId'] = $job->EmployerPartyUtilizerId;
+                    $data['LogoPath'] = $job->LogoPath;
+
+                    $employers[$job->EmployerId] = (object) $data;
                 }
             }
 
@@ -416,6 +421,8 @@ class NlsHunter_model
         }
         if ($page !== null && is_int($page)) {
             $window = intval(get_option(NlsHunter_Admin::NLS_EMPLOYERS_COUNT, 1));
+            $filteredArray = array_filter($employers, function ($employer) use ($searchPhrase) {
+            });
             return array_slice($employers, $page * $window, $window);
         }
         return $employers;
@@ -425,7 +432,7 @@ class NlsHunter_model
     {
         $employers = $this->getEmployers();
         if (!is_array($employers)) return null;
-        return key_exists($employerId, $employers) ? $employers[$employerId][0] : null;
+        return key_exists($employerId, $employers) ? $employers[$employerId] : null;
     }
 
     public function getEmployerProperties($employerId, $full = false)
