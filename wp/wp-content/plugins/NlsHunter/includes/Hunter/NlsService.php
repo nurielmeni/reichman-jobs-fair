@@ -59,8 +59,8 @@ class NlsService
             $this->auth = $nlsSecurity->isAuth();
         }
         $this->soap_headers = [
-            new SoapHeader('_', 'NiloosoftCred1', $this->auth ? $this->auth->UsernameToken : null),
-            new SoapHeader('_', 'NiloosoftCred2', $this->auth ? $this->auth->PasswordToken : null)
+            new SoapHeader('_', 'NiloosoftCred1', $this->auth && property_exists($this->auth, 'UsernameToken') ? $this->auth->UsernameToken : null),
+            new SoapHeader('_', 'NiloosoftCred2', $this->auth && property_exists($this->auth, 'PasswordToken') ? $this->auth->PasswordToken : null)
         ];
         $this->langCode = NlsHelper::languageCode();
     }

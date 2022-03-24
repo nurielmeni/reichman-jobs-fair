@@ -12,6 +12,10 @@ var App = App || (
             $('.footer .spinner svg').addClass('hidden');
         }
 
+        function clearResults() {
+            $(employersGrid).html('');
+        }
+
         function loadEmployers(page) {
             var searchPhrase = $(searchBoxButton).data('search-phrase') ? $(searchBoxButton).data('search-phrase').trim() : '';
 
@@ -25,7 +29,10 @@ var App = App || (
                 url: frontend_ajax.url,
                 data: data,
                 type: "POST",
-                beforeSend: showSpinner,
+                beforeSend: function () {
+                    showSpinner();
+                    $(searchBoxButton).prop('disabled', true)
+                },
                 success: function (response) {
                     var page = Number(response.page);
                     hideSpinner();
@@ -38,6 +45,9 @@ var App = App || (
                     $(document.body).trigger("post-load");
 
                     ScrollTo && ScrollTo.setCalls('#employers-loader .spinner', 1);
+                },
+                complete: function () {
+                    $(searchBoxButton).prop('disabled', false)
                 }
             });
         }
@@ -47,9 +57,11 @@ var App = App || (
 
             $(searchBoxButton).on('click', function () {
                 $(this).data('search-phrase', $(searchBoxInput).val());
+                clearResults();
                 loadEmployers(-1);
             });
 
+            // Reset the search phrase
             $(this).data('search-phrase', false);
         });
 

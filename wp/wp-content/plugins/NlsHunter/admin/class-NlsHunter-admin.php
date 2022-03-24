@@ -200,7 +200,7 @@ class NlsHunter_Admin
         if (isset($_POST[$field])) {
             $value = $_POST[$field];
             update_option($field, $value);
-        } else if ($checkbox) {
+        } else if ($_POST && $checkbox) {
             update_option($field, '');
             return '';
         }

@@ -399,6 +399,7 @@ class NlsHunter_model
 
     public function getEmployers($page = null, $searchPhrase = '')
     {
+        $searchPhrase = trim($searchPhrase);
         $cache_key = 'nls_hunter_employers_' . get_bloginfo('language');
         if ($this->nlsFlashCache) wp_cache_delete($cache_key);
 
@@ -421,8 +422,11 @@ class NlsHunter_model
         }
         if ($page !== null && is_int($page)) {
             $window = intval(get_option(NlsHunter_Admin::NLS_EMPLOYERS_COUNT, 1));
-            $filteredArray = array_filter($employers, function ($employer) use ($searchPhrase) {
-            });
+            if (strlen($searchPhrase) > 0) {
+                $employers = array_filter($employers, function ($employer) use ($searchPhrase) {
+                    return stripos($employer->EmployerName, $searchPhrase) !== false;
+                });
+            }
             return array_slice($employers, $page * $window, $window);
         }
         return $employers;
