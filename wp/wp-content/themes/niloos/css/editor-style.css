@@ -194,6 +194,10 @@
   height: 3rem;
 }
 
+.h-8 {
+  height: 2rem;
+}
+
 .h-10 {
   height: 2.5rem;
 }
@@ -258,6 +262,10 @@
 
 .min-w-mslider {
   min-width: 272px;
+}
+
+.min-w-cardAvatar {
+  min-width: 30px;
 }
 
 .max-w-mslider {
@@ -494,6 +502,10 @@
 
 .p-8 {
   padding: 2rem;
+}
+
+.p-3 {
+  padding: 0.75rem;
 }
 
 .p-0 {

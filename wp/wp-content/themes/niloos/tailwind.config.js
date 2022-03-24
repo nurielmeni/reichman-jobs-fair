@@ -36,11 +36,13 @@ module.exports = {
       },
       maxWidth: {
         'slider': '380px',
-        'mslider': '272px'
+        'mslider': '272px',
+        'cardAvatar': '30px'
       },
       minWidth: {
         'slider': '380px',
-        'mslider': '272px'
+        'mslider': '272px',
+        'cardAvatar': '30px'
       },
       rotate: {
         '270': '270deg',
