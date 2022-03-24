@@ -92,7 +92,7 @@ class NlsFilter
     $sidNestedFilterField = new FilterField('PublishedJobSupplier_SupplierId', SearchPhrase::ALL, $supplierId, self::TERMS_NON_ANALAYZED);
     $sidParentFilterField->setNested($sidNestedFilterField);
 
-    $this->addWhereFilter($sidParentFilterField, WhereCondition::AND);
+    $this->addWhereFilter($sidParentFilterField, 'AND');
   }
 
   /**
