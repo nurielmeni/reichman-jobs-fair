@@ -13,9 +13,6 @@ require_once 'Hunter/NlsFilter.php';
 class NlsHunter_model
 {
     const STATUS_OPEN = 1;
-    const CACHE_EXPIRATION = 20 * 60; // 20 min
-    const FLASH = true;
-
 
     private $nlsSecutity;
     private $auth;
@@ -26,6 +23,8 @@ class NlsHunter_model
 
     private $countPerPage = 10;
     private $countHotJobs = 6;
+    private $nlsFlashCache  = true;
+    private $nlsCacheTime  = 20 * 60;
 
     private $regions;
 
@@ -43,6 +42,8 @@ class NlsHunter_model
         $this->auth = $this->nlsSecutity->isAuth();
         $this->countPerPage = get_option(NlsHunter_Admin::NLS_JOBS_COUNT, 10);
         $this->countHotJobs = get_option(NlsHunter_Admin::NLS_HOT_JOBS_COUNT, 6);
+        $this->nlsFlashCache = strlen(get_option(NlsHunter_Admin::NLS_FLASH_CACHE, "")) > 0;
+        $this->nlsCacheTime = intval(get_option(NlsHunter_Admin::NLS_CACHE_TIME, 20)) * 60;
         $this->supplierId = $this->queryParam('sid', get_option(NlsHunter_Admin::NSOFT_SUPPLIER_ID));
 
         if (!$this->auth) {
@@ -237,14 +238,14 @@ class NlsHunter_model
         return $this->nlsCards->getJobByJobCode($jobCode);
     }
 
-    public function searchJobByJobCode($jobCode, $flash = self::FLASH)
+    public function searchJobByJobCode($jobCode)
     {
         if (!$jobCode) return null;
         $resultRowLimit = 1;
         $resultRowOffset = 0;
 
         $cache_key = 'nls_hunter_job_' . $jobCode;
-        if ($flash) wp_cache_delete($cache_key);
+        if ($this->nlsFlashCache) wp_cache_delete($cache_key);
 
         $job = wp_cache_get($cache_key);
 
@@ -293,7 +294,7 @@ class NlsHunter_model
 
         if (false === $jobScopes) {
             $jobScopes = $this->nlsDirectory->getJobScopes();
-            wp_cache_set($cacheKey, $jobScopes, 'directory', self::CACHE_EXPIRATION);
+            wp_cache_set($cacheKey, $jobScopes, 'directory', $this->nlsCacheTime);
         }
 
         return is_array($jobScopes) ? $jobScopes : [];
@@ -308,7 +309,7 @@ class NlsHunter_model
 
         if (false === $jobAreas) {
             $jobAreas = $this->nlsDirectory->getProfessionalFields();
-            wp_cache_set($cacheKey, $jobAreas, 'directory', self::CACHE_EXPIRATION);
+            wp_cache_set($cacheKey, $jobAreas, 'directory', $this->nlsCacheTime);
         }
 
         return is_array($jobAreas) ? $jobAreas : [];
@@ -323,7 +324,7 @@ class NlsHunter_model
 
         if (false === $jobRanks) {
             $jobRanks = $this->nlsDirectory->getJobRanks();
-            wp_cache_set($cacheKey, $jobRanks, 'directory', self::CACHE_EXPIRATION);
+            wp_cache_set($cacheKey, $jobRanks, 'directory', $this->nlsCacheTime);
         }
 
         return is_array($jobRanks) ? $jobRanks : [];
@@ -338,7 +339,7 @@ class NlsHunter_model
 
         if (false === $professionalFields) {
             $professionalFields = $this->nlsDirectory->getProfessionalFields();
-            wp_cache_set($cacheKey, $professionalFields, 'directory', self::CACHE_EXPIRATION);
+            wp_cache_set($cacheKey, $professionalFields, 'directory', $this->nlsCacheTime);
         }
 
         return is_array($professionalFields) ? $professionalFields : [];
@@ -353,7 +354,7 @@ class NlsHunter_model
 
         if (false === $regions) {
             $regions = $this->nlsDirectory->getRegions();
-            wp_cache_set($cacheKey, $regions, 'directory', self::CACHE_EXPIRATION);
+            wp_cache_set($cacheKey, $regions, 'directory', $this->nlsCacheTime);
         }
 
         return is_array($regions) ? $regions : [];
@@ -396,10 +397,10 @@ class NlsHunter_model
         return $res['list'];
     }
 
-    public function getEmployers($page = null, $flash = self::FLASH)
+    public function getEmployers($page = null)
     {
         $cache_key = 'nls_hunter_employers_' . get_bloginfo('language');
-        if ($flash) wp_cache_delete($cache_key);
+        if ($this->nlsFlashCache) wp_cache_delete($cache_key);
 
         $employers = wp_cache_get($cache_key);
         if (false === $employers) {
@@ -411,7 +412,7 @@ class NlsHunter_model
                 }
             }
 
-            wp_cache_set($cache_key, $employers, '', self::CACHE_EXPIRATION);
+            wp_cache_set($cache_key, $employers, '', $this->nlsCacheTime);
         }
         if ($page !== null && is_int($page)) {
             $window = intval(get_option(NlsHunter_Admin::NLS_EMPLOYERS_COUNT, 1));
@@ -463,7 +464,7 @@ class NlsHunter_model
         return $properties;
     }
 
-    public function getJobHunterExecuteNewQuery2($searchParams = [], $hunterId = null, $page = 0, $resultRowLimit = null, $flash = self::FLASH)
+    public function getJobHunterExecuteNewQuery2($searchParams = [], $hunterId = null, $page = 0, $resultRowLimit = null)
     {
         $resultRowLimit = $resultRowLimit ? $resultRowLimit : $this->nlsGetCountPerPage();
         $resultRowOffset = is_int($page) ? $page * $resultRowLimit : 0;
@@ -471,7 +472,7 @@ class NlsHunter_model
         $employer = key_exists('EmployerId', $searchParams) ? $searchParams['EmployerId'] : 0;
 
         $cache_key = 'nls_hunter_jobs_' . $region . '_' . $employer . '_' . $resultRowOffset . '_' . $resultRowLimit;
-        if ($flash) wp_cache_delete($cache_key);
+        if ($this->nlsFlashCache) wp_cache_delete($cache_key);
 
         $jobs = wp_cache_get($cache_key);
 

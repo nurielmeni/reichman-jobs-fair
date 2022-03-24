@@ -47,6 +47,8 @@ class NlsHunter_Admin
     const NLS_HUNTER_EMPLOYERS_HE = 'nlsHunterEmployers_he';
     const NLS_HUNTER_JOB_DETAILS_EN = 'nlsJobDetails_en';
     const NLS_HUNTER_JOB_DETAILS_HE = 'nlsJobDetails_he';
+    const NLS_FLASH_CACHE = 'nlsFlashCache';
+    const NLS_CACHE_TIME = 'nlsCacheTime';
 
     private $defaultValue;
     /**
@@ -87,6 +89,8 @@ class NlsHunter_Admin
             self::NLS_EMPLOYERS_COUNT => 20,
             self::NLS_JOBS_COUNT => 20,
             self::NLS_HOT_JOBS_COUNT => 20,
+            self::NLS_CACHE_TIME => 20,
+            self::NLS_FLASH_CACHE => ''
         ];
     }
 
@@ -185,15 +189,20 @@ class NlsHunter_Admin
         $nlsHunterEmployersHe = $this->getFieldValue(self::NLS_HUNTER_EMPLOYERS_HE);
         $nlsHunterJobDetailsEn = $this->getFieldValue(self::NLS_HUNTER_JOB_DETAILS_EN);
         $nlsHunterJobDetailsHe = $this->getFieldValue(self::NLS_HUNTER_JOB_DETAILS_HE);
+        $nlsFlashCache = $this->getFieldValue(self::NLS_FLASH_CACHE, true);
+        $nlsCacheTime = $this->getFieldValue(self::NLS_CACHE_TIME);
 
         require_once plugin_dir_path(__FILE__) . 'partials/NlsHunter-admin-display.php';
     }
 
-    private function getFieldValue($field)
+    private function getFieldValue($field, $checkbox = false)
     {
         if (isset($_POST[$field])) {
             $value = $_POST[$field];
             update_option($field, $value);
+        } else if ($checkbox) {
+            update_option($field, '');
+            return '';
         }
         $value = get_option($field, key_exists($field, $this->defaultValue) ? $this->defaultValue[$field] : '');
         return $value;

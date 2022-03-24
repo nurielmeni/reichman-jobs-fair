@@ -101,6 +101,17 @@
             <input type="number" name="nlsEmployersCount" id="nlsEmployersCount" value="<?= $nlsEmployersCount ?>">
             <br>
         </section>
+
+        <section id="cache-settings">
+            <h2 class="section-title">Cache Settings</h2>
+
+            <label for="nlsFlashCache">Disable Caching</label>
+            <input type="checkbox" name="nlsFlashCache" id="nlsFlashCache" value="nlsFlashCache" <?= strlen($nlsFlashCache) > 0 ? 'checked' : '' ?>>
+            <br>
+            <label for="nlsCacheTime">Cache Time (Minutes)</label>
+            <input type="number" name="nlsCacheTime" id="nlsCacheTime" value="<?= $nlsCacheTime ?>">
+            <br>
+        </section>
         <br>
         <section id="hunter_page_settings">
             <h2 class="section-title">Hunter Page Settings</h2>
