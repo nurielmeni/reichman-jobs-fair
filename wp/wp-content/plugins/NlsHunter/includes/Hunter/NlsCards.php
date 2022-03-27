@@ -893,13 +893,13 @@ class NlsCards extends NlsService
     {
         $transactionCode = NlsHelper::newGuid();
         $params = [
-            "CollectionOptions" => 8192,
+            "collection" => 'All',
             "transactionCode" => $transactionCode,
-            "employerId" => $employerId,
+            "customerId" => $employerId,
         ];
 
         try {
-            $res = $this->client->EmployerGet($params);
+            $res = $this->client->CustomerGet($params);
             return $res;
         } catch (Exception $ex) {
             throw new Exception('Error: EmployerGet: Niloos services are not availiable, try later.' . $ex->getMessage());
@@ -910,13 +910,13 @@ class NlsCards extends NlsService
     {
         $params = [
             'ParentId' => $parentId,
-            //'fromRow' => $fromRow,
-            //'toRow' => $toRow,
-            //'sortColumn' => '',
-            //'isAscending' => true,
+            'fromRow' => $fromRow,
+            'toRow' => $toRow,
+            'sortColumn' => 'Name',
+            'isAscending' => true,
             'filter' => [
-                //     'ParentEntityId' => '',
-                //     'ParentEntityTypeCode' => ''
+                //'ParentEntityId' => 5,
+                //'ParentEntityTypeCode' => ''
             ],
             'languageId' => NlsHelper::languageCode(),
             'transactionCode' => NlsHelper::newGuid()
