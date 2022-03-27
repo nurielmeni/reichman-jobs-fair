@@ -10,12 +10,14 @@ require_once ABSPATH . 'wp-content/plugins/NlsHunter/renderFunction.php';
 class NlsHunter_modules
 {
     private $model;
+    private $version;
     private $attributes;
     private $applicantId;
 
-    public function __construct($model)
+    public function __construct($model, $version)
     {
         $this->model = $model;
+        $this->version = $version;
         $this->attributes = [
             'phone' => ['054-7641456'],
             'fullName' => ['כלכלה כלכלה'],

@@ -117,7 +117,7 @@ class NlsHunter
 		try {
 			$this->model = new NlsHunter_model();
 
-			$this->modules = new NlsHunter_modules($this->model);
+			$this->modules = new NlsHunter_modules($this->model, $this->version);
 		} catch (\Exception $e) {
 			$this->addErrorToPage($e->getMessage(), "Error: Could not create Niloos Module.");
 			return null;

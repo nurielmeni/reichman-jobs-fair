@@ -17,6 +17,12 @@ var App = App || (
             $(employersGrid).html('');
         }
 
+        function searchByText() {
+            $(searchBoxButton).data('search-phrase', $(searchBoxInput).val());
+            clearResults();
+            loadEmployers(-1);
+        }
+
         function loadEmployers(page) {
             if (loading) return;
             var searchPhrase = $(searchBoxButton).data('search-phrase') ? $(searchBoxButton).data('search-phrase').trim() : '';
@@ -59,10 +65,11 @@ var App = App || (
         $(document).ready(function () {
             ScrollTo && ScrollTo.add('#employers-loader .spinner', loadEmployers, 1);
 
-            $(searchBoxButton).on('click', function () {
-                $(this).data('search-phrase', $(searchBoxInput).val());
-                clearResults();
-                loadEmployers(-1);
+            $(searchBoxButton).on('click', searchByText);
+
+            $(searchBoxInput).keypress(function (event) {
+                var keycode = (event.keyCode ? event.keyCode : event.which);
+                if (keycode == '13') searchByText();
             });
 
             // Reset the search phrase
