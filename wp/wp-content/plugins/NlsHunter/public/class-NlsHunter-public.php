@@ -142,7 +142,7 @@ class NlsHunter_Public
         // enqueue and localise scripts for handling Ajax Submit CV
         // Don't forget to add the action (apply_cv_function)
         // defined in the  class-NlsHunter-public.php (define_public_hooks)
-        wp_localize_script('nls-form-validation', 'frontend_ajax', ['url' => admin_url('admin-ajax.php')]);
+        wp_localize_script('nls-ajax_registration', 'frontend_ajax', ['url' => admin_url('admin-ajax.php')]);
     }
 
     /**
