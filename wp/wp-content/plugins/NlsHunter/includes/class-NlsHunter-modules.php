@@ -103,6 +103,9 @@ class NlsHunter_modules
             return ob_get_clean();
         };
 
+        // Add slider script
+        wp_enqueue_script('nls-slider', plugin_dir_url(__FILE__) . 'js/slider.js', array('jquery'), $this->version, false);
+
         // Get employer Jobs
         $jobs = $this->model->getJobHunterExecuteNewQuery2(['EmployerId' => $employerId]);
 
@@ -136,6 +139,9 @@ class NlsHunter_modules
 
         $employerId = property_exists($job, 'EmployerId') ? $job->EmployerId : null;
         $employer = $this->model->getEmployerProperties($employerId);
+
+        // Add form scripts
+        wp_enqueue_script('nls-form-validation', plugin_dir_url(__FILE__) . 'js/NlsHunterForm.js', array('jquery'), $this->version, false);
 
         ob_start();
 

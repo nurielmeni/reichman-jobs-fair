@@ -132,8 +132,8 @@ class NlsHunter_Public
 
         wp_enqueue_script('mobile-check', plugin_dir_url(__FILE__) . 'js/mobileCheck.js', array('jquery'), $this->version, false);
         wp_enqueue_script('nls-jobs', plugin_dir_url(__FILE__) . 'js/jobs.js', array('jquery'), $this->version, false);
-        wp_enqueue_script('nls-slider', plugin_dir_url(__FILE__) . 'js/slider.js', array('jquery'), $this->version, false);
-        wp_enqueue_script('nls-form-validation', plugin_dir_url(__FILE__) . 'js/NlsHunterForm.js', array('jquery'), $this->version, false);
+        // wp_enqueue_script('nls-slider', plugin_dir_url(__FILE__) . 'js/slider.js', array('jquery'), $this->version, false);
+        // wp_enqueue_script('nls-form-validation', plugin_dir_url(__FILE__) . 'js/NlsHunterForm.js', array('jquery'), $this->version, false);
         wp_enqueue_script('nls-swipe-detect', plugin_dir_url(__FILE__) . 'js/swipeDetect.js', array('jquery'), $this->version, false);
         wp_enqueue_script('nls-scroll-to-event', plugin_dir_url(__FILE__) . 'js/scrollToEvent.js', array('jquery'), $this->version, false);
         wp_enqueue_script('nls-app', plugin_dir_url(__FILE__) . 'js/app.js', array('jquery'), $this->version, false);
