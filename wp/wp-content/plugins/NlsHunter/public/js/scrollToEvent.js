@@ -10,20 +10,23 @@ var ScrollTo = ScrollTo || (
         // 
         var positions = [];
 
-        $(document).on('scroll', function (event) {
-            var viewPos = $(document).scrollTop() + $(window).height();
-            positions.forEach(function (pos) {
-                // Number of calls permited for the function
-                if (pos.calls === 0 || $(pos.el).length === 0) return;
+        $(document).ready(function () {
+            $(document).on('scroll', function (event) {
+                var viewPos = $(document).scrollTop() + $(window).height();
+                positions.forEach(function (pos) {
+                    // Number of calls permited for the function
+                    if (pos.calls === 0 || $(pos.el).length === 0) return;
 
-                var elPos = $(pos.el).position().top;
+                    var elPos = $(pos.el).position().top;
 
-                if (pos.calls > 0 && viewPos >= elPos) {
-                    pos.calls--;
-                    pos.cb();
-                }
+                    if (pos.calls > 0 && viewPos >= elPos) {
+                        pos.calls--;
+                        pos.cb();
+                    }
+                });
             });
         });
+
 
         function add(el, cb, calls) {
             positions.push(new Position(el, cb, calls));
