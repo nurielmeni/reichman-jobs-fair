@@ -104,7 +104,7 @@ class NlsHunter_modules
         };
 
         // Add slider script
-        wp_enqueue_script('nls-slider', plugin_dir_url(__FILE__) . 'js/slider.js', array('jquery'), $this->version, false);
+        wp_enqueue_script('nls-slider', plugins_url('NlsHunter/public/js/slider.js'), array('jquery'), $this->version, false);
 
         // Get employer Jobs
         $jobs = $this->model->getJobHunterExecuteNewQuery2(['EmployerId' => $employerId]);
