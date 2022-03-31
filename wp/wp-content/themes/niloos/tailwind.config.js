@@ -103,7 +103,7 @@ module.exports = {
       },
       gridTemplateColumns: {
         'autofit-160': 'repeat( auto-fit, minmax(160px, 1fr) )',
-        'autofit-120': 'repeat( auto-fit, minmax(120px, 1fr) )'
+        'autofit-114': 'repeat( auto-fit, minmax(114px, 1fr) )'
       }
     },
     screens: {
