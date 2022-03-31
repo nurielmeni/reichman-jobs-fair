@@ -141,7 +141,7 @@ class NlsHunter_modules
         $employer = $this->model->getEmployerProperties($employerId);
 
         // Add form scripts
-        wp_enqueue_script('nls-form-validation', plugin_dir_url(__FILE__) . 'js/NlsHunterForm.js', array('jquery'), $this->version, false);
+        wp_enqueue_script('nls-form-validation', plugins_url('NlsHunter/public/js/NlsHunterForm.js'), array('jquery'), $this->version, false);
 
         ob_start();
 
