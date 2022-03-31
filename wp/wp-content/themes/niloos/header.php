@@ -24,7 +24,7 @@
 					<div class="md:flex md:justify-between md:items-center py-6 px-4 md:px-0">
 						<div class="flex justify-between items-center text-white">
 
-							<div>
+							<div class="flex items-center">
 								<?= get_header_ml_logo(); ?>
 								<h2 class="text-lg sm:text-xl md:text-2xl font-bold mx-2">
 									<?= _e(get_bloginfo('description'), 'reichman'); ?>
