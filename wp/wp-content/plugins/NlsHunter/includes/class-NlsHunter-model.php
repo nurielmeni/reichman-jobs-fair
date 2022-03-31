@@ -441,7 +441,7 @@ class NlsHunter_model
 
     private function getEmployerVideoUrl($employer)
     {
-        $default = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+        $default = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
         $videoPropName = 'Customer Video';
 
         $exProps = property_exists($employer, 'ExtendedProperties') && property_exists($employer->ExtendedProperties, 'ExtendedProperty')
