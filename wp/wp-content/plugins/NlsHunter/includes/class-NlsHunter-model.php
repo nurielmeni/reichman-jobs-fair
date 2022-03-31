@@ -439,31 +439,53 @@ class NlsHunter_model
         return key_exists($employerId, $employers) ? $employers[$employerId] : null;
     }
 
+    private function getEmployerVideoUrl($employer)
+    {
+        $default = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+        $videoPropName = 'Customer Video';
+
+        $exProps = property_exists($employer, 'ExtendedProperties') && property_exists($employer->ExtendedProperties, 'ExtendedProperty')
+            ? $employer->ExtendedProperties->ExtendedProperty
+            : null;
+
+        if (!$exProps) return $default;
+
+        $exProps = !is_array($exProps) ? [$exProps] : $exProps;
+
+        foreach ($exProps as $exProp) {
+            if ($exProp->PropertyName === $videoPropName) return $exProp->Value;
+        }
+
+        return $default;
+    }
+
     public function getEmployerProperties($employerId, $full = false)
     {
         $properties = null;
         $employerData = $this->getEmployerData($employerId);
         if ($full) {
             $res = $this->employerGet($employerId);
-            $employer = $res && property_exists($res, 'EmployerGetResult') ? $res->EmployerGetResult : null;
+            $employer = $res && property_exists($res, 'CustomerGetResult') ? $res->CustomerGetResult : null;
             $fileList = $this->filesListGet($employerId);
 
             // Set the Employer Data needed
             $properties['generalDescription'] = $employer->GeneralDescription;
             $properties['webSite'] = strlen($employer->WebSite) > 0 && strpos($employer->WebSite, 'http') !== 0 ? "http://$employer->WebSite" : $employer->WebSite;
 
-            $properties['videoUrl'] = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+            $properties['videoUrl'] = $this->getEmployerVideoUrl($employer);
 
-            $properties['images'] = [
-                ['src' => plugins_url('NlsHunter/public/images') . '/apply@3x.png', 'alt' => 'apply'],
-                ['src' => plugins_url('NlsHunter/public/images') . '/apply@3x.png', 'alt' => 'apply'],
-                ['src' => plugins_url('NlsHunter/public/images') . '/apply@3x.png', 'alt' => 'apply'],
-                ['src' => plugins_url('NlsHunter/public/images') . '/apply@3x.png', 'alt' => 'apply'],
-                ['src' => plugins_url('NlsHunter/public/images') . '/apply@3x.png', 'alt' => 'apply'],
-                ['src' => plugins_url('NlsHunter/public/images') . '/apply@3x.png', 'alt' => 'apply'],
-                ['src' => plugins_url('NlsHunter/public/images') . '/apply@3x.png', 'alt' => 'apply'],
-                ['src' => plugins_url('NlsHunter/public/images') . '/apply@3x.png', 'alt' => 'apply'],
-            ];
+            $properties['images'] = count($fileList) > 0
+                ? $fileList
+                : [
+                    ['src' => plugins_url('NlsHunter/public/images') . '/apply@3x.png', 'alt' => 'apply'],
+                    ['src' => plugins_url('NlsHunter/public/images') . '/apply@3x.png', 'alt' => 'apply'],
+                    ['src' => plugins_url('NlsHunter/public/images') . '/apply@3x.png', 'alt' => 'apply'],
+                    ['src' => plugins_url('NlsHunter/public/images') . '/apply@3x.png', 'alt' => 'apply'],
+                    ['src' => plugins_url('NlsHunter/public/images') . '/apply@3x.png', 'alt' => 'apply'],
+                    ['src' => plugins_url('NlsHunter/public/images') . '/apply@3x.png', 'alt' => 'apply'],
+                    ['src' => plugins_url('NlsHunter/public/images') . '/apply@3x.png', 'alt' => 'apply'],
+                    ['src' => plugins_url('NlsHunter/public/images') . '/apply@3x.png', 'alt' => 'apply'],
+                ];
         }
 
         if ($employerData) {
@@ -538,11 +560,57 @@ class NlsHunter_model
         return $professionalFields;
     }
 
+    private function getFileLocation($fileData, $isUrl = false)
+    {
+        return wp_upload_dir()[$isUrl ? 'baseurl' : 'basedir'] . DIRECTORY_SEPARATOR . 'bycards/' . $fileData->CardId . DIRECTORY_SEPARATOR . $fileData->FileId . DIRECTORY_SEPARATOR . $this->getFileName($fileData);
+    }
+
+    private function writeFileToUploads($path, $data)
+    {
+        $structure =  dirname($path);
+        if (!is_dir($structure) && !mkdir($structure, 0777, true)) return false;
+
+        return file_put_contents($path, $data, LOCK_EX);
+    }
+
+    private function getFileName($fileData)
+    {
+        return trim($fileData->Name) . '.' . trim($fileData->Type);
+    }
+
     public function filesListGet($parentId)
     {
         if (!$this->initCardService()) return [];
 
-        return $this->nlsCards->filesListGet($parentId);
+        $res = $this->nlsCards->filesListGet($parentId);
+        $files = property_exists($res, 'FilesListGetResult') && property_exists($res->FilesListGetResult, 'FileInfo')
+            ? $res->FilesListGetResult->FileInfo
+            : [];
+
+        $fileList = [];
+
+        foreach ($files as $file) {
+
+            // Check if the file is already  saved
+            $filePath = $this->getFileLocation($file);
+            $fileUrl = $this->getFileLocation($file, true);
+
+            if (file_exists($filePath)) {
+                $fileList[] = ['src' => $fileUrl, 'alt' => $this->getFileName($file)];
+                continue;
+            }
+
+            $fileInfo = $this->nlsCards->getFileInfo($file->FileId, $file->CardId, true);
+            $fileData = property_exists($fileInfo, 'FileGetByFileIdResult') ? $fileInfo->FileGetByFileIdResult : null;
+            if (!$fileData) continue;
+
+            $writenFile = $this->writeFileToUploads($filePath, $fileData->FileContent);
+
+            if (!$writenFile) continue;
+            $fileList[] = ['src' => $fileUrl, 'alt' => $this->getFileName($file)];
+        }
+
+        return $fileList;
     }
 
     /**

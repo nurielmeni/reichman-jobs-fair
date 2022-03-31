@@ -24,7 +24,7 @@ var Slider =
           ? slider + " " + config.item
           : slider + " > *";
 
-      $(slider).scrollLeft((sliderWidth() - window.screen.width) / 2);
+      $(slider).scrollLeft((sliderWidth() - $(slider).get(0).clientWidth) / 2);
 
       if (mobileCheck()) {
         swipedetect(document.querySelector(slider), function (swipedir) {
@@ -54,7 +54,7 @@ var Slider =
         });
 
         // Slider width + screen width
-        if (sLeft + window.screen.width >= sliderWidth()) $(nav + '.left').hide()
+        if (sLeft + $(slider).get(0).clientWidth >= sliderWidth()) $(nav + '.left').hide()
         else $(nav + '.left').show();
 
         if (sLeft <= 0) $(nav + '.right').hide()

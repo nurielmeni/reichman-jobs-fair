@@ -210,6 +210,14 @@
   height: 1.5rem;
 }
 
+.max-h-mslider {
+  max-height: 266px;
+}
+
+.min-h-mslider {
+  min-height: 266px;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -260,12 +268,12 @@
   width: 1.5rem;
 }
 
-.min-w-mslider {
-  min-width: 272px;
-}
-
 .min-w-cardAvatar {
   min-width: 30px;
+}
+
+.min-w-mslider {
+  min-width: 272px;
 }
 
 .max-w-mslider {
@@ -484,6 +492,11 @@
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .p-4 {
   padding: 1rem;
 }
@@ -691,6 +704,10 @@
 
 .opacity-50 {
   opacity: 0.5;
+}
+
+.opacity-80 {
+  opacity: 0.8;
 }
 
 .outline {
@@ -1030,6 +1047,14 @@ li.transparent-text {
 
   .md\:h-12 {
     height: 3rem;
+  }
+
+  .md\:max-h-slider {
+    max-height: 266px;
+  }
+
+  .md\:min-h-slider {
+    min-height: 266px;
   }
 
   .md\:w-96 {

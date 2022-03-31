@@ -44,6 +44,14 @@ module.exports = {
         'mslider': '272px',
         'cardAvatar': '30px'
       },
+      maxHeight: {
+        'slider': '266px',
+        'mslider': '266px',
+      },
+      minHeight: {
+        'slider': '266px',
+        'mslider': '266px',
+      },
       rotate: {
         '270': '270deg',
       },
