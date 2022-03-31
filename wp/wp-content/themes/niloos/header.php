@@ -26,13 +26,10 @@
 
 							<div>
 								<?= get_header_ml_logo(); ?>
+								<h2 class="text-lg sm:text-xl md:text-2xl font-bold mx-2">
+									<?= _e(get_bloginfo('description'), 'reichman'); ?>
+								</h2>
 							</div>
-
-							<h2 class="text-lg sm:text-xl md:text-2xl font-bold mx-2">
-								<?= _e(get_bloginfo('description'), 'reichman'); ?>
-							</h2>
-
-
 
 							<div class="flex md:hidden">
 								<?php
