@@ -1,7 +1,9 @@
 <?php if (key_exists('videoUrl', $employer) && strlen($employer['videoUrl']) > 0) : ?>
     <?php if (strpos($employer['videoUrl'], 'youtu.be')) : ?>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/<?= end(explode('/', $employer['videoUrl'])) ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-        </iframe>
+        <div class="youtube-player-container">
+            <iframe src="https://www.youtube.com/embed/<?= end(explode('/', $employer['videoUrl'])) ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="video">
+            </iframe>
+        </div>
     <?php elseif (strpos($employer['videoUrl'], '.mp4')) : ?>
         <div class="video-wrapper">
             <video preload="metadata" <?= $controls ? 'controls' : '' ?> <?= $autoplay ? 'autoplay' : '' ?> <?= $loop ? 'loop' : '' ?>>
