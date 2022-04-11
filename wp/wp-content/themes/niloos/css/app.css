@@ -1303,6 +1303,7 @@ li.social > span.social-icon {
 li.social > span.social-icon > a {
   font-size: 1px;
   padding: 16px;
+  position: absolute;
 }
 
 li.social.he {
