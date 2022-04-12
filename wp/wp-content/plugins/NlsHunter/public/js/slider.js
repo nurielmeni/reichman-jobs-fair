@@ -12,19 +12,25 @@ var Slider =
     function init(config) {
       wrapper = config && "wrapper" in config ? config.wrapper : ".hs-wrapper";
       nav =
-        config && "nav" in config !== "undefined"
+        config && "nav" in config
           ? wrapper + " " + config.nav
           : wrapper + " button.nav";
       slider =
-        config && "slider" in config !== "undefined"
+        config && "slider" in config
           ? wrapper + " " + config.slider
           : wrapper + " .hs-container";
       item =
-        config && "item" in config !== "undefined"
+        config && "item" in config
           ? slider + " " + config.item
           : slider + " > *";
 
-      $(slider).scrollLeft((sliderWidth() - $(slider).get(0).clientWidth) / 2);
+      // Check if images needs slide
+      if (getScrollWidth(wrapper) >= getScrollWidth(slider)) {
+        $(nav).hide();
+        return;
+      };
+
+      $(slider).scrollLeft((getScrollWidth(slider) - $(slider).get(0).clientWidth) / 2);
 
       if (mobileCheck()) {
         swipedetect(document.querySelector(slider), function (swipedir) {
@@ -54,7 +60,7 @@ var Slider =
         });
 
         // Slider width + screen width
-        if (sLeft + $(slider).get(0).clientWidth >= sliderWidth()) $(nav + '.left').hide()
+        if (sLeft + $(slider).get(0).clientWidth >= getScrollWidth(slider)) $(nav + '.left').hide()
         else $(nav + '.left').show();
 
         if (sLeft <= 0) $(nav + '.right').hide()
@@ -62,8 +68,8 @@ var Slider =
       });
     }
 
-    function sliderWidth() {
-      var sliderEl = document.querySelector(slider);
+    function getScrollWidth(el) {
+      var sliderEl = document.querySelector(el);
       return sliderEl ? sliderEl.scrollWidth : 0;
     }
 
@@ -88,4 +94,5 @@ var Slider =
 
 jQuery(document).ready(function () {
   Slider.init();
+  window.onresize = Slider.init;
 });
