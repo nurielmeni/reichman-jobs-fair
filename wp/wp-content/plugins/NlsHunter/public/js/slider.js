@@ -40,7 +40,7 @@ var Slider =
               ? -1
               : null;
 
-          scrollSlider(direction, 0, null);
+          scrollSlider(direction, 200, null);
         });
 
         var width = $(item).outerWidth(true);
