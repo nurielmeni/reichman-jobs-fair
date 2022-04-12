@@ -441,7 +441,8 @@ class NlsHunter_model
 
     private function getEmployerVideoUrl($employer)
     {
-        $default = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+        //$default = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+        $default = null;
         $videoPropName = 'Customer Video';
 
         $exProps = property_exists($employer, 'ExtendedProperties') && property_exists($employer->ExtendedProperties, 'ExtendedProperty')
@@ -476,16 +477,7 @@ class NlsHunter_model
 
             $properties['images'] = count($fileList) > 0
                 ? $fileList
-                : [
-                    ['src' => plugins_url('NlsHunter/public/images') . '/apply@3x.png', 'alt' => 'apply'],
-                    ['src' => plugins_url('NlsHunter/public/images') . '/apply@3x.png', 'alt' => 'apply'],
-                    ['src' => plugins_url('NlsHunter/public/images') . '/apply@3x.png', 'alt' => 'apply'],
-                    ['src' => plugins_url('NlsHunter/public/images') . '/apply@3x.png', 'alt' => 'apply'],
-                    ['src' => plugins_url('NlsHunter/public/images') . '/apply@3x.png', 'alt' => 'apply'],
-                    ['src' => plugins_url('NlsHunter/public/images') . '/apply@3x.png', 'alt' => 'apply'],
-                    ['src' => plugins_url('NlsHunter/public/images') . '/apply@3x.png', 'alt' => 'apply'],
-                    ['src' => plugins_url('NlsHunter/public/images') . '/apply@3x.png', 'alt' => 'apply'],
-                ];
+                : [];
         }
 
         if ($employerData) {
