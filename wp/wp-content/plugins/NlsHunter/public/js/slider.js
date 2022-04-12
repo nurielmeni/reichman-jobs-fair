@@ -66,10 +66,10 @@ var Slider =
         // Slider width + screen width
         var width = $(item).outerWidth(true);
 
-        if (sLeft + $(slider).get(0).clientWidth > getScrollWidth(slider) + width) $(nav + '.left').hide()
-        else $(nav + '.left').show();
+        if ($(slider).get(0).scrollLeft <= 0) $(nav + '.right').hide()
+        else $(nav + '.right').show();
 
-        if (sLeft < width) $(nav + '.right').hide()
+        if ($(slider).get(0).scrollLeft + $(wrapper).scrollLeft >= $(slider).scrollWidth) $(nav + '.right').hide()
         else $(nav + '.right').show();
       });
     }
