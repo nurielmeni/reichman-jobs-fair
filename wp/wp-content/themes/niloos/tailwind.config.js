@@ -36,21 +36,21 @@ module.exports = {
       },
       maxWidth: {
         'slider': '380px',
-        'mslider': '272px',
+        'mslider': 'calc(100vw - 40px)',
         'cardAvatar': '30px'
       },
       minWidth: {
         'slider': '380px',
-        'mslider': '272px',
+        'mslider': 'calc(100vw - 40px)',
         'cardAvatar': '30px'
       },
       maxHeight: {
         'slider': '266px',
-        'mslider': '266px',
+        'mslider': 'auto',
       },
       minHeight: {
         'slider': '266px',
-        'mslider': '266px',
+        'mslider': 'auto',
       },
       rotate: {
         '270': '270deg',

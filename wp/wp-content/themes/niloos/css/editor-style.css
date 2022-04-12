@@ -203,11 +203,11 @@
 }
 
 .max-h-mslider {
-  max-height: 266px;
+  max-height: auto;
 }
 
 .min-h-mslider {
-  min-height: 266px;
+  min-height: auto;
 }
 
 .min-h-screen {
@@ -261,11 +261,11 @@
 }
 
 .min-w-mslider {
-  min-width: 272px;
+  min-width: calc(100vw - 40px);
 }
 
 .max-w-mslider {
-  max-width: 272px;
+  max-width: calc(100vw - 40px);
 }
 
 .max-w-sm {
