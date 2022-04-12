@@ -69,8 +69,8 @@ var Slider =
         if ($(slider).get(0).scrollLeft <= 0) $(nav + '.right').hide()
         else $(nav + '.right').show();
 
-        if ($(slider).get(0).scrollLeft + $(wrapper).scrollLeft >= $(slider).scrollWidth) $(nav + '.right').hide()
-        else $(nav + '.right').show();
+        if ($(slider).get(0).scrollLeft + $(wrapper).scrollLeft >= $(slider).scrollWidth) $(nav + '.left').hide()
+        else $(nav + '.left').show();
       });
     }
 
