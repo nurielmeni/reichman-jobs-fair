@@ -407,6 +407,7 @@ class NlsHunter_model
         if (false === $employers) {
             $employers = [];
             $jobs = $this->getJobHunterExecuteNewQuery2([], null, 0, 10000);
+            if (!$jobs || !is_array($jobs) || !key_exists('list', $jobs)) return [];
             foreach ($jobs['list'] as $job) {
                 if (property_exists($job, 'EmployerId') && $job->EmployerId !== null) {
                     $data['EmployerEntityTypeCode'] = $job->EmployerEntityTypeCode;
