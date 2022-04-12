@@ -280,19 +280,19 @@ class NlsHunter_model
      */
     public function categories()
     {
-        $this->initDirectoryService();
+        if (!$this->initDirectoryService()) return [];
         $categories = $this->nlsDirectory->getCategories();
         return $categories;
     }
 
     public function jobScopes()
     {
-        $this->initDirectoryService();
-
         $cacheKey = 'JOB_SCOPES';
         $jobScopes = wp_cache_get($cacheKey);
 
         if (false === $jobScopes) {
+            if (!$this->initDirectoryService()) return [];
+
             $jobScopes = $this->nlsDirectory->getJobScopes();
             wp_cache_set($cacheKey, $jobScopes, 'directory', $this->nlsCacheTime);
         }
@@ -302,12 +302,12 @@ class NlsHunter_model
 
     public function jobAreas()
     {
-        $this->initDirectoryService();
-
         $cacheKey = 'JOB_AREAS';
         $jobAreas = wp_cache_get($cacheKey);
 
         if (false === $jobAreas) {
+            if (!$this->initDirectoryService()) return [];
+
             $jobAreas = $this->nlsDirectory->getProfessionalFields();
             wp_cache_set($cacheKey, $jobAreas, 'directory', $this->nlsCacheTime);
         }
@@ -317,12 +317,12 @@ class NlsHunter_model
 
     public function jobRanks()
     {
-        $this->initDirectoryService();
-
         $cacheKey = 'JOB_RANKS';
         $jobRanks = wp_cache_get($cacheKey);
 
         if (false === $jobRanks) {
+            if (!$this->initDirectoryService()) return [];
+
             $jobRanks = $this->nlsDirectory->getJobRanks();
             wp_cache_set($cacheKey, $jobRanks, 'directory', $this->nlsCacheTime);
         }
@@ -332,12 +332,12 @@ class NlsHunter_model
 
     public function professionalFields()
     {
-        $this->initDirectoryService();
-
         $cacheKey = 'PROFESSIONAL_FIELD';
         $professionalFields = wp_cache_get($cacheKey);
 
         if (false === $professionalFields) {
+            if (!$this->initDirectoryService()) return [];
+
             $professionalFields = $this->nlsDirectory->getProfessionalFields();
             wp_cache_set($cacheKey, $professionalFields, 'directory', $this->nlsCacheTime);
         }
@@ -347,12 +347,12 @@ class NlsHunter_model
 
     public function regions()
     {
-        $this->initDirectoryService();
-
         $cacheKey = 'REGIONS';
         $regions = wp_cache_get($cacheKey);
 
         if (false === $regions) {
+            if (!$this->initDirectoryService()) return [];
+
             $regions = $this->nlsDirectory->getRegions();
             wp_cache_set($cacheKey, $regions, 'directory', $this->nlsCacheTime);
         }
