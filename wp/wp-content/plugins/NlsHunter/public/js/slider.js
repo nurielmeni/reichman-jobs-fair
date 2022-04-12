@@ -66,7 +66,7 @@ var Slider =
         // Slider width + screen width
         var width = $(item).outerWidth(true);
 
-        if (sLeft + $(slider).get(0).clientWidth + width > getScrollWidth(slider)) $(nav + '.left').hide()
+        if (sLeft + $(slider).get(0).clientWidth > getScrollWidth(slider) + width) $(nav + '.left').hide()
         else $(nav + '.left').show();
 
         if (sLeft < width) $(nav + '.right').hide()
