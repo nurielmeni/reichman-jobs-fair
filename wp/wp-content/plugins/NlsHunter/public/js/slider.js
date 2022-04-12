@@ -30,7 +30,6 @@ var Slider =
         return;
       };
 
-      $(slider).scrollLeft((getScrollWidth(slider) - $(slider).get(0).clientWidth) / 2);
 
       if (mobileCheck()) {
         swipedetect(document.querySelector(slider), function (swipedir) {
@@ -41,8 +40,13 @@ var Slider =
               ? -1
               : null;
 
-          scrollSlider(direction, null);
+          scrollSlider(direction, 0, null);
         });
+
+        var width = $(item).outerWidth(true);
+        $(slider).scrollLeft(width * Math.floor($(item).length / 2));
+      } else {
+        $(slider).scrollLeft((getScrollWidth(slider) - $(slider).get(0).clientWidth) / 2);
       }
 
       // Nav Buttons Clicked
@@ -55,7 +59,7 @@ var Slider =
             ? -1
             : null;
 
-        var sLeft = scrollSlider(direction, function () {
+        var sLeft = scrollSlider(direction, 600, function () {
           $(btnEl).prop('disabled', false);
         });
 
@@ -73,7 +77,7 @@ var Slider =
       return sliderEl ? sliderEl.scrollWidth : 0;
     }
 
-    function scrollSlider(direction, cbAfterAnimation) {
+    function scrollSlider(direction, delay, cbAfterAnimation) {
       if (!direction) return;
       var sliderEl = document.querySelector(slider);
 
@@ -81,7 +85,7 @@ var Slider =
       var sLeft = sliderEl.scrollLeft + direction * width;
 
       $(slider).animate({ scrollLeft: sLeft }, {
-        duration: 600, complete: cbAfterAnimation
+        duration: delay, complete: cbAfterAnimation
       });
 
       return sliderEl.scrollLeft;
