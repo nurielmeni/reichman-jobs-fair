@@ -147,4 +147,16 @@ class NlsHelper
         }
         return '';
     }
+
+    /**
+     * Retriev s a list value by the Id
+     * @text - the text to check for rtl/ltr
+     * return true if more heb letters then eng letters
+     */
+    public static function isHebrew($text)
+    {
+        $hebCount = preg_match_all('/[א-ת]/', $text);
+        $engCount = preg_match_all('/[a-zA-Z]/', $text);
+        return $hebCount > $engCount;
+    }
 }

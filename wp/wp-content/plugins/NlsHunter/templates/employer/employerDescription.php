@@ -1,4 +1,4 @@
-<div class="employer-description-wrapper bg-primary text-white mt-4 p-4 md:text-xl">
+<div class="employer-description-wrapper bg-primary text-white mt-4 p-4 md:text-xl <?= NlsHelper::isHebrew($employer['generalDescription']) ? 'text-right' : 'text-left' ?>">
     <?php if (key_exists('generalDescription', $employer) && strlen($employer['generalDescription']) > 0) : ?>
         <?= html_entity_decode($employer['generalDescription']) ?>
     <?php endif; ?>
