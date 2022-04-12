@@ -64,10 +64,12 @@ var Slider =
         });
 
         // Slider width + screen width
-        if (sLeft + $(slider).get(0).clientWidth >= getScrollWidth(slider)) $(nav + '.left').hide()
+        var width = $(item).outerWidth(true);
+
+        if (sLeft + $(slider).get(0).clientWidth + width > getScrollWidth(slider)) $(nav + '.left').hide()
         else $(nav + '.left').show();
 
-        if (sLeft <= 0) $(nav + '.right').hide()
+        if (sLeft < width) $(nav + '.right').hide()
         else $(nav + '.right').show();
       });
     }
