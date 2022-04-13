@@ -583,6 +583,7 @@ class NlsHunter_model
         $fileList = [];
 
         foreach ($files as $file) {
+            if (trim($file->Type) !== 'jpg' || trim($file->Type) !== 'png') continue;
 
             // Check if the file is already  saved
             $filePath = $this->getFileLocation($file);
