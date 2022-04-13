@@ -46,7 +46,7 @@ var Slider =
         var width = $(item).outerWidth(true);
         $(slider).scrollLeft(width * Math.floor($(item).length / 2));
       } else {
-        $(slider).scrollLeft((getScrollWidth(slider) - $(slider).get(0).clientWidth) / 2);
+        resetSlider();
       }
 
       // Nav Buttons Clicked
@@ -59,24 +59,37 @@ var Slider =
             ? -1
             : null;
 
-        var sLeft = scrollSlider(direction, 600, function () {
-          $(btnEl).prop('disabled', false);
+        scrollSlider(direction, 600, function () {
+          scrollComplete(btnEl);
         });
-
-        // Slider width + screen width
-        var width = $(item).outerWidth(true);
-
-        console.log('Slider: scrollLeft:', $(slider).get(0).scrollLeft);
-        console.log('Slider: scrollWidth:', $(slider).get(0).scrollWidth);
-        console.log('Wrapper: scrollLeft :', $(wrapper).get(0).scrollLeft);
-        console.log('Wrapper: scrollWidth :', $(wrapper).get(0).scrollWidth);
-
-        if ($(slider).get(0).scrollLeft <= 0) $(nav + '.right').hide()
-        else $(nav + '.right').show();
-
-        if ($(slider).get(0).scrollLeft + $(wrapper).get(0).scrollLeft >= $(slider).scrollWidth) $(nav + '.left').hide()
-        else $(nav + '.left').show();
       });
+    }
+
+    function resetSlider() {
+      $(slider).scrollLeft((getScrollWidth(slider) - $(slider).get(0).clientWidth) / 2);
+    }
+
+    $(window).on('resize', resetSlider);
+
+    function scrollComplete(btnEl) {
+      $(btnEl).prop('disabled', false);
+
+      var width = $(item).outerWidth(true);
+      var sLeft = $(slider).get(0).scrollLeft;
+
+      if ($(btnEl).hasClass('right') && sLeft < width) {
+        $(nav + '.right').hide();
+        $(slider).animate({ scrollLeft: 0 }, { duration: 600 });
+      } else {
+        $(nav + '.right').show();
+      }
+
+      if ($(btnEl).hasClass('left') && sLeft + getScrollWidth(wrapper) + width > getScrollWidth(slider)) {
+        $(nav + '.left').hide();
+        $(slider).animate({ scrollLeft: getScrollWidth(slider) - getScrollWidth(wrapper) }, { duration: 600 });
+      } else {
+        $(nav + '.left').show();
+      }
     }
 
     function getScrollWidth(el) {
