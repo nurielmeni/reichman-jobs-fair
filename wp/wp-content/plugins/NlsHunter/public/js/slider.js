@@ -66,6 +66,11 @@ var Slider =
         // Slider width + screen width
         var width = $(item).outerWidth(true);
 
+        console.log('Slider: scrollLeft:', $(slider).get(0).scrollLeft);
+        console.log('Slider: scrollWidth:', $(slider).get(0).scrollWidth);
+        console.log('Wrapper: scrollLeft :', $(wrapper).get(0).scrollLeft);
+        console.log('Wrapper: scrollWidth :', $(wrapper).get(0).scrollWidth);
+
         if ($(slider).get(0).scrollLeft <= 0) $(nav + '.right').hide()
         else $(nav + '.right').show();
 
