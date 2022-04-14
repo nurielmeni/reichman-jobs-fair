@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "client: chrome",
       "url": "http://localhost:8080",
-      "webRoot": "\\wsl.localhost\\Ubuntu-20.04\\home\\nurielmeni\\Dev\\reichman-jobs-fair\\wp"
+      "webRoot": "${workspaceRoot}/wp/"
     },
     {
       "name": "Listen: XDebug",
