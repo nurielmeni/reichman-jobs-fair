@@ -11,7 +11,7 @@ include_once 'includes/SocialWalker.php';
 
 <?php do_action('reichman_content_after'); ?>
 
-<footer id="colophon" class="site-footer bg-primary p-4" role="contentinfo">
+<footer id="colophon" class="site-footer bg-primary p-4 sticky bottom-0" role="contentinfo">
 	<?php do_action('reichman_footer'); ?>
 
 	<div class="container mx-auto flex flex-col justify-center items-center primary text-white">
