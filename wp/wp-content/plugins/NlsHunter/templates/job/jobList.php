@@ -5,7 +5,7 @@
         'labelClass' => 'md:text-3xl text-primary font-bold my-6',
         'name' => 'jobs-by-area',
         'placeHolder' => __('Select Area', 'NlsHunter'),
-        'options' => $model->regions(),
+        'options' => $model->professionalFields(),
         'clearAllButton' => true, // For single select
         'clearAllButtonClass' => 'hidden bg-primary text-white py-1 px-2 mx-1 border border-primary rounded-xl', // For single select
     ]) ?>

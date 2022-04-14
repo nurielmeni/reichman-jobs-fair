@@ -95,6 +95,24 @@ class NlsFilter
     $this->addWhereFilter($sidParentFilterField, WhereCondition::C_AND);
   }
 
+
+
+  /**
+   * array of fields field -> parent -> parent
+   */
+  public function createFilterField($fields, $value, $searchPhrase = SearchPhrase::ALL, $condition = WhereCondition::C_AND, $fieldType = self::TERMS_NON_ANALAYZED)
+  {
+    $field = array_pop($fields);
+    if (empty($fields)) {
+      $res  = new FilterField($field, $searchPhrase, $value, $fieldType);
+    } else {
+      $nestedFields = $this->createFilterField($fields, $value, $searchPhrase, $condition, $fieldType);
+      $res = new FilterField($field . '_' . $nestedFields->Field, $searchPhrase, $value, self::NESTED);
+      $res->setNested($nestedFields);
+    }
+    return $res;
+  }
+
   /**
    * Add select fields for the filter
    * @fields Array || String, names of the select fields
@@ -113,9 +131,5 @@ class NlsFilter
   {
     $whereFilter = new WhereFilter($filters, $condition);
     $this->WhereFilters[] = $whereFilter;
-  }
-
-  private function filterWhere()
-  {
   }
 }

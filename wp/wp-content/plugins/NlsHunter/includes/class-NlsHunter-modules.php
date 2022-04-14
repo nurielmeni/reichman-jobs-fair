@@ -157,7 +157,7 @@ class NlsHunter_modules
     public function nlsHunterAllJobs_render()
     {
         $jobs = $this->model->getJobHunterExecuteNewQuery2();
-
+        if (!is_array($jobs) || !key_exists('list', $jobs) || !key_exists('totalHits', $jobs)) return '';
         ob_start();
 
         echo render('job/jobList', [

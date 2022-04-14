@@ -511,8 +511,10 @@ class NlsHunter_model
             $filter->addSuplierIdFilter($this->nlsGetSupplierId());
 
             if ($region !== 0) {
-                $filterField = new FilterField('RegionId', SearchPhrase::EXACT, $region, NlsFilter::NUMERIC_VALUES);
-                $filter->addWhereFilter($filterField, WhereCondition::C_AND);
+                //$filterField = new FilterField('RegionId', SearchPhrase::EXACT, $region, NlsFilter::NUMERIC_VALUES);
+
+                $nestedField = $filter->createFilterField(['ProfessionalFieldId', 'ProfessionalFieldInfo', 'JobProfessionalFields'], $region, SearchPhrase::EXACT, WhereCondition::C_AND, NlsFilter::NUMERIC_VALUES);
+                //$filter->addWhereFilter($nestedField, WhereCondition::C_AND);
             }
 
             if ($employer !== 0) {
@@ -583,7 +585,7 @@ class NlsHunter_model
         $fileList = [];
 
         foreach ($files as $file) {
-            if (trim($file->Type) !== 'jpg' || trim($file->Type) !== 'png') continue;
+            if (strtolower(trim($file->Type)) !== 'jpg' || strtolower(trim($file->Type)) !== 'png') continue;
 
             // Check if the file is already  saved
             $filePath = $this->getFileLocation($file);
