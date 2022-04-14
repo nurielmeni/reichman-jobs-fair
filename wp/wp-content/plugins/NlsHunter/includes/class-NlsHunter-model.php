@@ -413,7 +413,6 @@ class NlsHunter_model
                     $data['EmployerEntityTypeCode'] = $job->EmployerEntityTypeCode;
                     $data['EmployerName'] = $job->EmployerName;
                     $data['EmployerPartyUtilizerId'] = $job->EmployerPartyUtilizerId;
-                    $data['LogoPath'] = $job->LogoPath;
 
                     $employers[$job->EmployerId] = (object) $data;
                 }
@@ -475,6 +474,7 @@ class NlsHunter_model
             $properties['webSite'] = strlen($employer->WebSite) > 0 && strpos($employer->WebSite, 'http') !== 0 ? "http://$employer->WebSite" : $employer->WebSite;
 
             $properties['videoUrl'] = $this->getEmployerVideoUrl($employer);
+            $properties['logo'] = property_exists($employer, 'LogoUrl') ? $employer->LogoUrl : $this->getDefaultLogo();
 
             $properties['images'] = count($fileList) > 0
                 ? $fileList
@@ -483,7 +483,6 @@ class NlsHunter_model
 
         if ($employerData) {
             $properties['id'] = $employerId;
-            $properties['logo'] = $employerData->LogoPath !== null ? $employerData->LogoPath : $this->getDefaultLogo();
             $properties['name'] = $employerData->EmployerName;
         }
 
