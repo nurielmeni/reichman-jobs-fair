@@ -402,6 +402,7 @@ class NlsHunter_model
         $searchPhrase = trim($searchPhrase);
         $cache_key = 'nls_hunter_employers_' . get_bloginfo('language');
         //if ($this->nlsFlashCache) wp_cache_delete($cache_key);
+        if (key_exists('cache', $_GET) && $_GET['cache'] == 0) wp_cache_delete($cache_key);
 
         $employers = wp_cache_get($cache_key);
         if (false === $employers) {
@@ -415,7 +416,8 @@ class NlsHunter_model
                 }
             }
 
-            wp_cache_set($cache_key, $employers, '', $this->nlsCacheTime);
+            //wp_cache_set($cache_key, $employers, '', $this->nlsCacheTime);
+            wp_cache_set($cache_key, $employers);
         }
         if ($page !== null && is_int($page)) {
             $window = intval(get_option(NlsHunter_Admin::NLS_EMPLOYERS_COUNT, 1));
