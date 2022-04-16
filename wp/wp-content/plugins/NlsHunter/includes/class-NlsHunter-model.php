@@ -401,7 +401,7 @@ class NlsHunter_model
     {
         $searchPhrase = trim($searchPhrase);
         $cache_key = 'nls_hunter_employers_' . get_bloginfo('language');
-        if ($this->nlsFlashCache) wp_cache_delete($cache_key);
+        //if ($this->nlsFlashCache) wp_cache_delete($cache_key);
 
         $employers = wp_cache_get($cache_key);
         if (false === $employers) {
@@ -410,10 +410,7 @@ class NlsHunter_model
             if (!$jobs || !is_array($jobs) || !key_exists('list', $jobs)) return [];
             foreach ($jobs['list'] as $job) {
                 if (property_exists($job, 'EmployerId') && $job->EmployerId !== null) {
-                    $data['EmployerEntityTypeCode'] = $job->EmployerEntityTypeCode;
-                    $data['EmployerName'] = $job->EmployerName;
-                    $data['EmployerPartyUtilizerId'] = $job->EmployerPartyUtilizerId;
-
+                    $data = $this->getEmployerPropertiesFull($job->EmployerId);
                     $employers[$job->EmployerId] = (object) $data;
                 }
             }
@@ -432,7 +429,7 @@ class NlsHunter_model
         return $employers;
     }
 
-    public function getEmployerData($employerId)
+    private function getEmployerData($employerId)
     {
         $employers = $this->getEmployers();
         if (!is_array($employers)) return null;
@@ -460,33 +457,37 @@ class NlsHunter_model
         return $default;
     }
 
+    private function getEmployerPropertiesFull($employerId)
+    {
+        if (!$employerId) return [];
+        $properties = null;
+        $res = $this->employerGet($employerId);
+        $employer = $res && property_exists($res, 'CustomerGetResult') ? $res->CustomerGetResult : null;
+        if (!$employer) return [];
+
+        // Set the Employer Data needed
+        $properties['id'] = $employerId;
+        $properties['name'] = $employer->EntityLocalName;
+        $properties['EmployerName'] = $employer->EntityLocalName;
+        $properties['generalDescription'] = $employer->GeneralDescription;
+        $properties['webSite'] = strlen($employer->WebSite) > 0 && strpos($employer->WebSite, 'http') !== 0 ? "http://$employer->WebSite" : $employer->WebSite;
+        $properties['videoUrl'] = $this->getEmployerVideoUrl($employer);
+        $properties['logo'] = property_exists($employer, 'LogoUrl') ? $employer->LogoUrl : $this->getDefaultLogo();
+
+        return $properties;
+    }
+
     public function getEmployerProperties($employerId, $full = false)
     {
-        $properties = null;
         $employerData = $this->getEmployerData($employerId);
-        if ($full) {
-            $res = $this->employerGet($employerId);
-            $employer = $res && property_exists($res, 'CustomerGetResult') ? $res->CustomerGetResult : null;
+        if ($full && !property_exists($employerData, 'images')) {
             $fileList = $this->filesListGet($employerId);
-
-            // Set the Employer Data needed
-            $properties['generalDescription'] = $employer->GeneralDescription;
-            $properties['webSite'] = strlen($employer->WebSite) > 0 && strpos($employer->WebSite, 'http') !== 0 ? "http://$employer->WebSite" : $employer->WebSite;
-
-            $properties['videoUrl'] = $this->getEmployerVideoUrl($employer);
-            $properties['logo'] = property_exists($employer, 'LogoUrl') ? $employer->LogoUrl : $this->getDefaultLogo();
-
-            $properties['images'] = count($fileList) > 0
+            $employerData->images = count($fileList) > 0
                 ? $fileList
                 : [];
         }
 
-        if ($employerData) {
-            $properties['id'] = $employerId;
-            $properties['name'] = $employerData->EmployerName;
-        }
-
-        return $properties;
+        return $employerData;
     }
 
     public function getJobHunterExecuteNewQuery2($searchParams = [], $hunterId = null, $page = 0, $resultRowLimit = null)
