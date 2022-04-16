@@ -1,5 +1,5 @@
-<section class="employer-details-wrapper drop-shadow-md bg-white p-5" data-employer-id="<?= $employer['id'] ?>">
-    <?php if ($employer && is_array($employer)) : ?>
+<section class="employer-details-wrapper drop-shadow-md bg-white p-5" data-employer-id="<?= $employer->id ?>">
+    <?php if ($employer && is_object($employer)) : ?>
         <?= render('employer/employerTitle', ['employer' => $employer]) ?>
 
         <?= render('employer/employerVideo', [
@@ -13,7 +13,7 @@
 
         <?= render('slider/horizontalSlider', [
             'elementTemplate' => 'slider/elementTemplate',
-            'elements' => $employer['images'],
+            'elements' => $employer->images,
         ]) ?>
     <?php endif; ?>
 </section>
