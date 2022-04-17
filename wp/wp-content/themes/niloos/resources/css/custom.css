@@ -83,6 +83,27 @@ li.transparent-text {
   background: url("../images/mail_circle_white.svg") no-repeat;
 }
 
+.logo-image-wrapper {
+  max-width: 96px;
+  max-height: 96px;
+  min-width: 96px;
+  min-height: 96px;
+}
+
+.logo-image-wrapper > img {
+  max-width: 56px;
+}
+
+.sm-logo-image-wrapper {
+  max-width: 56px;
+  max-height: 56px;
+  min-width: 56px;
+  min-height: 56px;
+}
+
+.sm-logo-image-wrapper > img {
+  max-width: 32px;
+}
 /* Responsive design */
 @media (min-width: 768px) {
   .rtl h2.has-background.job-fair-banner-title {
@@ -91,6 +112,28 @@ li.transparent-text {
 
   h2.has-background.job-fair-banner-title {
     margin-left: -1em !important;
+  }
+
+  .logo-image-wrapper {
+    max-width: 144px;
+    max-height: 144px;
+    min-width: 144px;
+    min-height: 144px;
+  }
+
+  .logo-image-wrapper > img {
+    max-width: 92px;
+  }
+
+  .sm-logo-image-wrapper {
+    max-width: 96px;
+    max-height: 96px;
+    min-width: 96px;
+    min-height: 96px;
+  }
+
+  .sm-logo-image-wrapper > img {
+    max-width: 56px;
   }
 }
 

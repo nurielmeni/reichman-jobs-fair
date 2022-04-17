@@ -37,20 +37,30 @@ module.exports = {
       maxWidth: {
         'slider': '380px',
         'mslider': 'calc(100vw - 40px)',
-        'cardAvatar': '30px'
+        'cardAvatar': '30px',
+        'logo': '100px',
+        'mlogo': '40px',
+        'lw': '144px',
+        'mlw': '56px'
       },
       minWidth: {
         'slider': '380px',
         'mslider': 'calc(100vw - 40px)',
-        'cardAvatar': '30px'
+        'cardAvatar': '30px',
+        'lw': '144px',
+        'mlw': '56px'
       },
       maxHeight: {
         'slider': '266px',
         'mslider': 'auto',
+        'lw': '144px',
+        'mlw': '56px'
       },
       minHeight: {
         'slider': '266px',
         'mslider': 'auto',
+        'lw': '144px',
+        'mlw': '56px'
       },
       rotate: {
         '270': '270deg',

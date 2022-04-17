@@ -1,6 +1,6 @@
 <div class="employer flex justify-start items-center w-full mb-7">
-    <div class="rounded-full bg-white drop-shadow-md p-6 md:p-8">
-        <img src="<?= $employer['logo'] ?>" alt="" class="w-12 md:w-20 h-12 md:h-20 object-contain" />
+    <div class="flex justify-center items-center logo-image-wrapper rounded-full bg-white drop-shadow-md">
+        <img src="<?= $employer['logo'] ?>" alt="" class="object-contain" />
     </div>
     <div class="mx-4">
         <h3 class="md:text-2xl text-primary"><?= $employer['name'] ?></h3>

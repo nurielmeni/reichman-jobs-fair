@@ -665,14 +665,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 1.25rem;
 }
 
-.h-12 {
-  height: 3rem;
-}
-
-.h-8 {
-  height: 2rem;
-}
-
 .h-10 {
   height: 2.5rem;
 }
@@ -701,10 +693,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 1.25rem;
 }
 
-.w-12 {
-  width: 3rem;
-}
-
 .w-72 {
   width: 18rem;
 }
@@ -723,20 +711,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: fit-content;
 }
 
-.w-8 {
-  width: 2rem;
-}
-
 .w-10 {
   width: 2.5rem;
 }
 
 .w-16 {
   width: 4rem;
-}
-
-.min-w-cardAvatar {
-  min-width: 30px;
 }
 
 .min-w-mslider {
@@ -977,20 +957,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding: 0.5rem;
 }
 
-.p-6 {
-  padding: 1.5rem;
-}
-
 .p-5 {
   padding: 1.25rem;
 }
 
 .p-8 {
   padding: 2rem;
-}
-
-.p-3 {
-  padding: 0.75rem;
 }
 
 .p-0 {
@@ -1358,6 +1330,28 @@ li.transparent-text {
   background: url("../images/mail_circle_white.svg") no-repeat;
 }
 
+.logo-image-wrapper {
+  max-width: 96px;
+  max-height: 96px;
+  min-width: 96px;
+  min-height: 96px;
+}
+
+.logo-image-wrapper > img {
+  max-width: 56px;
+}
+
+.sm-logo-image-wrapper {
+  max-width: 56px;
+  max-height: 56px;
+  min-width: 56px;
+  min-height: 56px;
+}
+
+.sm-logo-image-wrapper > img {
+  max-width: 32px;
+}
+
 /* Responsive design */
 
 @media (min-width: 768px) {
@@ -1367,6 +1361,28 @@ li.transparent-text {
 
   h2.has-background.job-fair-banner-title {
     margin-left: -1em !important;
+  }
+
+  .logo-image-wrapper {
+    max-width: 144px;
+    max-height: 144px;
+    min-width: 144px;
+    min-height: 144px;
+  }
+
+  .logo-image-wrapper > img {
+    max-width: 92px;
+  }
+
+  .sm-logo-image-wrapper {
+    max-width: 96px;
+    max-height: 96px;
+    min-width: 96px;
+    min-height: 96px;
+  }
+
+  .sm-logo-image-wrapper > img {
+    max-width: 56px;
   }
 }
 
@@ -1503,14 +1519,6 @@ li.transparent-text {
     display: none;
   }
 
-  .md\:h-20 {
-    height: 5rem;
-  }
-
-  .md\:h-12 {
-    height: 3rem;
-  }
-
   .md\:max-h-slider {
     max-height: 266px;
   }
@@ -1531,16 +1539,8 @@ li.transparent-text {
     width: 16rem;
   }
 
-  .md\:w-20 {
-    width: 5rem;
-  }
-
   .md\:w-5\/12 {
     width: 41.666667%;
-  }
-
-  .md\:w-12 {
-    width: 3rem;
   }
 
   .md\:w-7\/12 {
@@ -1593,14 +1593,6 @@ li.transparent-text {
 
   .md\:gap-4 {
     gap: 1rem;
-  }
-
-  .md\:p-8 {
-    padding: 2rem;
-  }
-
-  .md\:p-6 {
-    padding: 1.5rem;
   }
 
   .md\:py-5 {
