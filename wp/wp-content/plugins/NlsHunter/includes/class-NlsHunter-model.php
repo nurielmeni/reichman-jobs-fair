@@ -401,7 +401,7 @@ class NlsHunter_model
     {
         $searchPhrase = trim($searchPhrase);
         $cache_key = 'nls_hunter_employers_' . get_bloginfo('language');
-        if ($this->nlsFlashCache) wp_cache_delete($cache_key);
+        //if ($this->nlsFlashCache) wp_cache_delete($cache_key);
 
         $employers = wp_cache_get($cache_key);
         if (false === $employers) {
@@ -410,9 +410,10 @@ class NlsHunter_model
             if (!$jobs || !is_array($jobs) || !key_exists('list', $jobs)) return [];
             foreach ($jobs['list'] as $job) {
                 if (property_exists($job, 'EmployerId') && $job->EmployerId !== null) {
-                    $data['EmployerEntityTypeCode'] = $job->EmployerEntityTypeCode;
+                    //$data['EmployerEntityTypeCode'] = $job->EmployerEntityTypeCode;
                     $data['EmployerName'] = $job->EmployerName;
-                    $data['EmployerPartyUtilizerId'] = $job->EmployerPartyUtilizerId;
+                    //$data['EmployerPartyUtilizerId'] = $job->EmployerPartyUtilizerId;
+                    $data['LogoPath'] = $job->LogoPath;
 
                     $employers[$job->EmployerId] = (object) $data;
                 }
@@ -474,7 +475,7 @@ class NlsHunter_model
             $properties['webSite'] = strlen($employer->WebSite) > 0 && strpos($employer->WebSite, 'http') !== 0 ? "http://$employer->WebSite" : $employer->WebSite;
 
             $properties['videoUrl'] = $this->getEmployerVideoUrl($employer);
-            $properties['logo'] = property_exists($employer, 'LogoUrl') ? $employer->LogoUrl : $this->getDefaultLogo();
+            //$properties['logo'] = property_exists($employer, 'LogoUrl') ? $employer->LogoUrl : $this->getDefaultLogo();
 
             $properties['images'] = count($fileList) > 0
                 ? $fileList
@@ -484,6 +485,7 @@ class NlsHunter_model
         if ($employerData) {
             $properties['id'] = $employerId;
             $properties['name'] = $employerData->EmployerName;
+            $properties['logo'] = $employerData->LogoPath;
         }
 
         return $properties;
