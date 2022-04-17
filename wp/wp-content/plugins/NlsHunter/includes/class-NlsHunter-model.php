@@ -401,7 +401,7 @@ class NlsHunter_model
     {
         $searchPhrase = trim($searchPhrase);
         $cache_key = 'nls_hunter_employers_' . get_bloginfo('language');
-        //if ($this->nlsFlashCache) wp_cache_delete($cache_key);
+        if ($this->nlsFlashCache) wp_cache_delete($cache_key);
 
         $employers = wp_cache_get($cache_key);
         if (false === $employers) {
