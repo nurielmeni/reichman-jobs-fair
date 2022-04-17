@@ -95,8 +95,6 @@ class NlsFilter
     $this->addWhereFilter($sidParentFilterField, WhereCondition::C_AND);
   }
 
-
-
   /**
    * array of fields field -> parent -> parent
    */
@@ -107,7 +105,7 @@ class NlsFilter
       $res  = new FilterField($field, $searchPhrase, $value, $fieldType);
     } else {
       $nestedFields = $this->createFilterField($fields, $value, $searchPhrase, $condition, $fieldType);
-      $res = new FilterField($field . '_' . $nestedFields->Field, $searchPhrase, $value, self::NESTED);
+      $res = new FilterField($field, $searchPhrase, $value, self::NESTED);
       $res->setNested($nestedFields);
     }
     return $res;
