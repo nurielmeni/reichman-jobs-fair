@@ -239,7 +239,7 @@ var nls =
               $("#apply-response").remove();
 
               if (response.sent > 0) {
-                window.location.href(response.location);
+                window.location.href = response.location;
               } else {
                 $('.nls-apply-for-jobs').after(response.html);
               }
