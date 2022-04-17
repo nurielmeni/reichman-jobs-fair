@@ -1,18 +1,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: NlsHunter\n"
-"POT-Creation-Date: 2022-03-22 00:17+0200\n"
-"PO-Revision-Date: 2022-03-22 00:17+0200\n"
+"POT-Creation-Date: 2022-04-17 17:41+0300\n"
+"PO-Revision-Date: 2022-04-17 17:43+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: he_IL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.3\n"
-"X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
 "2 : 3);\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: NlsHunter.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -22,11 +22,11 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: admin/class-NlsHunter-admin.php:157
+#: admin/class-NlsHunter-admin.php:161
 msgid "You do not have sufficient permissions to access this page."
 msgstr "אין לך הרשאות מספיקות כדי לגשת לעמוד זה."
 
-#: includes/Hunter/NlsHelper.php:102
+#: includes/Hunter/NlsHelper.php:100
 msgid "Select"
 msgstr "בחר"
 
@@ -40,56 +40,61 @@ msgstr "אין אפשרות ליצור מודל."
 msgid "Error: NlsHunter_model: "
 msgstr "שגיאה: NlsHunterFbf_model: "
 
-#: includes/class-NlsHunter-model.php:165
+#: includes/class-NlsHunter-model.php:177
+#: includes/class-NlsHunter-model.php:181
 msgid "Could not init Card Services."
 msgstr "אין אפשרות להתחבר לשירותי Card"
 
-#: includes/class-NlsHunter-model.php:166
+#: includes/class-NlsHunter-model.php:178
+#: includes/class-NlsHunter-model.php:182
 msgid "Error: Card Services: "
 msgstr "שגיאה: שירותי כרטיס"
 
-#: includes/class-NlsHunter-model.php:185
+#: includes/class-NlsHunter-model.php:202
+#: includes/class-NlsHunter-model.php:205
 msgid "Could not init Directory Services."
 msgstr "אין אפשרות להתחבר לשירותי Directory"
 
-#: includes/class-NlsHunter-model.php:186
+#: includes/class-NlsHunter-model.php:203
 msgid "Error: Directory Services: "
 msgstr "שגיאה: שירותי מדריך"
 
-#: includes/class-NlsHunter-model.php:205
+#: includes/class-NlsHunter-model.php:224
+#: includes/class-NlsHunter-model.php:228
 msgid "Could not init Search Services."
 msgstr "אין אפשרות להתחבר לשירותי Search"
 
-#: includes/class-NlsHunter-model.php:206
+#: includes/class-NlsHunter-model.php:225
+#: includes/class-NlsHunter-model.php:229
 msgid "Error: Search Services: "
 msgstr "שגיאה: שירותי חיפוש"
 
-#: public/class-NlsHunter-public.php:164
+#: public/class-NlsHunter-public.php:165
 msgid "Supplier Id"
 msgstr "מזהה ספק"
 
-#: public/class-NlsHunter-public.php:165
+#: public/class-NlsHunter-public.php:166
 msgid "Job Code"
 msgstr "קוד משרה"
 
-#: public/class-NlsHunter-public.php:167 templates/applyForJobs.php:17
+#: public/class-NlsHunter-public.php:168 templates/applyForJobs.php:17
 #: templates/job/jobApplyForm.php:11
 msgid "Full Name"
 msgstr "שם החבר:"
 
-#: public/class-NlsHunter-public.php:168 templates/job/jobApplyForm.php:20
+#: public/class-NlsHunter-public.php:169 templates/job/jobApplyForm.php:21
 msgid "Phone"
 msgstr "טלפון"
 
-#: public/class-NlsHunter-public.php:169 templates/job/jobApplyForm.php:29
+#: public/class-NlsHunter-public.php:170 templates/job/jobApplyForm.php:30
 msgid "Email"
 msgstr "מייל חברה"
 
-#: public/class-NlsHunter-public.php:379
+#: public/class-NlsHunter-public.php:387
 msgid "Applicant form data: "
 msgstr "פרטי החבר/ה שלי:"
 
-#: public/class-NlsHunter-public.php:403
+#: public/class-NlsHunter-public.php:416
 msgid "CV Applied from Reichman Jobs Fair Site"
 msgstr "קורות חיים נשלחו מאתר יריד משרות רייכמן"
 
@@ -138,10 +143,8 @@ msgid "Company Website:"
 msgstr "אתר החברה:"
 
 #: templates/employer/employerNotFound.php:3
-#, fuzzy
-#| msgid "Not Found: The requested Job Code was not found."
 msgid "Not Found: The requested Employer was not found."
-msgstr "לא נמצא: משרה עם קוד המשרה המבוקש, לא נמצאה."
+msgstr "לא נמצא: מעסיק עם קוד המעסיק המבוקש, לא נמצא."
 
 #: templates/employer/employerTitle.php:8
 msgid "To employer page"
@@ -155,15 +158,15 @@ msgstr "רשימת מעסיקים"
 msgid "Submit Application"
 msgstr "הגשת מועמדות"
 
-#: templates/job/jobApplyForm.php:36
+#: templates/job/jobApplyForm.php:37
 msgid "Upload CV"
 msgstr "העלאת קובץ קו”ח"
 
-#: templates/job/jobApplyForm.php:38
+#: templates/job/jobApplyForm.php:39
 msgid "Select file"
 msgstr "בחר קובץ"
 
-#: templates/job/jobApplyForm.php:45
+#: templates/job/jobApplyForm.php:46
 msgid "Send"
 msgstr "שלח"
 
@@ -176,8 +179,8 @@ msgid "Open positions by area"
 msgstr "משרות פתוחות לפי תחום לימוד"
 
 #: templates/job/jobList.php:7
-msgid "Select Area"
-msgstr "בחר תחום לימוד"
+msgid "Select Category"
+msgstr "בחר קטגוריה"
 
 #: templates/job/jobList.php:12
 msgid "Open Positions"
@@ -227,10 +230,14 @@ msgstr "הפרטים נקלטו בהצלחה"
 msgid "Back"
 msgstr "חזור"
 
-#: templates/nlsFileField.php:19 templates/nlsInputField.php:20
+#: templates/nlsFileField.php:19 templates/nlsInputField.php:21
 #: templates/nlsSelectField.php:21
 msgid "Not required"
 msgstr "לא חובה"
+
+#: templates/nlsSelectField.php:30
+msgid "Clear"
+msgstr "נקה"
 
 #. Plugin Name of the plugin/theme
 #, fuzzy
@@ -245,6 +252,9 @@ msgstr ".‫API fot Niloosoft HunterHRMS System"
 #. Author of the plugin/theme
 msgid "Meni Nurie"
 msgstr "מני נוריאל"
+
+#~ msgid "Select Area"
+#~ msgstr "בחר תחום לימוד"
 
 #~ msgid "CV File"
 #~ msgstr "קובץ קורות חיים"

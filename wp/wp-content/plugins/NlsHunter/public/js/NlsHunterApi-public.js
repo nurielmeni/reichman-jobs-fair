@@ -72,7 +72,7 @@
     }, 3000);
   }
 
-  function claerSearchFields() {
+  function clearSearchFields() {
     // Clears the select inputs
     $(".nls-search-module form.nls-search select").each(function () {
       var sumoEl = $(this)[0].sumo;
@@ -94,7 +94,7 @@
   }
 
   function searchBy(type) {
-    claerSearchFields();
+    clearSearchFields();
     $("button.search.options").removeClass("active");
     $('button.search[data-type="' + type + '"]').addClass("active");
 
@@ -113,7 +113,7 @@
       searchBy(searchByValue);
     }
 
-    $('button.prevent').on('click', function(e) {
+    $('button.prevent').on('click', function (e) {
       e.preventDefault();
     });
 
@@ -238,7 +238,7 @@
 
     // Clear the search form
     $(".nls-search-module a.clear").on("click", function (event) {
-      claerSearchFields().bind(this);
+      clearSearchFields().bind(this);
       event.preventDefault();
     });
 
