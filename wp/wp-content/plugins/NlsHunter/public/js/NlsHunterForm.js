@@ -6,6 +6,25 @@ var nls =
     var emptyFriendDetails = '';
     var fileSelectEl = 'form.nls-apply-for-jobs .nls-field input[name="cv-file"]';
 
+    var locale = 'he';
+    var localeMsg = {
+      he: {
+        ILLEGAL_ID: "מספר הזהות לא חוקי",
+        ILLEGAL_EMAIL: "כתובת האימייל לא חוקית",
+        ILLEGAL_PHONE: "מספר הטלפון לא חוקי",
+        REQUIRED: "שדה זה הוא שדה חובה",
+        VALIDATION_ERROR_TEXT: "אחד או יותר משדות הטופס לא תקין",
+      },
+      en: {
+        ILLEGAL_ID: "Illegal id number",
+        ILLEGAL_EMAIL: "Illegal email address",
+        ILLEGAL_PHONE: "Illegal phone number",
+        REQUIRED: "This fiekd is required",
+        VALIDATION_ERROR_TEXT: "One or more illegal fields",
+
+      }
+    };
+
     var Validators = {
       ISRID: {
         fn: function (value) {
@@ -42,7 +61,7 @@ var nls =
           if (mone % 10 == 0) return R_VALID;
           else return R_NOT_VALID;
         },
-        msg: "מספר הזהות לא חוקי",
+        msg: localeMsg[locale].ILLEGAL_ID,
       },
 
       email: {
@@ -51,7 +70,7 @@ var nls =
             /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
           return value && regex.test(String(value).toLowerCase());
         },
-        msg: "כתובת האימייל לא חוקית",
+        msg: localeMsg[locale].ILLEGAL_EMAIL,
       },
 
       phone: {
@@ -59,14 +78,14 @@ var nls =
           var regex = /^0[0-9]{1,2}[-\s]{0,1}[0-9]{3}[-\s]{0,1}[0-9]{4}/i;
           return value && regex.test(String(value).trim().toLowerCase());
         },
-        msg: "מספר הטלפון לא חוקי",
+        msg: localeMsg[locale].ILLEGAL_PHONE,
       },
 
       required: {
         fn: function (value) {
           return value && value.length > 0;
         },
-        msg: "שדה זה הוא שדה חובה",
+        msg: localeMsg[locale].REQUIRED,
       },
 
       // If no option was selected of radi will return false
@@ -84,7 +103,7 @@ var nls =
             });
           return valid;
         },
-        msg: "יש לבחור אחת מהאפשרויות",
+        msg: localeMsg[locale].REQUIRED,
       },
     };
 
@@ -109,7 +128,7 @@ var nls =
       var invalidFields = $("form.nls-apply-for-jobs .nls-invalid");
       if (invalidFields.length > 0) {
         $(".nls-apply-for-jobs .form-footer .help-block")
-          .text("אחד או יותר משדות הטופס לא תקין")
+          .text(localeMsg[locale].VALIDATION_ERROR_TEXT)
           .show();
       } else {
         $(".nls-apply-for-jobs .form-footer .help-block").hide();
@@ -179,14 +198,17 @@ var nls =
       $(".nls-apply-for-jobs").hide();
     };
 
-    var showHomePage = function () {
-
-    };
 
     var updateFileName = function () {
       var filename = $(fileSelectEl).length && $(fileSelectEl).val().split('\\').pop();
       $('.nls-field.file .file-picker input[name="file-name"]').val(filename).trigger('change');
     };
+
+    var setLocale = function (loc) {
+      if (loc !== 'en' || loc !== 'he' || loc !== 'en-US' || loc !== 'he-IL') return;
+      loc = loc.split('-')[0];
+      locale = loc;
+    }
 
     $(document).ready(function () {
       // Set the sid if exist
@@ -197,6 +219,10 @@ var nls =
 
       // Add event listeners
       console.log("Ready Function");
+
+      // Set the locale
+      var lang = $('html').attr('lang');
+      setLocale(lang);
 
       // Apply selected jobs
       $(document).on(
@@ -296,5 +322,6 @@ var nls =
 
     return {
       clearFields: clearFields,
+      setLocale: setLocale
     };
   })(jQuery);
