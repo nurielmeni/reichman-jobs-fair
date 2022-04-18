@@ -61,7 +61,7 @@ var nls =
           if (mone % 10 == 0) return R_VALID;
           else return R_NOT_VALID;
         },
-        msg: localeMsg[locale].ILLEGAL_ID,
+        msgId: 'ILLEGAL_ID',
       },
 
       email: {
@@ -70,7 +70,7 @@ var nls =
             /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
           return value && regex.test(String(value).toLowerCase());
         },
-        msg: localeMsg[locale].ILLEGAL_EMAIL,
+        msgId: 'ILLEGAL_EMAIL',
       },
 
       phone: {
@@ -78,14 +78,14 @@ var nls =
           var regex = /^0[0-9]{1,2}[-\s]{0,1}[0-9]{3}[-\s]{0,1}[0-9]{4}/i;
           return value && regex.test(String(value).trim().toLowerCase());
         },
-        msg: localeMsg[locale].ILLEGAL_PHONE,
+        msgId: 'ILLEGAL_PHONE',
       },
 
       required: {
         fn: function (value) {
           return value && value.length > 0;
         },
-        msg: localeMsg[locale].REQUIRED,
+        msgId: 'REQUIRED',
       },
 
       // If no option was selected of radi will return false
@@ -103,7 +103,7 @@ var nls =
             });
           return valid;
         },
-        msg: localeMsg[locale].REQUIRED,
+        msgId: 'REQUIRED',
       },
     };
 
@@ -158,7 +158,7 @@ var nls =
           $(el)
             .parents(".nls-field")
             .find(".help-block")
-            .text(Validators[validator].msg)
+            .text(localeMsg[locale][Validators[validator].msgId])
             .addClass('nls-invalid');
           $(el).attr('aria-invalid', 'true');
         }
