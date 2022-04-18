@@ -185,7 +185,7 @@ var nls =
 
     var updateFileName = function () {
       var filename = $(fileSelectEl).length && $(fileSelectEl).val().split('\\').pop();
-      $('.nls-field.file .file-picker input[name="file-name"]').val(filename);
+      $('.nls-field.file .file-picker input[name="file-name"]').val(filename).trigger('change');
     };
 
     $(document).ready(function () {
@@ -239,7 +239,7 @@ var nls =
               $("#apply-response").remove();
 
               if (response.sent > 0) {
-                window.location.href(response.location);
+                window.location.href = response.location;
               } else {
                 $('.nls-apply-for-jobs').after(response.html);
               }

@@ -27,7 +27,7 @@ $value = isset($value) && is_array($value) ? $value : [];
       <?php endforeach; ?>
     </select>
     <?php if (isset($clearAllButton) && $clearAllButton) : ?>
-      <button type="button" class="clear <?= isset($clearAllButtonClass) ? $clearAllButtonClass : '' ?>">Claer</button>
+      <button type="button" class="clear <?= isset($clearAllButtonClass) ? $clearAllButtonClass : '' ?>"><?= __('Clear', 'NlsHunter') ?></button>
     <?php endif; ?>
   </div>
 

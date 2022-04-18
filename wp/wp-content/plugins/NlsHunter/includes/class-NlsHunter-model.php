@@ -514,8 +514,8 @@ class NlsHunter_model
             if ($region !== 0) {
                 //$filterField = new FilterField('RegionId', SearchPhrase::EXACT, $region, NlsFilter::NUMERIC_VALUES);
 
-                $nestedField = $filter->createFilterField(['ProfessionalFieldId', 'ProfessionalFieldInfo', 'JobProfessionalFields'], $region, SearchPhrase::EXACT, WhereCondition::C_AND, NlsFilter::NUMERIC_VALUES);
-                //$filter->addWhereFilter($nestedField, WhereCondition::C_AND);
+                $nestedField = $filter->createFilterField(['JobProfessionalFieldInfo_CategoryId', 'JobProfessionalFields'], $region, SearchPhrase::EXACT, WhereCondition::C_AND, NlsFilter::NUMERIC_VALUES);
+                $filter->addWhereFilter($nestedField, WhereCondition::C_AND);
             }
 
             if ($employer !== 0) {
