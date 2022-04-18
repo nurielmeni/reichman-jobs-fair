@@ -31,7 +31,7 @@ include_once 'includes/SocialWalker.php';
 		?>
 	</div>
 
-	<div class="container mx-auto flex flex-col justify-center items-center text-white">
+	<div class="container mx-auto flex flex-col justify-center items-center text-white text-xs md:text-lg">
 		&copy; <?php echo date_i18n('Y'); ?> - <?= _e('All rights reserved to Reichman University.', 'reichman') ?>
 		<div class="text-xs">
 			POWERED BY <a href="https://niloosoft.com/he/">NILOOSOFT HUNTER EDGE</a> </div>
