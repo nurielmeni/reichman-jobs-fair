@@ -205,7 +205,7 @@ var nls =
     };
 
     var setLocale = function (loc) {
-      if (loc !== 'en' || loc !== 'he' || loc !== 'en-US' || loc !== 'he-IL') return;
+      if (loc !== 'en' && loc !== 'he' && loc !== 'en-US' && loc !== 'he-IL') return;
       loc = loc.split('-')[0];
       locale = loc;
     }
