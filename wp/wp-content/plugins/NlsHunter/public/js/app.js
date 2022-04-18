@@ -74,6 +74,18 @@ var App = App || (
 
             // Reset the search phrase
             $(this).data('search-phrase', false);
+
+            // Init the image slider
+            jQuery('.hs-container').slick({
+                dots: false,
+                infinite: true,
+                variableWidth: true,
+                centerMode: true,
+                autoplay: true,
+                nextArrow: 'button.nav.left',
+                prevArrow: 'button.nav.right',
+                centerPadding: '32px'
+            });
         });
 
         return {
