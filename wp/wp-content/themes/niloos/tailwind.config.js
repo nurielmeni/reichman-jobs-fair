@@ -52,13 +52,13 @@ module.exports = {
       },
       maxHeight: {
         'slider': '266px',
-        'mslider': 'auto',
+        'mslider': '184px',
         'lw': '144px',
         'mlw': '56px'
       },
       minHeight: {
         'slider': '266px',
-        'mslider': 'auto',
+        'mslider': '184px',
         'lw': '144px',
         'mlw': '56px'
       },
