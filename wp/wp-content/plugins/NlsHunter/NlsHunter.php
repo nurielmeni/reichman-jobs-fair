@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       NlsHunter
  * Description:       API fot Niloosoft HunterHRMS System.
- * Version:           2.0.24
+ * Version:           2.0.25
  * Author:            Meni Nurie
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
@@ -33,7 +33,7 @@ if (!defined('WPINC')) {
  * Start at version 2.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('NlsHunter_VERSION', '2.0.24');
+define('NlsHunter_VERSION', '2.0.25');
 
 /**
  * The code that runs during plugin activation.
