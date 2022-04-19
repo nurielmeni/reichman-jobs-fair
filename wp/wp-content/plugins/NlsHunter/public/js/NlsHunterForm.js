@@ -19,7 +19,7 @@ var nls =
         ILLEGAL_ID: "Illegal id number",
         ILLEGAL_EMAIL: "Illegal email address",
         ILLEGAL_PHONE: "Illegal phone number",
-        REQUIRED: "This field is required",
+        REQUIRED: "This field is mandatory",
         VALIDATION_ERROR_TEXT: "One or more illegal fields",
 
       }
