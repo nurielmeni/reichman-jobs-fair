@@ -26,6 +26,8 @@ class NlsHunter_model
     private $nlsFlashCache  = true;
     private $nlsCacheTime  = 20 * 60;
 
+    private $allowedImageFiles = ['jpg', 'png', 'jpeg'];
+
     private $regions;
 
     public function __construct()
@@ -586,7 +588,7 @@ class NlsHunter_model
         $fileList = [];
 
         foreach ($files as $file) {
-            if (strtolower(trim($file->Type)) !== 'jpg' && strtolower(trim($file->Type)) !== 'png') continue;
+            if (!in_array(strtolower(trim($file->Type)), $this->allowedImageFiles)) continue;
 
             // Check if the file is already  saved
             $filePath = $this->getFileLocation($file);
