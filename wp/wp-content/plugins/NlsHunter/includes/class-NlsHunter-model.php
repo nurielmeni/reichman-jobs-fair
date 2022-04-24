@@ -585,6 +585,8 @@ class NlsHunter_model
             ? $res->FilesListGetResult->FileInfo
             : [];
 
+        $files = is_array($files) ? $files : [$files];
+
         $fileList = [];
 
         foreach ($files as $file) {
