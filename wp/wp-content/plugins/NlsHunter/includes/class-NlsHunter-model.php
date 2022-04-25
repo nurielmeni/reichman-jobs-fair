@@ -27,7 +27,7 @@ class NlsHunter_model
     private $nlsCacheTime  = 20 * 60;
 
     private $allowedImageFiles = ['jpg', 'png', 'jpeg'];
-    private $alowedCategories = [1408, 1406, 1407, 1405, 1411, 1409, 1404, 1430, 1434, 1401, 1001];
+    private $allowedCategories = [1408, 1406, 1407, 1405, 1411, 1409, 1404, 1430, 1434, 1401, 1001];
 
     private $regions;
 
