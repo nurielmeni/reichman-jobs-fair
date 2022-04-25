@@ -27,6 +27,8 @@ class NlsHunter_model
     private $nlsCacheTime  = 20 * 60;
 
     private $allowedImageFiles = ['jpg', 'png', 'jpeg'];
+    private $alowedCategories = [1408, 1406, 1407, 1405, 1411, 1409, 1404, 1430, 1434, 1401];
+    private $searchCategories = '1408, 1406, 1407, 1405, 1411, 1409, 1404, 1430, 1434, 1401, 1001';
 
     private $regions;
 
@@ -284,7 +286,12 @@ class NlsHunter_model
     {
         if (!$this->initDirectoryService()) return [];
         $categories = $this->nlsDirectory->getCategories();
-        return $categories;
+
+        $filtered =  array_filter($categories, function ($category) {
+            return in_array($category['id'], $this->alowedCategories);
+        });
+
+        return $filtered;
     }
 
     public function jobScopes()
@@ -513,12 +520,14 @@ class NlsHunter_model
 
             $filter->addSuplierIdFilter($this->nlsGetSupplierId());
 
+            // Filter by a specific region
             if ($region !== 0) {
-                //$filterField = new FilterField('RegionId', SearchPhrase::EXACT, $region, NlsFilter::NUMERIC_VALUES);
-
                 $nestedField = $filter->createFilterField(['JobProfessionalFieldInfo_CategoryId', 'JobProfessionalFields'], $region, SearchPhrase::EXACT, WhereCondition::C_AND, NlsFilter::NUMERIC_VALUES);
-                $filter->addWhereFilter($nestedField, WhereCondition::C_AND);
+            } else {
+                // Filter all regions
+                $nestedField = $filter->createFilterField(['JobProfessionalFieldInfo_CategoryId', 'JobProfessionalFields'], $this->searchCategories, SearchPhrase::ONE_OR_MORE, WhereCondition::C_AND, NlsFilter::NUMERIC_VALUES);
             }
+            $filter->addWhereFilter($nestedField, WhereCondition::C_AND);
 
             if ($employer !== 0) {
                 $filterField = new FilterField('EmployerId', SearchPhrase::EXACT, $employer, NlsFilter::TERMS_NON_ANALAYZED);

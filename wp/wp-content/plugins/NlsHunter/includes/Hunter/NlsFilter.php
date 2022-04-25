@@ -11,6 +11,7 @@ abstract class SearchPhrase
 {
   const ALL = 'All';
   const EXACT = 'Exact';
+  const ONE_OR_MORE = "OneOrMore";
 }
 
 class FilterField
