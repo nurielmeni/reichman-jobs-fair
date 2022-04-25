@@ -287,7 +287,7 @@ class NlsHunter_model
         $categories = $this->nlsDirectory->getCategories();
 
         $filtered =  array_filter($categories, function ($category) {
-            return in_array($category['id'], $this->alowedCategories);
+            return in_array($category['id'], $this->allowedCategories);
         });
 
         return $filtered;
