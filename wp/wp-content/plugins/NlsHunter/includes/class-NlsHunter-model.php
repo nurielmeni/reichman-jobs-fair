@@ -27,8 +27,7 @@ class NlsHunter_model
     private $nlsCacheTime  = 20 * 60;
 
     private $allowedImageFiles = ['jpg', 'png', 'jpeg'];
-    private $alowedCategories = [1408, 1406, 1407, 1405, 1411, 1409, 1404, 1430, 1434, 1401];
-    private $searchCategories = '1408, 1406, 1407, 1405, 1411, 1409, 1404, 1430, 1434, 1401, 1001';
+    private $alowedCategories = [1408, 1406, 1407, 1405, 1411, 1409, 1404, 1430, 1434, 1401, 1001];
 
     private $regions;
 
@@ -525,7 +524,7 @@ class NlsHunter_model
                 $nestedField = $filter->createFilterField(['JobProfessionalFieldInfo_CategoryId', 'JobProfessionalFields'], $region, SearchPhrase::EXACT, WhereCondition::C_AND, NlsFilter::NUMERIC_VALUES);
             } else {
                 // Filter all regions
-                $nestedField = $filter->createFilterField(['JobProfessionalFieldInfo_CategoryId', 'JobProfessionalFields'], $this->searchCategories, SearchPhrase::ONE_OR_MORE, WhereCondition::C_AND, NlsFilter::NUMERIC_VALUES);
+                $nestedField = $filter->createFilterField(['JobProfessionalFieldInfo_CategoryId', 'JobProfessionalFields'], implode(',', $this->allowedCategories), SearchPhrase::ONE_OR_MORE, WhereCondition::C_AND, NlsFilter::NUMERIC_VALUES);
             }
             $filter->addWhereFilter($nestedField, WhereCondition::C_AND);
 
