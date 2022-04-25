@@ -28,6 +28,7 @@ class NlsHunter_model
 
     private $allowedImageFiles = ['jpg', 'png', 'jpeg'];
     private $allowedCategories = [1408, 1406, 1407, 1405, 1411, 1409, 1404, 1430, 1434, 1401, 1001];
+    private $generalCategory = 1001;
 
     private $regions;
 
@@ -521,7 +522,7 @@ class NlsHunter_model
 
             // Filter by a specific region
             if ($region !== 0) {
-                $nestedField = $filter->createFilterField(['JobProfessionalFieldInfo_CategoryId', 'JobProfessionalFields'], $region, SearchPhrase::EXACT, WhereCondition::C_AND, NlsFilter::NUMERIC_VALUES);
+                $nestedField = $filter->createFilterField(['JobProfessionalFieldInfo_CategoryId', 'JobProfessionalFields'], $region . ',' . $this->generalCategory, SearchPhrase::EXACT, WhereCondition::C_AND, NlsFilter::NUMERIC_VALUES);
             } else {
                 // Filter all regions
                 $nestedField = $filter->createFilterField(['JobProfessionalFieldInfo_CategoryId', 'JobProfessionalFields'], implode(',', $this->allowedCategories), SearchPhrase::ONE_OR_MORE, WhereCondition::C_AND, NlsFilter::NUMERIC_VALUES);
