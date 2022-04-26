@@ -523,11 +523,11 @@ class NlsHunter_model
             // Filter by a specific region
             if ($region !== 0) {
                 $nestedField = $filter->createFilterField(['JobProfessionalFieldInfo_CategoryId', 'JobProfessionalFields'], $region . ',' . $this->generalCategory, SearchPhrase::EXACT, WhereCondition::C_AND, NlsFilter::NUMERIC_VALUES);
-            } else {
-                // Filter all regions
-                $nestedField = $filter->createFilterField(['JobProfessionalFieldInfo_CategoryId', 'JobProfessionalFields'], implode(',', $this->allowedCategories), SearchPhrase::ONE_OR_MORE, WhereCondition::C_AND, NlsFilter::NUMERIC_VALUES);
+                $filter->addWhereFilter($nestedField, WhereCondition::C_AND);
             }
-            $filter->addWhereFilter($nestedField, WhereCondition::C_AND);
+
+            // Filter all regions
+            // $nestedField = $filter->createFilterField(['JobProfessionalFieldInfo_CategoryId', 'JobProfessionalFields'], implode(',', $this->allowedCategories), SearchPhrase::ONE_OR_MORE, WhereCondition::C_AND, NlsFilter::NUMERIC_VALUES);     
 
             if ($employer !== 0) {
                 $filterField = new FilterField('EmployerId', SearchPhrase::EXACT, $employer, NlsFilter::TERMS_NON_ANALAYZED);
