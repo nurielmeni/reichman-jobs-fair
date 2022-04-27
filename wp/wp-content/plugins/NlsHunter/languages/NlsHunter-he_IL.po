@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: NlsHunter\n"
-"POT-Creation-Date: 2022-04-17 17:41+0300\n"
-"PO-Revision-Date: 2022-04-17 17:43+0300\n"
+"POT-Creation-Date: 2022-04-28 02:47+0300\n"
+"PO-Revision-Date: 2022-04-28 02:47+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: he_IL\n"
@@ -30,71 +30,71 @@ msgstr "אין לך הרשאות מספיקות כדי לגשת לעמוד זה.
 msgid "Select"
 msgstr "בחר"
 
-#: includes/class-NlsHunter-model.php:37
+#: includes/class-NlsHunter-model.php:42
 msgid "Could not create Model."
 msgstr "אין אפשרות ליצור מודל."
 
-#: includes/class-NlsHunter-model.php:38
+#: includes/class-NlsHunter-model.php:43
 #, fuzzy
 #| msgid "Error: NlsHunterFbf_model: "
 msgid "Error: NlsHunter_model: "
 msgstr "שגיאה: NlsHunterFbf_model: "
 
-#: includes/class-NlsHunter-model.php:177
-#: includes/class-NlsHunter-model.php:181
+#: includes/class-NlsHunter-model.php:182
+#: includes/class-NlsHunter-model.php:186
 msgid "Could not init Card Services."
 msgstr "אין אפשרות להתחבר לשירותי Card"
 
-#: includes/class-NlsHunter-model.php:178
-#: includes/class-NlsHunter-model.php:182
+#: includes/class-NlsHunter-model.php:183
+#: includes/class-NlsHunter-model.php:187
 msgid "Error: Card Services: "
 msgstr "שגיאה: שירותי כרטיס"
 
-#: includes/class-NlsHunter-model.php:202
-#: includes/class-NlsHunter-model.php:205
+#: includes/class-NlsHunter-model.php:207
+#: includes/class-NlsHunter-model.php:210
 msgid "Could not init Directory Services."
 msgstr "אין אפשרות להתחבר לשירותי Directory"
 
-#: includes/class-NlsHunter-model.php:203
+#: includes/class-NlsHunter-model.php:208
 msgid "Error: Directory Services: "
 msgstr "שגיאה: שירותי מדריך"
 
-#: includes/class-NlsHunter-model.php:224
-#: includes/class-NlsHunter-model.php:228
+#: includes/class-NlsHunter-model.php:229
+#: includes/class-NlsHunter-model.php:233
 msgid "Could not init Search Services."
 msgstr "אין אפשרות להתחבר לשירותי Search"
 
-#: includes/class-NlsHunter-model.php:225
-#: includes/class-NlsHunter-model.php:229
+#: includes/class-NlsHunter-model.php:230
+#: includes/class-NlsHunter-model.php:234
 msgid "Error: Search Services: "
 msgstr "שגיאה: שירותי חיפוש"
 
-#: public/class-NlsHunter-public.php:165
+#: public/class-NlsHunter-public.php:164
 msgid "Supplier Id"
 msgstr "מזהה ספק"
 
-#: public/class-NlsHunter-public.php:166
+#: public/class-NlsHunter-public.php:165
 msgid "Job Code"
 msgstr "קוד משרה"
 
-#: public/class-NlsHunter-public.php:168 templates/applyForJobs.php:17
+#: public/class-NlsHunter-public.php:167 templates/applyForJobs.php:17
 #: templates/job/jobApplyForm.php:11
 msgid "Full Name"
 msgstr "שם החבר:"
 
-#: public/class-NlsHunter-public.php:169 templates/job/jobApplyForm.php:21
+#: public/class-NlsHunter-public.php:168 templates/job/jobApplyForm.php:21
 msgid "Phone"
 msgstr "טלפון"
 
-#: public/class-NlsHunter-public.php:170 templates/job/jobApplyForm.php:30
+#: public/class-NlsHunter-public.php:169 templates/job/jobApplyForm.php:30
 msgid "Email"
 msgstr "מייל חברה"
 
-#: public/class-NlsHunter-public.php:387
+#: public/class-NlsHunter-public.php:386
 msgid "Applicant form data: "
 msgstr "פרטי החבר/ה שלי:"
 
-#: public/class-NlsHunter-public.php:416
+#: public/class-NlsHunter-public.php:415
 msgid "CV Applied from Reichman Jobs Fair Site"
 msgstr "קורות חיים נשלחו מאתר יריד משרות רייכמן"
 
@@ -138,7 +138,11 @@ msgstr "אימייל פרטי:"
 msgid "* By the terms"
 msgstr "* כפוף לתקנון"
 
-#: templates/employer/employerDescription.php:6
+#: templates/employer/employerDescription.php:9
+msgid "Full Description"
+msgstr "לתיאור המלא"
+
+#: templates/employer/employerDescription.php:14
 msgid "Company Website:"
 msgstr "אתר החברה:"
 

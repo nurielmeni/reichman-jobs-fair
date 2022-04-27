@@ -106,10 +106,14 @@ class NlsHunter_modules
         // Get employer Jobs
         $jobs = $this->model->getJobHunterExecuteNewQuery2(['EmployerId' => $employerId]);
 
+        // Get employer text file to view (additional info), file download link
+        $textFiles = $this->model->filesListGet($employerId, 'text');
+
         ob_start();
 
         echo render('employer/employerDetails', [
-            'employer' => $employer
+            'employer' => $employer,
+            'textFiles' => $textFiles
         ]);
 
         echo render('job/jobList', [

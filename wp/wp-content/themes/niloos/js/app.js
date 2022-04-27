@@ -1,1 +1,5 @@
-(()=>{window.addEventListener("load",function(){});})();
+(() => {
+  // resources/js/app.js
+  window.addEventListener("load", function() {
+  });
+})();

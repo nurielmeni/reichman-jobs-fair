@@ -27,6 +27,7 @@ class NlsHunter_model
     private $nlsCacheTime  = 20 * 60;
 
     private $allowedImageFiles = ['jpg', 'png', 'jpeg'];
+    private $allowedTexrFiles = ['doc', 'docx', 'pdf', 'rtf'];
     private $allowedCategories = [1408, 1406, 1407, 1405, 1411, 1409, 1404, 1430, 1434, 1401, 1001];
     private $generalCategory = 1001;
 
@@ -585,9 +586,12 @@ class NlsHunter_model
         return trim($fileData->Name) . '.' . trim($fileData->Type);
     }
 
-    public function filesListGet($parentId)
+    // types: image, text
+    public function filesListGet($parentId, $type = 'image')
     {
         if (!$this->initCardService()) return [];
+
+        $allowed = $type === 'text' ? $this->allowedTexrFiles : $this->allowedImageFiles;
 
         $res = $this->nlsCards->filesListGet($parentId);
         $files = property_exists($res, 'FilesListGetResult') && property_exists($res->FilesListGetResult, 'FileInfo')
@@ -599,7 +603,7 @@ class NlsHunter_model
         $fileList = [];
 
         foreach ($files as $file) {
-            if (!in_array(strtolower(trim($file->Type)), $this->allowedImageFiles)) continue;
+            if (!in_array(strtolower(trim($file->Type)), $allowed)) continue;
 
             // Check if the file is already  saved
             $filePath = $this->getFileLocation($file);

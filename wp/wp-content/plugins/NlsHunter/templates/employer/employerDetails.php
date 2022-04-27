@@ -9,7 +9,10 @@
             'loop' => true
         ]) ?>
 
-        <?= render('employer/employerDescription', ['employer' => $employer]) ?>
+        <?= render('employer/employerDescription', [
+            'employer' => $employer,
+            'textFiles' => $textFiles
+        ]) ?>
 
         <?= render('slider/horizontalSlider', [
             'elementTemplate' => 'slider/elementTemplate',
