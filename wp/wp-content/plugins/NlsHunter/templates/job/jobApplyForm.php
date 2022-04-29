@@ -17,7 +17,7 @@
         <?= render('nlsInputField', [
             'wrapperClass' => 'w-72 mb-4',
             'type' => 'tel',
-            'class' => 'rounded-md px-3 py-2 text-primary w-full',
+            'class' => 'rounded-md px-3 py-2 text-primary w-full dir-ltr',
             'label' => __('Phone', 'NlsHunter'),
             'name' => 'phone',
             'validators' => ['required', 'phone']
@@ -26,7 +26,7 @@
         <?= render('nlsInputField', [
             'wrapperClass' => 'w-72 mb-4',
             'type' => 'email',
-            'class' => 'rounded-md px-3 py-2 text-primary w-full',
+            'class' => 'rounded-md px-3 py-2 text-primary w-full dir-ltr',
             'label' => __('Email', 'NlsHunter'),
             'name' => 'email',
             'validators' => ['required', 'email']
@@ -38,7 +38,7 @@
             'name' => 'cv-file',
             'buttonText' => __('Select file', 'NlsHunter'),
             'accept' => '.txt, .pdf, .doc, .docx, .rtf',
-            'textClass' => 'rounded-l-md rtl:rounded-l-none rtl:rounded-r-md px-3 py-2 text-primary w-8/12',
+            'textClass' => 'rounded-l-md rtl:rounded-l-none rtl:rounded-r-md px-3 py-2 text-primary w-8/12 dir-ltr',
             'buttonClass' => 'rounded-r-md rtl:rounded-r-none rtl:rounded-l-md px-3 py-2 text-center w-4/12',
             'validators' => ['required']
         ]) ?>

@@ -7,6 +7,14 @@
   flex-direction: row-reverse;
 }
 
+.dir-ltr {
+  direction: ltr;
+}
+
+.dir-rtl {
+  direction: rtl;
+}
+
 .nls-invalid {
   border-color: #ef4444;
   color: #ef4444;
