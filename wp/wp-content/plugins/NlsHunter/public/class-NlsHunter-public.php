@@ -273,10 +273,10 @@ class NlsHunter_Public
         $searchParams = [];
 
         $page = intval($this->model->queryParam('page', 0, true));
-        $area = intval($this->model->queryParam('area', 0, true));
+        $category = intval($this->model->queryParam('area', 0, true));
         $employer = $this->model->queryParam('employer', null, true);
 
-        if ($area > 0) $searchParams['Region'] = $area;
+        if ($category > 0) $searchParams['Category'] = $category;
         if ($employer) $searchParams['EmployerId'] = $employer;
 
         $jobs = $this->model->getJobHunterExecuteNewQuery2($searchParams, null, $page + 1);

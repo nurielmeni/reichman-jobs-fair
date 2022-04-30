@@ -508,10 +508,10 @@ class NlsHunter_model
     {
         $resultRowLimit = $resultRowLimit ? $resultRowLimit : $this->nlsGetCountPerPage();
         $resultRowOffset = is_int($page) ? $page * $resultRowLimit : 0;
-        $region = key_exists('Region', $searchParams) ? $searchParams['Region'] : 0;
+        $category = key_exists('Category', $searchParams) ? $searchParams['Category'] : 0;
         $employer = key_exists('EmployerId', $searchParams) ? $searchParams['EmployerId'] : 0;
 
-        $cache_key = 'nls_hunter_jobs_' . $region . '_' . $employer . '_' . $resultRowOffset . '_' . $resultRowLimit;
+        $cache_key = 'nls_hunter_jobs_' . $category . '_' . $employer . '_' . $resultRowOffset . '_' . $resultRowLimit;
         if ($this->nlsFlashCache) wp_cache_delete($cache_key);
 
         $jobs = wp_cache_get($cache_key);
@@ -525,8 +525,8 @@ class NlsHunter_model
             $filter->addSuplierIdFilter($this->nlsGetSupplierId());
 
             // Filter by a specific region
-            if ($region !== 0) {
-                $nestedField = $filter->createFilterField(['JobProfessionalFieldInfo_CategoryId', 'JobProfessionalFields'], $region . ',' . $this->generalCategory, SearchPhrase::EXACT, WhereCondition::C_AND, NlsFilter::NUMERIC_VALUES);
+            if ($category !== 0) {
+                $nestedField = $filter->createFilterField(['JobProfessionalFieldInfo_CategoryId', 'JobProfessionalFields'], $category . ',' . $this->generalCategory, SearchPhrase::EXACT, WhereCondition::C_AND, NlsFilter::NUMERIC_VALUES);
                 $filter->addWhereFilter($nestedField, WhereCondition::C_AND);
             }
 
