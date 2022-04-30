@@ -149,7 +149,8 @@ class NlsHunter_modules
         echo render('job/jobDetails', [
             'job' => $job,
             'employer' => $employer,
-            'employerUrl' => $this->model->getHunterEmployerDetailsPageUrl($employerId)
+            'employerUrl' => $this->model->getHunterEmployerDetailsPageUrl($employerId),
+            'model' => $this->model,
         ]);
 
         return ob_get_clean();

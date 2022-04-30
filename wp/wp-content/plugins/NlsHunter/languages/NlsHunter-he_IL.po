@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: NlsHunter\n"
-"POT-Creation-Date: 2022-04-28 02:47+0300\n"
-"PO-Revision-Date: 2022-04-28 02:47+0300\n"
+"POT-Creation-Date: 2022-04-30 16:28+0300\n"
+"PO-Revision-Date: 2022-04-30 16:28+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: he_IL\n"
@@ -157,6 +157,10 @@ msgstr "לעמוד המעסיק"
 #: templates/employer/employersGrid.php:1
 msgid "Employers List"
 msgstr "רשימת מעסיקים"
+
+#: templates/job/jobApplyExternal.php:1
+msgid "Send CV via website"
+msgstr "להגשת קורות חיים באתר המעסיק"
 
 #: templates/job/jobApplyForm.php:2
 msgid "Submit Application"

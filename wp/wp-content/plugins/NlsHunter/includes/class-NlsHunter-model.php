@@ -452,20 +452,23 @@ class NlsHunter_model
 
     private function getEmployerVideoUrl($employer)
     {
-        //$default = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
-        $default = null;
-        $videoPropName = 'Customer Video';
+        return $this->getExtendedProperty($employer, 'Customer Video');
+    }
 
-        $exProps = property_exists($employer, 'ExtendedProperties') && property_exists($employer->ExtendedProperties, 'ExtendedProperty')
-            ? $employer->ExtendedProperties->ExtendedProperty
-            : null;
+    public function getExtendedProperty($obj, $propName, $default = null)
+    {
+        if (
+            !property_exists($obj, 'ExtendedProperties') ||
+            !property_exists($obj->ExtendedProperties, 'ExtendedProperty')
+        )
+            return $default;
 
-        if (!$exProps) return $default;
-
-        $exProps = !is_array($exProps) ? [$exProps] : $exProps;
+        $exProps = is_array($obj->ExtendedProperties->ExtendedProperty)
+            ? $obj->ExtendedProperties->ExtendedProperty
+            : [$obj->ExtendedProperties->ExtendedProperty];
 
         foreach ($exProps as $exProp) {
-            if ($exProp->PropertyName === $videoPropName) return $exProp->Value;
+            if ($exProp->PropertyName === $propName) return $exProp->Value;
         }
 
         return $default;
