@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Reichman\n"
-"POT-Creation-Date: 2022-03-01 21:38+0200\n"
-"PO-Revision-Date: 2022-03-20 10:56+0200\n"
+"POT-Creation-Date: 2022-05-05 01:46+0300\n"
+"PO-Revision-Date: 2022-05-05 01:46+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: he_IL\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
 "2 : 3);\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: style.css\n"
@@ -23,11 +23,11 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
 
-#: 404.php:16
+#: 404.php:18
 msgid "Sorry, the page you are looking for could not be found."
 msgstr "מצטערים, הדף שאתה מחפש לא נמצא."
 
-#: 404.php:18
+#: 404.php:20
 msgid "Go Home"
 msgstr "חזור לדף הבית"
 
@@ -57,33 +57,37 @@ msgstr "תגובות חדשות יותר &rarr;"
 msgid "Comments are closed."
 msgstr "תגובות סגורות."
 
-#: footer.php:59
+#: footer.php:35
 msgid "All rights reserved to Reichman University."
 msgstr "כל הזכויות שמורות לאוניברסיטת רייכמן."
 
-#: functions.php:15
+#: functions.php:16
 msgid "Primary Menu"
 msgstr "תפריט ראשי"
 
-#: functions.php:16
+#: functions.php:17
 msgid "Language Switcher"
 msgstr "Switcher שפות"
 
-#: functions.php:17
+#: functions.php:18
 msgid "Header Social"
 msgstr "כותרת עליונה חברתית"
 
-#: functions.php:18
+#: functions.php:19
 msgid "Footer Menu 1"
 msgstr "תפריט תחתון 1"
 
-#: functions.php:19
+#: functions.php:20
 msgid "Footer Menu 2"
 msgstr "תפריט תחתון 2"
 
-#: functions.php:20
+#: functions.php:21
 msgid "Footer Social"
 msgstr "כותרת תחתונה חברתית"
+
+#: includes/ContactDescriptionShortcode.php:10
+msgid "Contact Us"
+msgstr "צרו איתנו קשר"
 
 #: includes/customizerAdjustments.php:18
 msgid "Theme Options"
@@ -179,9 +183,6 @@ msgstr "ג'פרי ואן רוסום"
 #, fuzzy
 msgid "https://vanrossum.dev"
 msgstr "https://vanrossum.dev"
-
-#~ msgid "Contact us"
-#~ msgstr "צרו איתנו קשר"
 
 #~ msgid "Reichman is a simple boilerplate WordPress theme with Tailwind CSS."
 #~ msgstr "רייכמן הוא ערכת נושא פשוטה של וורדפרס עם CSS של Tailwind."

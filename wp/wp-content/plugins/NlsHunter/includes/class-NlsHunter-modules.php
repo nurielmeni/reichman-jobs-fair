@@ -83,10 +83,12 @@ class NlsHunter_modules
             'name'        => $the_slug,
             'post_type'   => 'post',
             'post_status' => 'publish',
-            'numberposts' => 1
+            'numberposts' => 1,
+            'suppress_filters' => false
         );
+
         $noFair = get_posts($args);
-        return $noFair[0]->post_content;
+        return apply_filters('the_content', $noFair[0]->post_content);
     }
 
     public function nlsHunterEmployerDetails_render()

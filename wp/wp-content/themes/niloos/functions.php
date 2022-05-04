@@ -1,6 +1,6 @@
 <?php
 include_once 'includes/customizerAdjustments.php';
-include_once 'includes/ContactDescriptionWalker.php';
+include_once 'includes/ContactDescriptionShortcode.php';
 
 const NLS_FLOW_ELEMENTS = 3;
 
@@ -156,45 +156,3 @@ function url_query_string($url)
 	return $url;
 }
 add_filter('pll_the_language_link', 'url_query_string');
-
-add_shortcode('contact_description', 'contactdescription');
-
-function contactdescription()
-{
-	$lang = pll_current_language();
-	ob_start();
-
-?>
-	<div class="container mx-auto flex flex-col justify-center md:flex-row items-top primary gap-8">
-		<?php
-
-		wp_nav_menu(
-			array(
-				'menu' => 'footer-1-' . $lang,
-				'container_id'    => 'footer-1',
-				'container_class' => 'mt-1 mb-2',
-				'menu_class'      => 'marker:text-green-400 list-disc pl-5 space-y-3 text-primary',
-				'echo' => true,
-				'li_class'        => 'mx-4',
-				'walker' => new contact_description_walker,
-				'fallback_cb'     => false,
-			)
-		);
-
-		wp_nav_menu(
-			array(
-				'menu' => 'footer-2-' . $lang,
-				'container_id'    => 'footer-2',
-				'container_class' => 'mt-1 mb-2',
-				'menu_class'      => 'marker:text-green-400 list-disc pl-5 space-y-3 text-primary',
-				'echo' => true,
-				'li_class'        => 'mx-4',
-				'walker' => new contact_description_walker,
-				'fallback_cb'     => false,
-			)
-		);
-		?>
-	</div>
-<?php
-	return ob_get_clean();
-}
