@@ -1,5 +1,6 @@
 <?php
 include_once 'includes/customizerAdjustments.php';
+include_once 'includes/ContactDescriptionWalker.php';
 
 const NLS_FLOW_ELEMENTS = 3;
 
@@ -197,4 +198,3 @@ function contactdescription()
 <?php
 	return ob_get_clean();
 }
-
